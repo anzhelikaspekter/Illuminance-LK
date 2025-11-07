@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scan QR">
+    <title>Scan QR</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+        <div class="modal__wrap">
+            <button type="button" class="modal__close" aria-label="Close modal">
+                <img src="img/icon/close.svg" width="18" height="18" alt="Close icon">
+            </button>
+
+            <header class="modal__header">
+                <div class="modal__icon-wrap active" aria-label="Show QR-code">
+                    <img src="img/icon/qr.svg" width="18" height="18" alt="QR-icon">
+                </div>
+                <div class="modal__icon-wrap" aria-label="Code Show">
+                    <img src="img/icon/edit.svg" width="18" height="18" alt="Code-icon">
+                </div>
+            </header>
+
+            <div class="modal__content">
+                <div class="modal__title-wrap">
+                    <h1 id="modal-title" class="modal__title">Scan QR Code</h1>
+                    <p id="modal-desc" class="modal__desc">
+                        Scan the code below with an app like 1Password or Google Authenticator.
+                    </p>
+                </div>
+
+                <div class="modal__qr-wrap">
+                    <img src="img/qr-code.webp" width="120" height="120" alt="QR Code" class="modal__qr">
+                </div>
+
+                <button type="button" class="modal__btn" aria-label="Paste verification code">Continue</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.querySelector(".modal");
+            const closeBtn = modal.querySelector(".modal__close");
+
+            closeBtn.addEventListener("click", () => {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: "closeModal" }, "*");
+                } else {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

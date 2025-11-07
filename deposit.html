@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Deposit">
+    <title>Deposit</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+        <div class="modal__wrap">
+            <button type="button" class="modal__close" aria-label="Close modal">
+                <img src="img/icon/close.svg" width="18" height="18" alt="Close icon">
+            </button>
+
+            <header class="modal__header">
+                <div class="modal__icon-wrap classic" aria-label="Deposit">
+                    <img src="img/icon/deposit.svg" width="18" height="18" alt="Add-icon">
+                </div>
+            </header>
+
+            <div class="modal__content">
+                <div class="modal__title-wrap">
+                    <h1 id="modal-title" class="modal__title">Deposit</h1>
+                    <p id="modal-desc" class="modal__desc">
+                        Add funds to your account to start trading and using exchange services.
+                    </p>
+                </div>
+
+                <form action="" method="post" class="modal__form">
+                    <div class="modal__form-wrap-fill withdraw">
+                        <div class="modal__form-wrap-fill--withdraw">
+                            <label for="amount" class="modal__form-wrap--label">From</label>
+                            <div class="modal__form-wrap-fill--input-field">
+                                <input type="number" id="amount" name="amount" placeholder="0.00"
+                                    class="modal__form-wrap-fill--input">
+
+                                <div class="modal__form-wrap-fill--select-mini" role="listbox"
+                                    aria-label="Select Network">
+                                    <button type="button" class="modal__form-wrap-fill--select-field"
+                                        aria-haspopup="listbox" aria-expanded="false">
+                                        <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                            class="modal__form-wrap-fill--select-icon">
+
+                                        <p class="modal__form-wrap-fill--select-text">USDT</p>
+
+                                        <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
+                                            class="modal__form-wrap-fill--select-arrow">
+                                    </button>
+
+                                    <ul class="modal__form-wrap-fill--select-dropdown" hidden>
+                                        <li class="modal__form-wrap-fill--select-option active" data-value="USDT">
+                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
+                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="BTC">
+                                            <img src="img/icon/btc.svg" width="20" height="20" alt="BTC icon">
+                                            <p class="modal__form-wrap-fill--select-text">BTC</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="ETH">
+                                            <img src="img/icon/eth.svg" width="20" height="20" alt="ETH icon">
+                                            <p class="modal__form-wrap-fill--select-text">ETH</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="USDT">
+                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
+                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="modal-desc" class="modal__form-wrap-fill--desc">Minimal amount: $20</p>
+                    </div>
+
+                    <div class="modal__form-wrap-fill">
+                        <label class="modal__form-wrap-fill--label">Network</label>
+
+                        <div class="modal__form-wrap-fill--select" role="listbox" aria-label="Select Network">
+                            <button type="button" class="modal__form-wrap-fill--select-field" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <p class="modal__form-wrap-fill--select-text"><span class="secondary">Select a
+                                        chain</span>
+                                </p>
+                                <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
+                                    class="modal__form-wrap-fill--select-arrow">
+                            </button>
+
+                            <ul class="modal__form-wrap-fill--select-dropdown down" hidden>
+                                <li class="modal__form-wrap-fill--select-option active" data-value="ERC-20">
+                                    <p class="modal__form-wrap-fill--select-text">ERC-20</p>
+                                </li>
+                                <li class="modal__form-wrap-fill--select-option" data-value="TRC-20">
+                                    <p class="modal__form-wrap-fill--select-text">TRC-20</p>
+                                </li>
+                                <li class="modal__form-wrap-fill--select-option" data-value="BEP-20">
+                                    <p class="modal__form-wrap-fill--select-text">BEP-20</p>
+                                </li>
+                                <li class="modal__form-wrap-fill--select-option" data-value="MATIC">
+                                    <p class="modal__form-wrap-fill--select-text">MATIC</p>
+                                </li>
+                                <li class="modal__form-wrap-fill--select-option" data-value="SPL">
+                                    <p class="modal__form-wrap-fill--select-text">SPL</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="modal__qr-wrap" hidden>
+                        <img src="img/qr-code.webp" width="120" height="120" alt="QR Code" class="modal__qr">
+                    </div>
+
+                    <div class="modal__form-wrap-fill" id="wallet-block" hidden>
+                        <label class="modal__form-wrap-fill--label">Wallet Address</label>
+
+                        <input type="text" id="address" name="address" placeholder="Enter your withdrawal address"
+                            class="modal__form-wrap-fill--input deposit">
+                        <button type="button" class="modal__form-wrap-fill--link deposit">Paste</button>
+                    </div>
+
+                    <button type="button" class="modal__btn" aria-label="Confirm">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.querySelector(".modal");
+            const closeBtn = modal.querySelector(".modal__close");
+
+            closeBtn.addEventListener("click", () => {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: "closeModal" }, "*");
+                } else {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const selects = document.querySelectorAll(
+                ".modal__form-wrap-fill--select, .modal__form-wrap-fill--select-mini"
+            );
+
+            const qrWrap = document.querySelector(".modal__qr-wrap");
+            const qrImage = qrWrap?.querySelector(".modal__qr");
+            const walletBlock = document.querySelector("#wallet-block");
+            const addressInput = document.querySelector("#address");
+
+            const networkData = {
+                "ERC-20": {
+                    qr: "img/qr/erc20.webp",
+                    address: "0x7aA44B5D7B9c68C452E53E7aD7Aaa1cB81cE18C7",
+                },
+                "TRC-20": {
+                    qr: "img/qr/trc20.webp",
+                    address: "TRj45V5fLJ8wKj8bZKJt52JzZ6p4Lq9w8n",
+                },
+                "BEP-20": {
+                    qr: "img/qr/bep20.webp",
+                    address: "0x8bC6c2A9bDd78208e9214E0A38A2b8B72C67eB5C",
+                },
+                "MATIC": {
+                    qr: "img/qr/matic.webp",
+                    address: "0x4A63a1C9F58BfC2BAdbC8d8eC0aE13a1dF2f9b01",
+                },
+                "SPL": {
+                    qr: "img/qr/spl.webp",
+                    address: "G5xvJwZ1RjS6h2r9kU7dFT2LxE1N2z3mYj8Pp9Qx",
+                },
+            };
+
+            selects.forEach((select) => {
+                const field = select.querySelector(".modal__form-wrap-fill--select-field");
+                const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
+                const options = select.querySelectorAll(".modal__form-wrap-fill--select-option");
+                const textField = select.querySelector(".modal__form-wrap-fill--select-text");
+                const iconField = select.querySelector(".modal__form-wrap-fill--select-icon");
+                const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
+
+                if (!field || !dropdown) return;
+
+                field.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    const expanded = field.getAttribute("aria-expanded") === "true";
+                    const newState = !expanded;
+
+                    selects.forEach((s) => {
+                        if (s !== select) {
+                            const otherField = s.querySelector(".modal__form-wrap-fill--select-field");
+                            const otherDropdown = s.querySelector(".modal__form-wrap-fill--select-dropdown");
+                            const otherArrow = s.querySelector(".modal__form-wrap-fill--select-arrow");
+                            otherField?.setAttribute("aria-expanded", "false");
+                            if (otherDropdown) otherDropdown.hidden = true;
+                            if (otherArrow) otherArrow.style.transform = "rotate(0deg)";
+                        }
+                    });
+
+                    field.setAttribute("aria-expanded", String(newState));
+                    dropdown.hidden = expanded;
+                    arrow.style.transform = newState ? "rotate(180deg)" : "rotate(0deg)";
+                    arrow.style.transition = "transform 0.25s ease";
+                });
+
+                options.forEach((option) => {
+                    option.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        options.forEach((o) => o.classList.remove("active"));
+                        option.classList.add("active");
+
+                        const imgEl = option.querySelector("img");
+                        const newIconSrc = imgEl ? imgEl.getAttribute("src") : null;
+                        const newIconAlt = imgEl ? imgEl.getAttribute("alt") : null;
+                        const mainText = option
+                            .querySelector(".modal__form-wrap-fill--select-text")
+                            .childNodes[0].textContent.trim();
+
+                        textField.textContent = mainText;
+
+                        if (iconField && newIconSrc) {
+                            iconField.src = newIconSrc;
+                            iconField.alt = newIconAlt;
+                            iconField.hidden = false;
+                        }
+
+                        dropdown.hidden = true;
+                        field.setAttribute("aria-expanded", "false");
+                        arrow.style.transform = "rotate(0deg)";
+
+                        if (select.classList.contains("modal__form-wrap-fill--select")) {
+                            const selectedValue = option.dataset.value;
+                            const data = networkData[selectedValue];
+
+                            if (data) {
+                                qrImage.src = data.qr;
+                                qrImage.alt = `QR code for ${selectedValue}`;
+                                qrWrap.hidden = false;
+
+                                if (walletBlock) walletBlock.hidden = false;
+
+                                addressInput.value = data.address;
+                                addressInput.setAttribute("title", data.address);
+                            } else {
+                                qrWrap.hidden = true;
+                                if (walletBlock) walletBlock.hidden = true;
+                                addressInput.value = "";
+                                addressInput.removeAttribute("title");
+                            }
+                        }
+                    });
+                });
+            });
+
+            document.addEventListener("click", () => {
+                selects.forEach((select) => {
+                    const field = select.querySelector(".modal__form-wrap-fill--select-field");
+                    const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
+                    const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
+                    field?.setAttribute("aria-expanded", "false");
+                    if (dropdown) dropdown.hidden = true;
+                    if (arrow) arrow.style.transform = "rotate(0deg)";
+                });
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    selects.forEach((select) => {
+                        const field = select.querySelector(".modal__form-wrap-fill--select-field");
+                        const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
+                        const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
+                        field?.setAttribute("aria-expanded", "false");
+                        if (dropdown) dropdown.hidden = true;
+                        if (arrow) arrow.style.transform = "rotate(0deg)";
+                    });
+                    if (qrWrap) qrWrap.hidden = true;
+                    if (walletBlock) walletBlock.hidden = true;
+                }
+            });
+
+            const pasteBtn = document.querySelector(".modal__form-wrap-fill--link.withdraw");
+            if (pasteBtn && addressInput) {
+                pasteBtn.addEventListener("click", async () => {
+                    try {
+                        const clipboardText = await navigator.clipboard.readText();
+                        if (!clipboardText) return;
+                        addressInput.value = clipboardText.trim();
+                        addressInput.setAttribute("title", clipboardText.trim());
+
+                        const original = pasteBtn.textContent;
+                        pasteBtn.textContent = "Pasted!";
+                        pasteBtn.classList.add("success");
+                        setTimeout(() => {
+                            pasteBtn.textContent = original;
+                            pasteBtn.classList.remove("success");
+                        }, 1500);
+                    } catch (err) {
+
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+:root {
+    --bg-color: rgba(0, 0, 0, 1);
+    --font-primary: "Euclid Circular B";
+    --padding-sm: clamp(12px, 2vw + 1rem, 16px);
+    --padding-md: clamp(16px, 2vw + 1rem, 24px);
+    --padding-lg: clamp(24px, 2vw + 1rem, 32px);
+    --border-radius-sm: clamp(4px, 1.5vw, 8px);
+    --border-radius-md: clamp(8px, 1.5vw, 12px);
+    --border-radius-lg: clamp(12px, 1.5vw, 24px);
+    --desc-size-sm: clamp(12px, 2vw + 1rem, 12px);
+    --desc-size-md: clamp(12px, 2vw + 1rem, 14px);
+    --desc-size-lg: clamp(14px, 2vw + 1rem, 16px);
+    --code-size: clamp(20px, 2vw + 1rem, 32px);
+    --title-lg: clamp(28px, 2vw + 1rem, 32px);
+    --title-md: clamp(20px, 2vw + 1rem, 24px);
+    --title-sm: clamp(16px, 2vw + 1rem, 18px);
+}
+
+@import "_fonts";
+@import "_outline";
+@import "_scrollbar";
+@import "_sections";
+
+@import "_modal";
+@import "_language";
+@import "_notification";
+@import "_profile";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+    line-height: 1.2;
+    &:before,
+    &:after {
+        box-sizing: inherit;
+    }
+}
+
+body {
+    background: transparent;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+.modal-iframe {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    z-index: 9999;
+}

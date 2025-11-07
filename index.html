@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Main page Illuminance">
+    <title>Illuminance</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body style="background-color: var(--bg-color);">
+    <button data-modal-open>Open Modal</button>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.querySelector(".modal");
+            const openBtn = document.querySelector("[data-modal-open]");
+
+            function openModal() {
+                modal.classList.add("open");
+                document.body.style.overflow = "hidden";
+            }
+
+            openBtn?.addEventListener("click", (e) => {
+                e.preventDefault();
+                openModal();
+            });
+        });
+
+    </script>
+</body>
+
+</html>

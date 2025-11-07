@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exchange">
+    <title>Exchange</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+        <div class="modal__wrap">
+            <button type="button" class="modal__close" aria-label="Close modal">
+                <img src="img/icon/close.svg" width="18" height="18" alt="Close icon">
+            </button>
+
+            <header class="modal__header">
+                <div class="modal__icon-wrap classic" aria-label="Exchange">
+                    <img src="img/icon/exchange.svg" width="18" height="18" alt="Add-icon">
+                </div>
+            </header>
+
+            <div class="modal__content">
+                <div class="modal__title-wrap">
+                    <h1 id="modal-title" class="modal__title">Exchange</h1>
+                    <p id="modal-desc" class="modal__desc">
+                        Exchange your assets instantly with secure transactions.
+                    </p>
+                </div>
+
+                <form action="" method="post" class="modal__form">
+                    <div class="modal__form-wrap-fill exchange">
+                        <p id="modal-desc" class="modal__form-wrap-fill--desc exchange">Minimal amount: $20</p>
+                        <div class="modal__form-wrap-fill--exchange">
+                            <label for="amount" class="modal__form-wrap--label">From</label>
+                            <div class="modal__form-wrap-fill--input-field">
+                                <input type="number" id="amount" name="amount" placeholder="0.00"
+                                    class="modal__form-wrap-fill--input">
+
+                                <button type="button" class="modal__form-wrap-fill--link">Max</button>
+
+                                <div class="modal__form-wrap-fill--select-mini" role="listbox"
+                                    aria-label="Select Network">
+                                    <button type="button" class="modal__form-wrap-fill--select-field"
+                                        aria-haspopup="listbox" aria-expanded="false">
+                                        <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                            class="modal__form-wrap-fill--select-icon">
+
+                                        <p class="modal__form-wrap-fill--select-text">USDT</p>
+
+                                        <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
+                                            class="modal__form-wrap-fill--select-arrow">
+                                    </button>
+
+                                    <ul class="modal__form-wrap-fill--select-dropdown" hidden>
+                                        <li class="modal__form-wrap-fill--select-option active" data-value="USDT">
+                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
+                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="BTC">
+                                            <img src="img/icon/btc.svg" width="20" height="20" alt="BTC icon">
+                                            <p class="modal__form-wrap-fill--select-text">BTC</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="ETH">
+                                            <img src="img/icon/eth.svg" width="20" height="20" alt="ETH icon">
+                                            <p class="modal__form-wrap-fill--select-text">ETH</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="USDT">
+                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
+                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal__form-exchange">
+                        <img src="img/icon/arrow-exchange.png" width="20" height="20" alt="Arrow Exchange"
+                            class="modal__icon">
+                    </div>
+
+                    <div class="modal__form-wrap-fill exchange">
+                        <div class="modal__form-wrap-fill--exchange">
+                            <label for="amount" class="modal__form-wrap--label">From</label>
+                            <div class="modal__form-wrap-fill--input-field">
+                                <input type="number" id="amount" name="amount" placeholder="0.00"
+                                    class="modal__form-wrap-fill--input">
+
+                                <div class="modal__form-wrap-fill--select-mini" role="listbox"
+                                    aria-label="Select Network">
+                                    <button type="button" class="modal__form-wrap-fill--select-field"
+                                        aria-haspopup="listbox" aria-expanded="false">
+                                        <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                            class="modal__form-wrap-fill--select-icon">
+
+                                        <p class="modal__form-wrap-fill--select-text">USDT</p>
+
+                                        <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
+                                            class="modal__form-wrap-fill--select-arrow">
+                                    </button>
+
+                                    <ul class="modal__form-wrap-fill--select-dropdown" hidden>
+                                        <li class="modal__form-wrap-fill--select-option active" data-value="USDT">
+                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
+                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="BTC">
+                                            <img src="img/icon/btc.svg" width="20" height="20" alt="BTC icon">
+                                            <p class="modal__form-wrap-fill--select-text">BTC</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="ETH">
+                                            <img src="img/icon/eth.svg" width="20" height="20" alt="ETH icon">
+                                            <p class="modal__form-wrap-fill--select-text">ETH</p>
+                                        </li>
+                                        <li class="modal__form-wrap-fill--select-option" data-value="USDT">
+                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
+                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="modal-desc" class="modal__form-wrap-fill--desc">Minimal amount: $20</p>
+                    </div>
+
+                    <button type="button" class="modal__btn" aria-label="Confirm">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.querySelector(".modal");
+            const closeBtn = modal.querySelector(".modal__close");
+
+            closeBtn.addEventListener("click", () => {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: "closeModal" }, "*");
+                } else {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const selects = document.querySelectorAll(
+                ".modal__form-wrap-fill--select, .modal__form-wrap-fill--select-mini"
+            );
+
+            selects.forEach((select) => {
+                const field = select.querySelector(".modal__form-wrap-fill--select-field");
+                const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
+                const options = select.querySelectorAll(".modal__form-wrap-fill--select-option");
+                const textField = select.querySelector(".modal__form-wrap-fill--select-text");
+                const iconField = select.querySelector(".modal__form-wrap-fill--select-icon");
+                const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
+
+                if (!field || !dropdown) return;
+
+                field.addEventListener("click", (e) => {
+                    e.stopPropagation();
+
+                    const expanded = field.getAttribute("aria-expanded") === "true";
+                    const newState = !expanded;
+
+                    selects.forEach((s) => {
+                        if (s !== select) {
+                            const otherField = s.querySelector(".modal__form-wrap-fill--select-field");
+                            const otherDropdown = s.querySelector(".modal__form-wrap-fill--select-dropdown");
+                            const otherArrow = s.querySelector(".modal__form-wrap-fill--select-arrow");
+
+                            otherField?.setAttribute("aria-expanded", "false");
+                            if (otherDropdown) otherDropdown.hidden = true;
+                            if (otherArrow) otherArrow.style.transform = "rotate(0deg)";
+                        }
+                    });
+
+                    field.setAttribute("aria-expanded", String(newState));
+                    dropdown.hidden = expanded;
+                    arrow.style.transform = newState ? "rotate(180deg)" : "rotate(0deg)";
+                    arrow.style.transition = "transform 0.25s ease";
+                });
+
+                options.forEach((option) => {
+                    option.addEventListener("click", (e) => {
+                        e.stopPropagation();
+
+                        options.forEach((o) => o.classList.remove("active"));
+                        option.classList.add("active");
+
+                        const newIconSrc = option.querySelector("img").getAttribute("src");
+                        const newIconAlt = option.querySelector("img").getAttribute("alt");
+                        const mainText = option
+                            .querySelector(".modal__form-wrap-fill--select-text")
+                            .childNodes[0].textContent.trim();
+
+                        const subTextEl = option.querySelector(".secondary");
+                        const subText = subTextEl ? subTextEl.textContent.trim() : "";
+
+                        if (subText) {
+                            textField.innerHTML = `${mainText} <span class="secondary">${subText}</span>`;
+                        } else {
+                            textField.textContent = mainText;
+                        }
+
+                        if (iconField) {
+                            iconField.src = newIconSrc;
+                            iconField.alt = newIconAlt;
+                            iconField.hidden = false;
+                        }
+
+                        dropdown.hidden = true;
+                        field.setAttribute("aria-expanded", "false");
+                        arrow.style.transform = "rotate(0deg)";
+                    });
+                });
+            });
+
+            document.addEventListener("click", () => {
+                selects.forEach((select) => {
+                    const field = select.querySelector(".modal__form-wrap-fill--select-field");
+                    const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
+                    const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
+
+                    field?.setAttribute("aria-expanded", "false");
+                    if (dropdown) dropdown.hidden = true;
+                    if (arrow) arrow.style.transform = "rotate(0deg)";
+                });
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    selects.forEach((select) => {
+                        const field = select.querySelector(".modal__form-wrap-fill--select-field");
+                        const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
+                        const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
+
+                        field?.setAttribute("aria-expanded", "false");
+                        if (dropdown) dropdown.hidden = true;
+                        if (arrow) arrow.style.transform = "rotate(0deg)";
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

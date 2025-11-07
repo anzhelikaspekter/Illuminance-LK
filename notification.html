@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Notification">
+    <title>Notification</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <section class="notification" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+        aria-describedby="modal-desc">
+        <div class="notification__wrap">
+            <header class="notification__header">
+                <div class="notification__icon-wrap classic" aria-label="notification">
+                    <img src="img/icon/notification.svg" width="18" height="18" alt="notification-icon">
+                </div>
+
+                <button type="button" class="notification__close" aria-label="Close modal">
+                    <img src="img/icon/close.svg" width="18" height="18" alt="Close icon">
+                </button>
+            </header>
+
+            <div class="notification__content">
+                <div class="notification__title-wrap">
+                    <h1 id="notification-title" class="notification__title">Notification</h1>
+                    <p id="notification-desc" class="notification__desc">Track your bonuses, earnings, and referrals in
+                        one place.</p>
+                </div>
+                <ul class="notification__list">
+                    <li class="notification__item">
+                        <img src="img/icon/cash.svg" width="20" height="20" alt="Turnover icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">Based on a turnover of
+                                <span class="light">120,000$</span> and a <span class="light">10% bonus</span> rate, you
+                                are eligible for a bonus of <span class="light">12,000 $</span>.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                    <li class="notification__item">
+                        <img src="img/icon/fire.svg" width="20" height="20" alt="Balance icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">You just received
+                                <span class="light">+2,500 $</span> to your main balance.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                    <li class="notification__item">
+                        <img src="img/icon/pig.svg" width="20" height="20" alt="Referral icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">Congratulations! You've reached Referral <span
+                                    class="light">Level 3</span>. You now <span class="light">earn 12%</span> commission
+                                from each invited user.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+
+                    <li class="notification__item">
+                        <img src="img/icon/cash.svg" width="20" height="20" alt="Turnover icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">Based on a turnover of
+                                <span class="light">120,000$</span> and a <span class="light">10% bonus</span> rate, you
+                                are eligible for a bonus of <span class="light">12,000 $</span>.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                    <li class="notification__item">
+                        <img src="img/icon/fire.svg" width="20" height="20" alt="Balance icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">You just received
+                                <span class="light">+2,500 $</span> to your main balance.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                    <li class="notification__item">
+                        <img src="img/icon/pig.svg" width="20" height="20" alt="Referral icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">Congratulations! You've reached Referral <span
+                                    class="light">Level 3</span>. You now <span class="light">earn 12%</span> commission
+                                from each invited user.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                    <li class="notification__item">
+                        <img src="img/icon/cash.svg" width="20" height="20" alt="Turnover icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">Based on a turnover of
+                                <span class="light">120,000$</span> and a <span class="light">10% bonus</span> rate, you
+                                are eligible for a bonus of <span class="light">12,000 $</span>.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                    <li class="notification__item">
+                        <img src="img/icon/fire.svg" width="20" height="20" alt="Balance icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">You just received
+                                <span class="light">+2,500 $</span> to your main balance.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                    <li class="notification__item">
+                        <img src="img/icon/pig.svg" width="20" height="20" alt="Referral icon"
+                            class="notification__card-item">
+                        <div class="notification__card">
+                            <p class="notification__card-desc">Congratulations! You've reached Referral <span
+                                    class="light">Level 3</span>. You now <span class="light">earn 12%</span> commission
+                                from each invited user.
+                            </p>
+                            <hr>
+                            <p class="notification__card-desc"><span id="time">2</span> min ago</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.querySelector(".notification");
+            const closeBtn = modal.querySelector(".notification__close");
+
+            closeBtn.addEventListener("click", () => {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: "closeModal" }, "*");
+                } else {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

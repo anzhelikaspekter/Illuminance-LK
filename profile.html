@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profile">
+    <title>Profile</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body style="background-color: var(--bg-color);">
+    <section class="profile">
+        <div class="profile__header">
+            <div class="profile__header-card">
+                <div class="profile__photo-wrap">
+                    <img src="img/user.webp" width="78" height="78" alt="user photo" class="profile__photo-user">
+                    <p class="profile__tooltip avatar">Verified</p>
+                </div>
+                <div class="profile__user-info">
+                    <h1 class="profile__user-name">Esther Howard <p class="profile__tooltip">Verified</p>
+                    </h1>
+                    <p class="profile__user-desc">@estherhoward42</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile__block">
+            <h2 class="profile__block-title">Withdrawal Settings</h2>
+            <div class="profile__add-block">
+                <button type="button" class="profile__add-btn" aria-label="Add new withdrawal method"
+                    data-modal="add-withdrawal">
+                    <img src="img/icon/add.svg" width="18" height="18" alt="Add icon" class="profile__icon"
+                        aria-hidden="true"> Add wallet
+                </button>
+
+                <ul class="profile__list">
+                    <li class="profile__item">
+                        <div class="profile__item-header">
+                            <div class="profile__item-title-field">
+                                <img src="img/icon/usdt.svg" width="18" height="18" alt="usdt icon"
+                                    class="profile__icon">
+                                <p class="profile__item-desc">USDT <span class="network">TRC 20</span></p>
+                            </div>
+                            <div class="profile__item-btn-field">
+                                <button type="button" class="profile__item-btn" data-modal="edit-withdrawal">
+                                    <img src="img/icon/edit-btn.svg" width="16" height="16" alt="Edit icon"
+                                        class="profile__item-icon">
+                                </button>
+                                <button type="button" class="profile__item-btn" data-modal="delete-withdrawal">
+                                    <img src="img/icon/delete-btn.svg" width="16" height="16" alt="Delete icon"
+                                        class="profile__item-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="profile__item-address">
+                            <label for="addressFrst" class="profile__item-label">Address</label>
+                            <input type="text" id="addressFrst" name="address"
+                                value="TUkNL2TRBfJ4zsDdjTrXMW9rn8K2359zFH" class="profile__item-input">
+                        </div>
+                    </li>
+                    <li class="profile__item">
+                        <div class="profile__item-header">
+                            <div class="profile__item-title-field">
+                                <img src="img/icon/trx.svg" width="18" height="18" alt="trx icon" class="profile__icon">
+                                <p class="profile__item-desc">TRX <span class="network">TRON</span></p>
+                            </div>
+                            <div class="profile__item-btn-field">
+                                <button type="button" class="profile__item-btn" data-modal="edit-withdrawal">
+                                    <img src="img/icon/edit-btn.svg" width="16" height="16" alt="Edit icon"
+                                        class="profile__item-icon">
+                                </button>
+                                <button type="button" class="profile__item-btn" data-modal="delete-withdrawal">
+                                    <img src="img/icon/delete-btn.svg" width="16" height="16" alt="Delete icon"
+                                        class="profile__item-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="profile__item-address">
+                            <label for="addressScnd" class="profile__item-label">Address</label>
+                            <input type="text" id="addressScnd" name="address"
+                                value="TUkNL2TRBfJ4zsDdjTrXMW9rn8K2359zFH" class="profile__item-input">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="profile__block">
+            <h2 class="profile__block-title">Account Settings</h2>
+
+            <div class="profile__login-wrap">
+                <div class="profile__login-title-wrap">
+                    <h2 class="profile__login-title"><img src="img/icon/profile-login.svg" width="20" height="20"
+                            alt="Password icon" class="profile__login-icon"> Login Password</h2>
+                    <p class="profile__login-desc">Increase your password strength to enhance account security.</p>
+                </div>
+                <button type="button" class="profile__login-btn" data-modal="change-password">Change</button>
+            </div>
+
+            <div class="profile__auth-wrap">
+                <div class="profile__auth-title-wrap">
+                    <h2 class="profile__auth-title"><img src="img/icon/profile-auth.svg" width="20" height="20"
+                            alt="Authenticator icon" class="profile__auth-icon"> Google Authenticator Code</h2>
+                    <p class="profile__auth-desc">Set up your Google Authenticator to provide an extra layer of security
+                        when withdrawing funds or configuring your security settings.</p>
+                </div>
+
+                <div class="toggle" role="switch" aria-checked="false" tabindex="0">
+                    <button type="button" class="toggle__state" data-state="off">
+                        <img src="img/icon/profile-auth-off.svg" width="18" height="18" alt="Off icon">
+                        <span>Off</span>
+                    </button>
+                    <button type="button" class="toggle__action">Set Up</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-container" allowtransparency="true"></div>
+
+    <script>
+        document.querySelectorAll("[data-modal]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const modalPage = btn.getAttribute("data-modal");
+                const iframe = document.createElement("iframe");
+                iframe.src = `${modalPage}.html`;
+                iframe.className = "modal-iframe";
+                iframe.allowTransparency = true;
+                iframe.style.background = "transparent";
+
+                iframe.onload = () => iframe.classList.add("active");
+                document.body.appendChild(iframe);
+
+                window.addEventListener("message", (e) => {
+                    if (e.data.action === "closeModal") {
+                        iframe.classList.remove("active");
+                        setTimeout(() => iframe.remove(), 250);
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggle = document.querySelector(".toggle");
+            const stateBtn = toggle.querySelector(".toggle__state");
+            const actionBtn = toggle.querySelector(".toggle__action");
+
+            function setState(isOn) {
+                if (isOn) {
+                    stateBtn.dataset.state = "on";
+                    stateBtn.innerHTML = `
+        <img src="img/icon/profile-auth-on.svg" width="18" height="18" alt="On icon">
+        <span>On</span>`;
+                    toggle.setAttribute("aria-checked", "true");
+                } else {
+                    stateBtn.dataset.state = "off";
+                    stateBtn.innerHTML = `
+        <img src="img/icon/profile-auth-off.svg" width="18" height="18" alt="Off icon">
+        <span>Off</span>`;
+                    toggle.setAttribute("aria-checked", "false");
+                }
+            }
+
+            actionBtn.addEventListener("click", () => {
+                const isOn = stateBtn.dataset.state === "on";
+                setState(!isOn);
+            });
+
+            toggle.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    const isOn = stateBtn.dataset.state === "on";
+                    setState(!isOn);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

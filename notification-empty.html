@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Notification Empty">
+    <title>Notification Empty</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <section class="notification" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+        aria-describedby="modal-desc">
+        <div class="notification__wrap">
+            <header class="notification__header">
+                <div class="notification__icon-wrap classic" aria-label="notification">
+                    <img src="img/icon/notification.svg" width="18" height="18" alt="notification-icon">
+                </div>
+
+                <button type="button" class="notification__close" aria-label="Close modal">
+                    <img src="img/icon/close.svg" width="18" height="18" alt="Close icon">
+                </button>
+            </header>
+
+            <div class="notification__content">
+                <div class="notification__title-wrap">
+                    <h1 id="notification-title" class="notification__title">Notification</h1>
+                    <p id="notification-desc" class="notification__desc">Track your bonuses, earnings, and referrals in
+                        one place.</p>
+                </div>
+                <div class="notification__desc-wrap">
+                    <h2 id="notification-subtitle" class="notification__subtitle">You don't have any notifications</h2>
+                    <p id="notification-desc" class="notification__desc">We'll notify you about important updates and
+                        any time you're mentioned on Belium</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.querySelector(".notification");
+            const closeBtn = modal.querySelector(".notification__close");
+
+            closeBtn.addEventListener("click", () => {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: "closeModal" }, "*");
+                } else {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

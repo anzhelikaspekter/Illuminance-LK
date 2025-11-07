@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Delete Withdrawal">
+    <title>Delete Withdrawal</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+        <div class="modal__wrap error">
+            <button type="button" class="modal__close" aria-label="Close modal">
+                <img src="img/icon/close.svg" width="18" height="18" alt="Close icon">
+            </button>
+
+            <header class="modal__header">
+                <div class="modal__icon-wrap error" aria-label="Delete Withdrawal">
+                    <img src="img/icon/delete.svg" width="18" height="18" alt="Delete-icon">
+                </div>
+            </header>
+
+            <div class="modal__content">
+                <div class="modal__title-wrap">
+                    <h1 id="modal-title" class="modal__title">Delete Withdrawal Address</h1>
+                    <p id="modal-desc" class="modal__desc">
+                        Are you sure you want to delete this address?
+                    </p>
+                </div>
+
+                <form action="" method="post" class="modal__form">
+                    <pre class="modal__address">TUkNL2TRBfJ4zsDdjTrXMW9rn8K2359zFH</pre>
+
+                    <div class="modal__btn-wrap">
+                        <button type="button" class="modal__btn secondary" aria-label="Cancel">Cancel</button>
+                        <button type="button" class="modal__btn primary" aria-label="Delete Address">Delete
+                            Address</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.querySelector(".modal");
+            const closeBtn = modal.querySelector(".modal__close");
+
+            closeBtn.addEventListener("click", () => {
+                if (window.parent && window.parent !== window) {
+                    window.parent.postMessage({ action: "closeModal" }, "*");
+                } else {
+                    window.history.back();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

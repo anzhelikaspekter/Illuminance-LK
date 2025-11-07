@@ -12,23 +12,191 @@
 </head>
 
 <body style="background-color: var(--bg-color);">
-    <button data-modal-open>Open Modal</button>
+    <header class="topbar">
+
+    </header>
+
+    <aside class="sidebar">
+        <img src="img/logo.svg" width="150" height="16" alt="Illuminance logo" class="sidebar__logo">
+        <div class="sidebar__total-balance-card">
+            <div class="sidebar__total-balance-card-title-wrap">
+                <h2 class="sidebar__total-balance-card-title">Total balance</h2>
+                <p class="sidebar__total-balance-card-sum">$12,374<span class="end">.87</span></p>
+            </div>
+
+            <div class="sidebar__total-balance-btns-wrap">
+                <button type="button" class="sidebar__total-balance-btn primary" data-modal="deposit">
+                    Deposit
+                </button>
+
+                <button type="button" class="sidebar__total-balance-btn" data-modal="withdraw">
+                    Withdraw
+                </button>
+
+                <button type="button" class="sidebar__total-balance-btn exchange" data-modal="exchange">
+                    <img src="img/icon/sidebar-exchange.svg" width="20" height="20" alt="Exchange"
+                        class="sidebar__total-balance-icon">
+                </button>
+            </div>
+
+            <button type="button" class="sidebar__total-balance-btn" data-modal="referral-code">
+                <img src="img/sidebar-qr.svg" width="32" height="32" alt="QR-code" class="sidebar__total-balance-qr">
+                <div class="sidebar__total-balance-title-wrap">
+                    <p class="sidebar__total-balance-desc light">My referral code</p>
+                    <p class="sidebar__total-balance-desc">Share your QR code.</p>
+                </div>
+                <img src="img/icon/arrow-right.svg" width="18" height="18" alt="Arrow right"
+                    class="sidebar__total-balance-icon">
+            </button>
+        </div>
+        <div class="sidebar__assets">
+            <div class="sidebar__assets-title-wrap">
+                <h2 class="sidebar__assets-title">Assets</h2>
+                <button type="button" class="sidebar__assets-btn">Show <img src="img/icon/arrow-down.svg" width="18"
+                        height="18" alt="Show" class="sidebar__assets-icon"></button>
+            </div>
+        </div>
+        <ul class="sidebar__assets-list">
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/eth.svg" width="36" height="36" alt="ETH" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Ethereum</p>
+                        <p class="sidebar__assets-network-desc">0.012 ETH</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$30.00</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/dot.svg" width="36" height="36" alt="DOT" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Polkadot</p>
+                        <p class="sidebar__assets-network-desc">0.020 DOT</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$27.50</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/sol.svg" width="36" height="36" alt="SOL" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Solana</p>
+                        <p class="sidebar__assets-network-desc">0.008 SOL</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$25.75</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/link.svg" width="36" height="36" alt="LINK" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Chainlink</p>
+                        <p class="sidebar__assets-network-desc">0.005 LINK</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$24.10</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/xrp.svg" width="36" height="36" alt="XRP" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Ripple</p>
+                        <p class="sidebar__assets-network-desc">0.015 XRP</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$22.40</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/ada.svg" width="36" height="36" alt="ADA" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Cardano</p>
+                        <p class="sidebar__assets-network-desc">0.007 ADA</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$20.30</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/ltc.svg" width="36" height="36" alt="LTC" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Litecoin</p>
+                        <p class="sidebar__assets-network-desc">0.010 LTC</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$18.90</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/doge.svg" width="36" height="36" alt="DOGE" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Dogecoin</p>
+                        <p class="sidebar__assets-network-desc">0.025 DOGE</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$15.00</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/shib.svg" width="36" height="36" alt="SHIB" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Shiba Inu</p>
+                        <p class="sidebar__assets-network-desc">0.030 SHIB</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$12.50</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/btc.svg" width="36" height="36" alt="BTC" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Bitcoin</p>
+                        <p class="sidebar__assets-network-desc">0.020 BTC</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$11.50</p>
+            </li>
+            <li class="sidebar__assets-item">
+                <div class="sidebar__assets-network-field">
+                    <img src="img/icon/sol.svg" width="36" height="36" alt="SOL" class="sidebar__assets-network-icon">
+                    <div class="sidebar__assets-network-title-wrap">
+                        <p class="sidebar__assets-network-title">Solana</p>
+                        <p class="sidebar__assets-network-desc">0.008 SOL</p>
+                    </div>
+                </div>
+                <p class="sidebar__assets-sum">$25.75</p>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="content">
+
+    </main>
+
+    <div id="modal-container" allowtransparency="true"></div>
+
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const modal = document.querySelector(".modal");
-            const openBtn = document.querySelector("[data-modal-open]");
+        document.querySelectorAll("[data-modal]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const modalPage = btn.getAttribute("data-modal");
+                const iframe = document.createElement("iframe");
+                iframe.src = `${modalPage}.html`;
+                iframe.className = "modal-iframe";
+                iframe.allowTransparency = true;
+                iframe.style.background = "transparent";
 
-            function openModal() {
-                modal.classList.add("open");
-                document.body.style.overflow = "hidden";
-            }
+                iframe.onload = () => iframe.classList.add("active");
+                document.body.appendChild(iframe);
 
-            openBtn?.addEventListener("click", (e) => {
-                e.preventDefault();
-                openModal();
+                window.addEventListener("message", (e) => {
+                    if (e.data.action === "closeModal") {
+                        iframe.classList.remove("active");
+                        setTimeout(() => iframe.remove(), 250);
+                    }
+                });
             });
         });
-
     </script>
 </body>
 

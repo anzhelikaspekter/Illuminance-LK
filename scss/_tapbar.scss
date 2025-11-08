@@ -12,7 +12,7 @@
     left: 0;
     right: 0;
     background: transparent;
-    z-index: 1000;
+    z-index: 1;
     padding: var(--padding-sm);
     @media (min-width: 768px) {
         display: none;
@@ -30,6 +30,7 @@
         flex: 1 1 auto;
     }
     &__btn {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -39,28 +40,33 @@
         border: none;
         border-radius: var(--border-radius-sm);
         padding: 8px 10px;
-        font-size: var(--desc-size-sm);
-        font-weight: 400;
-        color: var(--tapbar-btn-color);
-        text-decoration: none;
         cursor: pointer;
         transition:
             color 0.2s ease,
             background 0.2s ease;
-
         &:hover,
         &:focus {
             background: var(--tapbar-btn-bg-active-color);
-            color: var(--tapbar-btn-active-color);
             outline: none;
+            & .tapbar__label {
+                color: var(--tapbar-btn-active-color);
+            }
         }
 
         &.active,
         &[aria-pressed="true"],
         &[aria-current="page"] {
             background: var(--tapbar-btn-bg-active-color);
-            color: var(--tapbar-btn-active-color);
+            & .tapbar__label {
+                color: var(--tapbar-btn-active-color);
+            }
         }
+    }
+    &__label {
+        font-size: var(--desc-size-sm);
+        font-weight: 400;
+        color: var(--tapbar-btn-color);
+        text-decoration: none;
     }
     &__icon {
         width: 20px;

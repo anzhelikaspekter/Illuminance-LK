@@ -1365,7 +1365,7 @@ html {
 :root {
   --sidebar-bg-color:
       url(../img/sidebar-bg.svg) no-repeat top center / cover,
-      linear-gradient(180deg, #0b0c0c 0%, rgba(11, 12, 12, 0) 100%);
+      linear-gradient(180deg, rgba(11, 12, 12, 1) 0%, rgba(11, 12, 12, 1) 100%);
   --sidebar-border-color: #141515;
   --sidebar-btn-bg-color: rgba(255, 255, 255, 0.04);
   --sidebar-total-balance-desc: rgba(255, 255, 255, 0.7);
@@ -1387,7 +1387,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -1398,9 +1398,12 @@ html {
   background: var(--sidebar-bg-color);
   border-right: 1px solid var(--sidebar-border-color);
 }
-@media (max-width: 767.9px) {
+@media (max-width: 1023.9px) {
   .sidebar {
     display: none;
+    top: 77px;
+    height: calc(100vh - 77px);
+    z-index: 5;
   }
 }
 .sidebar__logo {
@@ -1502,6 +1505,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: hidden;
 }
 .sidebar__assets-title-wrap {
   width: 100%;
@@ -1543,7 +1547,7 @@ html {
   flex-direction: column;
   gap: 16px;
   overflow: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   scrollbar-width: none;
 }
 .sidebar__assets-item {
@@ -1589,6 +1593,160 @@ html {
 }
 
 :root {
+  --topbar-bg-color: rgba(12, 13, 13, 1);
+  --topbar-border-color: rgba(20, 21, 21, 1);
+  --topbar-btn-bg-active-color: rgba(138, 177, 255, 0.05);
+  --topbar-btn-color: rgba(255, 255, 255, 0.3);
+  --topbar-btn-active-color: rgba(138, 177, 255, 1);
+  --topbar-nav-user-check-bg-color: rgba(3, 28, 19, 1);
+  --topbar-nav-user-check-border-color: rgba(0, 0, 0, 1);
+}
+
+.topbar {
+  width: calc(100% - 375px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: transparent;
+  z-index: 1000;
+  padding: var(--padding-sm);
+}
+@media (max-width: 1023.9px) {
+  .topbar {
+    width: 100%;
+  }
+}
+.topbar__nav {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+}
+.topbar__list {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.topbar__item {
+  flex: 1 1 auto;
+}
+.topbar__item:first-child .btn-icon:hover, .topbar__item:first-child .btn-icon:focus {
+  outline: none;
+}
+.topbar__item:first-child .btn-icon.active, .topbar__item:first-child .btn-icon[aria-pressed=true], .topbar__item:first-child .btn-icon[aria-current=page] {
+  border: none;
+}
+@media (min-width: 1024px) {
+  .topbar__item:first-child {
+    display: none;
+  }
+}
+@media (max-width: 767.9px) {
+  .topbar__item:not(:first-child) {
+    display: none;
+  }
+}
+.topbar__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  padding: 12px 4px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.topbar__btn.btn-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--topbar-bg-color);
+  border: 1px solid var(--topbar-border-color);
+  border-radius: var(--border-radius-sm);
+}
+.topbar__btn.btn-select-icon {
+  width: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4px 12px 12px;
+  background: var(--topbar-bg-color);
+  border: 1px solid var(--topbar-border-color);
+  border-radius: var(--border-radius-sm);
+}
+.topbar__btn.btn-user {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--border-radius-sm);
+  position: relative;
+}
+.topbar__btn:hover, .topbar__btn:focus {
+  outline: none;
+}
+.topbar__btn:hover .topbar__label, .topbar__btn:focus .topbar__label {
+  color: var(--topbar-btn-active-color);
+}
+.topbar__btn.active, .topbar__btn[aria-pressed=true], .topbar__btn[aria-current=page] {
+  border-bottom: 1px solid var(--topbar-btn-active-color);
+}
+.topbar__btn.active .topbar__label, .topbar__btn[aria-pressed=true] .topbar__label, .topbar__btn[aria-current=page] .topbar__label {
+  color: var(--topbar-btn-active-color);
+}
+.topbar__label {
+  font-size: var(--desc-size-md);
+  font-weight: 400;
+  color: var(--topbar-btn-color);
+  text-decoration: none;
+}
+@media (max-width: 1439.9px) {
+  .topbar__label > span {
+    display: none;
+  }
+}
+.topbar__icon {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.topbar__icon.notice {
+  opacity: 0.4;
+}
+.topbar__icon.circle {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50px;
+}
+.topbar__nav-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topbar__nav-item {
+  flex: 1 1 auto;
+}
+.topbar__nav-avatar {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.topbar__nav-user-check {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  border-radius: var(--border-radius-sm);
+  background: var(--topbar-nav-user-check-bg-color);
+  border: 2px solid var(--topbar-nav-user-check-border-color);
+}
+
+:root {
   --tapbar-bg-color: rgba(12, 13, 13, 1);
   --tapbar-border-color: rgba(20, 21, 21, 1);
   --tapbar-btn-bg-active-color: rgba(138, 177, 255, 0.05);
@@ -1602,7 +1760,7 @@ html {
   left: 0;
   right: 0;
   background: transparent;
-  z-index: 1000;
+  z-index: 1;
   padding: var(--padding-sm);
 }
 @media (min-width: 768px) {
@@ -1623,6 +1781,7 @@ html {
   flex: 1 1 auto;
 }
 .tapbar__btn {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1632,21 +1791,27 @@ html {
   border: none;
   border-radius: var(--border-radius-sm);
   padding: 8px 10px;
-  font-size: var(--desc-size-sm);
-  font-weight: 400;
-  color: var(--tapbar-btn-color);
-  text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease, background 0.2s ease;
 }
 .tapbar__btn:hover, .tapbar__btn:focus {
   background: var(--tapbar-btn-bg-active-color);
-  color: var(--tapbar-btn-active-color);
   outline: none;
+}
+.tapbar__btn:hover .tapbar__label, .tapbar__btn:focus .tapbar__label {
+  color: var(--tapbar-btn-active-color);
 }
 .tapbar__btn.active, .tapbar__btn[aria-pressed=true], .tapbar__btn[aria-current=page] {
   background: var(--tapbar-btn-bg-active-color);
+}
+.tapbar__btn.active .tapbar__label, .tapbar__btn[aria-pressed=true] .tapbar__label, .tapbar__btn[aria-current=page] .tapbar__label {
   color: var(--tapbar-btn-active-color);
+}
+.tapbar__label {
+  font-size: var(--desc-size-sm);
+  font-weight: 400;
+  color: var(--tapbar-btn-color);
+  text-decoration: none;
 }
 .tapbar__icon {
   width: 20px;
@@ -2114,6 +2279,11 @@ html {
 body {
   background: transparent;
   position: relative;
+}
+
+button {
+  border: none;
+  outline: none;
 }
 
 ul {

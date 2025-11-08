@@ -1,7 +1,7 @@
 :root {
     --sidebar-bg-color:
         url(../img/sidebar-bg.svg) no-repeat top center / cover,
-        linear-gradient(180deg, #0b0c0c 0%, rgba(11, 12, 12, 0) 100%);
+        linear-gradient(180deg, rgba(11, 12, 12, 1) 0%, rgba(11, 12, 12, 1) 100%);
     --sidebar-border-color: #141515;
 
     --sidebar-btn-bg-color: rgba(255, 255, 255, 0.04);
@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
@@ -35,8 +35,11 @@
     padding: var(--padding-md);
     background: var(--sidebar-bg-color);
     border-right: 1px solid var(--sidebar-border-color);
-    @media (max-width: 767.9px) {
+    @media (max-width: 1023.9px) {
         display: none;
+        top: 77px;
+        height: calc(100vh - 77px);
+        z-index: 5;
     }
     &__logo {
         width: 100%;
@@ -134,6 +137,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        overflow: hidden;
     }
     &__assets-title-wrap {
         width: 100%;
@@ -173,7 +177,7 @@
         flex-direction: column;
         gap: 16px;
         overflow: hidden;
-        overflow-y: auto;
+        overflow-y: scroll;
         scrollbar-width: none;
     }
     &__assets-item {

@@ -13,7 +13,72 @@
 
 <body style="background-color: var(--bg-color);">
     <header class="topbar">
+        <nav class="topbar__nav" role="navigation" aria-label="Main navigation">
+            <ul class="topbar__list">
+                <li class="topbar__item">
+                    <button type="button" class="topbar__btn btn-icon" aria-pressed="false" aria-label="Open sidebar">
+                        <img src="img/icon/sidebar-mobile.svg" width="20" height="20" alt="Open Sidebar"
+                            class="topbar__icon" aria-hidden="true">
+                    </button>
+                </li>
+                <li class="topbar__item">
+                    <button type="button" class="topbar__btn active" aria-pressed="true" aria-current="page"
+                        data-name="dashboard">
+                        <img src="img/icon/dashboard-menu-active.svg" width="20" height="20" alt="" class="topbar__icon"
+                            aria-hidden="true">
+                        <span class="topbar__label">Dashboard</span>
+                    </button>
+                </li>
+                <li class="topbar__item">
+                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="referral">
+                        <img src="img/icon/referral-menu.svg" width="20" height="20" alt="" class="topbar__icon"
+                            aria-hidden="true">
+                        <span class="topbar__label">Referral <span>Program</span></span>
+                    </button>
+                </li>
+                <li class="topbar__item">
+                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="deposit">
+                        <img src="img/icon/deposit-menu.svg" width="20" height="20" alt="" class="topbar__icon"
+                            aria-hidden="true">
+                        <span class="topbar__label">Deposit</span>
+                    </button>
+                </li>
+                <li class="topbar__item">
+                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="credit">
+                        <img src="img/icon/credit-menu.svg" width="20" height="20" alt="" class="topbar__icon"
+                            aria-hidden="true">
+                        <span class="topbar__label">Credit <span>Deposit</span></span>
+                    </button>
+                </li>
+            </ul>
 
+            <ul class="topbar__nav-list">
+                <li class="topbar__nav-item">
+                    <button type="button" class="topbar__btn btn-select-icon" aria-label="Select language"
+                        aria-haspopup="listbox" aria-expanded="false" data-modal="language">
+                        <img src="img/icon/us.svg" width="20" height="20" alt="US" class="topbar__icon circle"
+                            aria-hidden="true">
+                        <img src="img/icon/arrow-down-fill.svg" width="20" height="20" alt="Open Language"
+                            class="topbar__icon" aria-hidden="true">
+                    </button>
+                </li>
+                <li class="topbar__nav-item">
+                    <button type="button" class="topbar__btn btn-icon" aria-label="Open notifications"
+                        data-modal="notification-empty">
+                        <img src="img/icon/notification.svg" width="20" height="20" alt="Open Notifications"
+                            class="topbar__icon notice" aria-hidden="true">
+                    </button>
+                </li>
+                <li class="topbar__nav-item">
+                    <button type="button" class="topbar__btn btn-user" aria-label="Open user menu">
+                        <img src="img/user.webp" width="20" height="20" alt="Avatar" class="topbar__nav-avatar notice"
+                            aria-hidden="true">
+                        <img src="img/icon/check-success.svg" width="12" height="12" alt="Verification Success"
+                            class="topbar__nav-user-check" aria-hidden="true">
+                    </button>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <aside class="sidebar">
@@ -192,28 +257,29 @@
     <footer class="tapbar" role="navigation" aria-label="Main navigation">
         <ul class="tapbar__list">
             <li class="tapbar__item">
-                <button type="button" class="tapbar__btn active" aria-pressed="true">
+                <button type="button" class="tapbar__btn active" aria-pressed="true" aria-current="page"
+                    data-name="dashboard">
                     <img src="img/icon/dashboard-menu-active.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Dashboard</span>
                 </button>
             </li>
             <li class="tapbar__item">
-                <button type="button" class="tapbar__btn" aria-pressed="false">
+                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="referral">
                     <img src="img/icon/referral-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Referral</span>
                 </button>
             </li>
             <li class="tapbar__item">
-                <button type="button" class="tapbar__btn" aria-pressed="false">
+                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="deposit">
                     <img src="img/icon/deposit-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Deposit</span>
                 </button>
             </li>
             <li class="tapbar__item">
-                <button type="button" class="tapbar__btn" aria-pressed="false">
+                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="credit">
                     <img src="img/icon/credit-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Credit</span>
@@ -258,7 +324,6 @@
             assetsList.hidden = true;
 
             assetsList.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
-            assetsList.style.overflow = "hidden";
             assetsList.style.maxHeight = "0";
             assetsList.style.opacity = "0";
 
@@ -283,6 +348,119 @@
                 }
             });
         });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const navButtons = document.querySelectorAll(
+                ".topbar__btn[data-name], .tapbar__btn[data-name]"
+            );
+
+            const getIconPaths = (src) => {
+                const clean = src.replace("-active.svg", ".svg");
+                return {
+                    base: clean,
+                    active: clean.replace(".svg", "-active.svg"),
+                };
+            };
+
+            const resetAll = () => {
+                navButtons.forEach((btn) => {
+                    btn.classList.remove("active");
+                    btn.setAttribute("aria-pressed", "false");
+                    btn.removeAttribute("aria-current");
+
+                    const img = btn.querySelector("img");
+                    if (img) {
+                        const { base } = getIconPaths(img.src);
+                        img.src = base;
+                    }
+                });
+            };
+
+            const activateByName = (name) => {
+                navButtons.forEach((btn) => {
+                    if (btn.dataset.name === name) {
+                        btn.classList.add("active");
+                        btn.setAttribute("aria-pressed", "true");
+                        btn.setAttribute("aria-current", "page");
+
+                        const img = btn.querySelector("img");
+                        if (img) {
+                            const { active } = getIconPaths(img.src);
+                            img.src = active;
+                        }
+                    }
+                });
+            };
+
+            const addHover = (btn) => {
+                const img = btn.querySelector("img");
+                if (!img) return;
+                const { base, active } = getIconPaths(img.src);
+
+                btn.addEventListener("mouseenter", () => {
+                    if (!btn.classList.contains("active")) img.src = active;
+                });
+                btn.addEventListener("mouseleave", () => {
+                    if (!btn.classList.contains("active")) img.src = base;
+                });
+            };
+
+            navButtons.forEach((btn) => {
+                const name = btn.dataset.name;
+                addHover(btn);
+
+                btn.addEventListener("click", () => {
+                    const isActive = btn.classList.contains("active");
+                    resetAll();
+                    if (!isActive) activateByName(name);
+                });
+            });
+        });
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sidebar = document.querySelector(".sidebar");
+            const sidebarToggle = document.querySelector(
+                '.topbar__btn[aria-label="Open sidebar"]'
+            );
+
+            if (!sidebar || !sidebarToggle) return;
+
+            let isSidebarOpen = false;
+
+            const toggleSidebar = (forceClose = false) => {
+                isSidebarOpen = forceClose ? false : !isSidebarOpen;
+
+                sidebar.style.display = isSidebarOpen ? "flex" : "none";
+
+                sidebarToggle.setAttribute("aria-pressed", isSidebarOpen);
+                sidebarToggle.setAttribute("aria-expanded", isSidebarOpen);
+            };
+
+            sidebarToggle.addEventListener("click", (e) => {
+                e.stopPropagation();
+                toggleSidebar();
+            });
+
+            document.addEventListener("click", (e) => {
+                if (
+                    isSidebarOpen &&
+                    !sidebar.contains(e.target) &&
+                    !sidebarToggle.contains(e.target)
+                ) {
+                    toggleSidebar(true);
+                }
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && isSidebarOpen) {
+                    toggleSidebar(true);
+                }
+            });
+        });
+
     </script>
 </body>
 

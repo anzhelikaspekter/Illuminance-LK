@@ -1,0 +1,160 @@
+:root {
+    --topbar-bg-color: rgba(12, 13, 13, 1);
+    --topbar-border-color: rgba(20, 21, 21, 1);
+    --topbar-btn-bg-active-color: rgba(138, 177, 255, 0.05);
+    --topbar-btn-color: rgba(255, 255, 255, 0.3);
+    --topbar-btn-active-color: rgba(138, 177, 255, 1);
+    --topbar-nav-user-check-bg-color: rgba(3, 28, 19, 1);
+    --topbar-nav-user-check-border-color: rgba(0, 0, 0, 1);
+}
+
+.topbar {
+    width: calc(100% - 375px);
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: transparent;
+    z-index: 1000;
+    padding: var(--padding-sm);
+    @media (max-width: 1023.9px) {
+        width: 100%;
+    }
+    &__nav {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 16px;
+    }
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    &__item {
+        flex: 1 1 auto;
+        &:first-child {
+            & .btn-icon {
+                &:hover,
+                &:focus {
+                    outline: none;
+                }
+
+                &.active,
+                &[aria-pressed="true"],
+                &[aria-current="page"] {
+                    border: none;
+                }
+            }
+            @media (min-width: 1024px) {
+                display: none;
+            }
+        }
+        &:not(:first-child) {
+            @media (max-width: 767.9px) {
+                display: none;
+            }
+        }
+    }
+    &__btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        padding: 12px 4px;
+        cursor: pointer;
+        transition:
+            color 0.2s ease,
+            background 0.2s ease;
+        &.btn-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--topbar-bg-color);
+            border: 1px solid var(--topbar-border-color);
+            border-radius: var(--border-radius-sm);
+        }
+        &.btn-select-icon {
+            width: auto;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 4px 12px 12px;
+            background: var(--topbar-bg-color);
+            border: 1px solid var(--topbar-border-color);
+            border-radius: var(--border-radius-sm);
+        }
+        &.btn-user {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: var(--border-radius-sm);
+            position: relative;
+        }
+        &:hover,
+        &:focus {
+            outline: none;
+            & .topbar__label {
+                color: var(--topbar-btn-active-color);
+            }
+        }
+
+        &.active,
+        &[aria-pressed="true"],
+        &[aria-current="page"] {
+            border-bottom: 1px solid var(--topbar-btn-active-color);
+            & .topbar__label {
+                color: var(--topbar-btn-active-color);
+            }
+        }
+    }
+    &__label {
+        font-size: var(--desc-size-md);
+        font-weight: 400;
+        color: var(--topbar-btn-color);
+        text-decoration: none;
+        & > span {
+            @media (max-width: 1439.9px) {
+                display: none;
+            }
+        }
+    }
+    &__icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        &.notice {
+            opacity: 0.4;
+        }
+        &.circle {
+            object-fit: cover;
+            border-radius: 50px;
+        }
+    }
+    &__nav-list {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    &__nav-item {
+        flex: 1 1 auto;
+    }
+    &__nav-avatar {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__nav-user-check {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        border-radius: var(--border-radius-sm);
+        background: var(--topbar-nav-user-check-bg-color);
+        border: 2px solid var(--topbar-nav-user-check-border-color);
+    }
+}

@@ -163,6 +163,8 @@
         width: 18px;
         height: 18px;
         object-fit: contain;
+        transition: transform 0.3s ease;
+        transform-origin: center;
     }
     &__assets-list {
         width: 100%;

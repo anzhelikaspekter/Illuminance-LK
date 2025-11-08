@@ -147,17 +147,33 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const modal = document.querySelector(".language");
+            const wrap = modal.querySelector(".language__wrap");
             const closeBtn = modal.querySelector(".language__close");
 
-            closeBtn.addEventListener("click", () => {
+            function closeModal() {
                 if (window.parent && window.parent !== window) {
                     window.parent.postMessage({ action: "closeModal" }, "*");
                 } else {
                     window.history.back();
                 }
+            }
+
+            closeBtn.addEventListener("click", closeModal);
+
+            modal.addEventListener("click", (e) => {
+                if (!wrap.contains(e.target)) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    closeModal();
+                }
             });
         });
     </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const languageItems = document.querySelectorAll(".language__item");

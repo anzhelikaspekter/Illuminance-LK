@@ -43,13 +43,28 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const modal = document.querySelector(".notification");
+            const wrap = modal.querySelector(".notification__wrap");
             const closeBtn = modal.querySelector(".notification__close");
 
-            closeBtn.addEventListener("click", () => {
+            function closeModal() {
                 if (window.parent && window.parent !== window) {
                     window.parent.postMessage({ action: "closeModal" }, "*");
                 } else {
                     window.history.back();
+                }
+            }
+
+            closeBtn.addEventListener("click", closeModal);
+
+            modal.addEventListener("click", (e) => {
+                if (!wrap.contains(e.target)) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    closeModal();
                 }
             });
         });

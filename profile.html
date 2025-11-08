@@ -146,8 +146,10 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        window.initProfileToggle = function () {
             const toggle = document.querySelector(".toggle");
+            if (!toggle) return;
+
             const stateBtn = toggle.querySelector(".toggle__state");
             const actionBtn = toggle.querySelector(".toggle__action");
 
@@ -179,7 +181,7 @@
                     setState(!isOn);
                 }
             });
-        });
+        };
     </script>
 </body>
 

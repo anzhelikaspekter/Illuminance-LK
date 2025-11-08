@@ -23,28 +23,31 @@
                 </li>
                 <li class="topbar__item">
                     <button type="button" class="topbar__btn active" aria-pressed="true" aria-current="page"
-                        data-name="dashboard">
+                        data-name="dashboard" data-page="dashboard">
                         <img src="img/icon/dashboard-menu-active.svg" width="20" height="20" alt="" class="topbar__icon"
                             aria-hidden="true">
                         <span class="topbar__label">Dashboard</span>
                     </button>
                 </li>
                 <li class="topbar__item">
-                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="referral">
+                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="referral"
+                        data-page="referral">
                         <img src="img/icon/referral-menu.svg" width="20" height="20" alt="" class="topbar__icon"
                             aria-hidden="true">
                         <span class="topbar__label">Referral <span>Program</span></span>
                     </button>
                 </li>
                 <li class="topbar__item">
-                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="deposit">
+                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="deposit"
+                        data-page="deposit">
                         <img src="img/icon/deposit-menu.svg" width="20" height="20" alt="" class="topbar__icon"
                             aria-hidden="true">
                         <span class="topbar__label">Deposit</span>
                     </button>
                 </li>
                 <li class="topbar__item">
-                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="credit">
+                    <button type="button" class="topbar__btn" aria-pressed="false" data-name="credit"
+                        data-page="credit">
                         <img src="img/icon/credit-menu.svg" width="20" height="20" alt="" class="topbar__icon"
                             aria-hidden="true">
                         <span class="topbar__label">Credit <span>Deposit</span></span>
@@ -70,7 +73,7 @@
                     </button>
                 </li>
                 <li class="topbar__nav-item">
-                    <button type="button" class="topbar__btn btn-user" aria-label="Open user menu">
+                    <button type="button" class="topbar__btn btn-user" aria-label="Open user menu" data-page="profile">
                         <img src="img/user.webp" width="20" height="20" alt="Avatar" class="topbar__nav-avatar notice"
                             aria-hidden="true">
                         <img src="img/icon/check-success.svg" width="12" height="12" alt="Verification Success"
@@ -258,28 +261,29 @@
         <ul class="tapbar__list">
             <li class="tapbar__item">
                 <button type="button" class="tapbar__btn active" aria-pressed="true" aria-current="page"
-                    data-name="dashboard">
+                    data-name="dashboard" data-page="dashboard">
                     <img src="img/icon/dashboard-menu-active.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Dashboard</span>
                 </button>
             </li>
             <li class="tapbar__item">
-                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="referral">
+                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="referral"
+                    data-page="referral">
                     <img src="img/icon/referral-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Referral</span>
                 </button>
             </li>
             <li class="tapbar__item">
-                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="deposit">
+                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="deposit" data-page="deposit">
                     <img src="img/icon/deposit-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Deposit</span>
                 </button>
             </li>
             <li class="tapbar__item">
-                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="credit">
+                <button type="button" class="tapbar__btn" aria-pressed="false" data-name="credit" data-page="credit">
                     <img src="img/icon/credit-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
                         aria-hidden="true">
                     <span class="tapbar__label">Credit</span>
@@ -459,6 +463,80 @@
                     toggleSidebar(true);
                 }
             });
+        });
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const content = document.querySelector(".content");
+            const pageButtons = document.querySelectorAll("[data-page]");
+
+            if (!content || !pageButtons.length) return;
+
+            const loadPage = async (page) => {
+                try {
+                    const response = await fetch(`${page}.html`);
+                    if (!response.ok) throw new Error("Page not found");
+
+                    const html = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, "text/html");
+
+                    content.innerHTML = doc.body.innerHTML;
+
+                    const scripts = doc.querySelectorAll("script");
+                    scripts.forEach((oldScript) => {
+                        const newScript = document.createElement("script");
+                        if (oldScript.src) {
+                            newScript.src = oldScript.src;
+                        } else {
+                            newScript.textContent = oldScript.textContent;
+                        }
+                        document.body.appendChild(newScript);
+                    });
+
+                    content.style.opacity = 0;
+                    requestAnimationFrame(() => {
+                        content.style.transition = "opacity 0.3s ease";
+                        content.style.opacity = 1;
+                    });
+
+                    document.title =
+                        page.charAt(0).toUpperCase() + page.slice(1) + " | Illuminance";
+
+                    if (typeof window.initPageScripts === "function") {
+                        window.initPageScripts(page);
+                    }
+
+                    if (typeof window.initProfileToggle === "function") {
+                        window.initProfileToggle();
+                    }
+                } catch (err) {
+                    content.innerHTML = `
+                        <div class="error-message">
+                            <p>⚠️ Failed to load <strong>${page}.html</strong></p>
+                            <p>${err.message}</p>
+                        </div>`;
+                }
+            };
+
+
+            pageButtons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const page = btn.dataset.page;
+                    if (!page) return;
+                    loadPage(page);
+                    history.pushState({ page }, "", `#${page}`);
+                });
+            });
+
+            window.addEventListener("popstate", (e) => {
+                const page = e.state?.page || "dashboard";
+                loadPage(page);
+            });
+
+            const initialPage = location.hash.replace("#", "") || "dashboard";
+            loadPage(initialPage);
         });
 
     </script>

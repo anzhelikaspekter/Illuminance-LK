@@ -48,17 +48,24 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const modal = document.querySelector(".modal");
-            const closeBtn = modal.querySelector(".modal__close");
+            if (!modal) return;
 
-            closeBtn.addEventListener("click", () => {
+            const closeBtn = modal.querySelector(".modal__close");
+            const cancelBtn = modal.querySelector('.modal__btn.secondary[aria-label="Cancel"]');
+
+            const closeModal = () => {
                 if (window.parent && window.parent !== window) {
                     window.parent.postMessage({ action: "closeModal" }, "*");
                 } else {
                     window.history.back();
                 }
-            });
+            };
+
+            if (closeBtn) closeBtn.addEventListener("click", closeModal);
+            if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
         });
     </script>
+
 </body>
 
 </html>

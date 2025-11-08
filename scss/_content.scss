@@ -1,7 +1,18 @@
-:root {
-
-}
-
 .content {
-    
+    width: calc(100% - 375px);
+    height: calc(100vh - 77px);
+    position: fixed;
+    top: 77px;
+    bottom: 0;
+    right: 0;
+    padding: var(--padding-sm);
+    background: transparent;
+    z-index: 1;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    @media (max-width: 1023.9px) {
+        width: 100%;
+        height: calc(100vh - 175px);
+    }
 }

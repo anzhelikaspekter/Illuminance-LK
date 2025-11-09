@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body style="background-color: var(--bg-color);">
+    <section class="dashboard">
+        <div class="dashboard__card-wrap">
+            <div class="card primary">
+                <div class="card__header user">
+                    <div class="card__header-user-wrap">
+                        <img src="img/user.webp" width="42" height="42" alt="User Photo"
+                            class="card__header-user-avatar">
+                        <div class="card__header-user-title-wrap">
+                            <h1 class="card__header-user-title">Jakub Hansen <img src="img/icon/check-success.svg"
+                                    width="16" height="16" alt="Validate Success icon" class="card__header-user-icon">
+                            </h1>
+                            <p class="card__header-user-date">Registration Date: <date class="date">15.09.2025</date>
+                                <span class="date">(28 days)</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card__header-tooltip">
+                        <p class="card__header-tooltip-title">
+                            <img src="img/icon/gold.svg" width="20" height="20" alt=""
+                                class="card__header-tooltip-icon"> Gold
+                        </p>
+                        <span class="card__header-tooltip-desc"><span class="sum">$ 43,755.71</span> to next
+                            level</span>
+                    </div>
+                </div>
+                <div class="card__daily">
+                    <ul class="daily-list">
+                        <li class="daily-item">
+                            <p class="daily-desc"><span class="cyan"></span>
+                                Daily
+                                Deposit</p>
+                            <h3 class="daily-title">$1000</h3>
+                        </li>
+                        <li class="daily-item">
+                            <p class="daily-desc"><span class="violet"></span>
+                                Daily Referral</p>
+                            <h3 class="daily-title">$1000</h3>
+                        </li>
+                        <li class="daily-item">
+                            <p class="daily-desc"><span class="blue"></span>
+                                Daily Total</p>
+                            <h3 class="daily-title">$1000</h3>
+                        </li>
+                    </ul>
+                    <ul class="chart__bars" role="list">
+                        <li class="chart__bar" aria-label="Category A: 25%">
+                            <span class="chart__bar-fill" style="height: 25%"></span>
+                        </li>
+                        <li class="chart__bar" aria-label="Category B: 55%">
+                            <span class="chart__bar-fill" style="height: 55%"></span>
+                        </li>
+                        <li class="chart__bar" aria-label="Category C: 80%">
+                            <span class="chart__bar-fill" style="height: 80%"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card secondary">
+                <div class="card__header">
+                    <div class="card__header-title-wrap">
+                        <h2 class="card__header-title">Active Deposit</h2>
+                        <p class="card__header-desc">Active: <span class="count">8 Deposit</span></p>
+                    </div>
+                    <button type="button" class="card__header-btn">View All</button>
+                </div>
+                <div class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-label="View deposit details">
+                                <img src="img/icon/info.svg" width="20" height="20" alt="Info icon"
+                                    class="card__deposit-info-icon">
+                                <span>Details</span>
+                            </button>
+                            <!-- Enter Tooltip Text Here -->
+                            <p class="card__deposit-tooltip">Here will be text. Here will be text. Here will be text.
+                                Here will be text.</p>
+
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
+                    </div>
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="card primary">
+            <div class="card__header statistic">
+                <div class="card__header-title-wrap">
+                    <h2 class="card__header-title">Main Statistics</h2>
+                    <p class="card__header-desc">Comprehensive overview of your performance with detailed metrics and
+                        flexible filters.</p>
+                </div>
+                <ul class="card__toggle-list">
+                    <li class="card__toggle-item">
+                        <button type="button" class="card__toggle-btn active">Day</button>
+                    </li>
+                    <li class="card__toggle-item">
+                        <button type="button" class="card__toggle-btn">Month</button>
+                    </li>
+                    <li class="card__toggle-item">
+                        <button type="button" class="card__toggle-btn">Year</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card primary">
+            <div class="card__header">
+                <div class="card__header-title-wrap">
+                    <h2 class="card__header-title">Global Partners Map</h2>
+                    <p class="card__header-desc">Explore the geography of your partners with real-time highlights of
+                        activity and turnover.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card primary">
+            <div class="card__header">
+                <div class="card__header-title-wrap">
+                    <h2 class="card__header-title">Live Trading</h2>
+                    <p class="card__header-desc">Track your latest crypto activity with clear transaction history —
+                        amounts, dates, fiat value, and status at a glance.</p>
+                </div>
+                <button type="button" class="card__header-btn">View All</button>
+            </div>
+        </div>
+        <div class="card primary">
+            <div class="card__header">
+                <div class="card__header-title-wrap">
+                    <h2 class="card__header-title">Last Transactions</h2>
+                    <p class="card__header-desc">Track your latest crypto activity with clear transaction history —
+                        amounts, dates, fiat value, and status at a glance.</p>
+                </div>
+                <button type="button" class="card__header-btn">View All</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-container" allowtransparency="true"></div>
+
+    <script>
+        document.querySelectorAll("[data-modal]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const modalPage = btn.getAttribute("data-modal");
+                const iframe = document.createElement("iframe");
+                iframe.src = `${modalPage}.html`;
+                iframe.className = "modal-iframe";
+                iframe.allowTransparency = true;
+                iframe.style.background = "transparent";
+
+                iframe.onload = () => iframe.classList.add("active");
+                document.body.appendChild(iframe);
+
+                window.addEventListener("message", (e) => {
+                    if (e.data.action === "closeModal") {
+                        iframe.classList.remove("active");
+                        setTimeout(() => iframe.remove(), 250);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const infoButtons = document.querySelectorAll(".card__deposit-info-btn");
+
+            infoButtons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const card = btn.closest(".card__deposit-wrap");
+                    if (!card) return;
+
+                    const tooltip = card.querySelector(".card__deposit-tooltip");
+                    if (!tooltip) return;
+
+                    const isVisible = tooltip.style.display === "flex";
+                    tooltip.style.display = isVisible ? "none" : "flex";
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

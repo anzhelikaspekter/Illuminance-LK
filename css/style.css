@@ -1,6 +1,7 @@
 :root {
   --bg-color: rgba(0, 0, 0, 1);
   --font-primary: "Euclid Circular B";
+  --padding-xs: clamp(8px, 2vw + 1rem, 12px);
   --padding-sm: clamp(12px, 2vw + 1rem, 16px);
   --padding-md: clamp(16px, 2vw + 1rem, 24px);
   --padding-lg: clamp(24px, 2vw + 1rem, 32px);
@@ -2286,6 +2287,712 @@ html {
   }
 }
 
+:root {
+  --card-bg-color: rgba(225, 232, 247, 0.05);
+  --card-border-color: rgba(225, 232, 247, 0.04);
+  --card-accident-color: rgba(1, 123, 255, 1);
+  --card-header-tooltip-bg-color: rgba(255, 255, 255, 0.07);
+  --card-header-title-color: rgba(255, 255, 255, 1);
+  --card-header-desc-color: rgba(255, 255, 255, 0.5);
+  --card-header-date-color: rgba(255, 255, 255, 0.7);
+  --card-header-sum-color: rgba(20, 199, 132, 1);
+  --card-header-user-icon-bg-color: rgba(20, 199, 132, 0.15);
+  --card-header-count-color: rgba(1, 123, 255, 1);
+  --card-header-btn-bg-color: rgba(225, 232, 247, 0.06);
+  --card-header-btn-border-color: rgba(225, 232, 247, 0.04);
+  --card-header-btn-color: rgba(255, 255, 255, 1);
+  --card-toggle-list-bg-color: rgba(225, 232, 247, 0.05);
+  --card-toggle-btn-bg-active-color: rgba(225, 232, 247, 0.06);
+  --card-toggle-btn-border-active-color: rgba(225, 232, 247, 0.04);
+  --card-toggle-btn-color: rgba(225, 232, 247, 0.5);
+  --card-toggle-btn-active-color: rgba(225, 232, 247, 1);
+  --card-deposit-bg-color: url(../img/deposit-card-bg.svg) no-repeat top / cover, rgba(1, 123, 255, 0.15);
+  --card-deposit-border-color: rgba(1, 123, 255, 0.1);
+  --card-deposit-hr-border-color: rgba(225, 232, 247, 0.1);
+  --card-deposit-details-bg-color: rgba(1, 123, 255, 0.1);
+  --card-deposit-details-label-color: rgba(255, 255, 255, 0.5);
+  --card-deposit-details-desc-color: rgba(255, 255, 255, 1);
+  --card-deposit-info-title-color: rgba(1, 123, 255, 1);
+  --card-deposit-info-sum-color: rgba(255, 255, 255, 1);
+  --card-deposit-info-sum-end-color: rgba(77, 77, 86, 1);
+  --card-deposit-info-desc-color: rgba(255, 255, 255, 0.4);
+  --card-deposit-info-date-color: rgba(255, 255, 255, 0.7);
+  --card-deposit-info-btn-bg-color: rgba(225, 232, 247, 0.06);
+  --card-deposit-info-btn-border-color: rgba(225, 232, 247, 0.04);
+  --card-deposit-info-btn-color: rgba(255, 255, 255, 0.7);
+  --card-deposit-tooltip-bg-color: rgba(21, 22, 22, 1);
+  --card-deposit-tooltip-border-color: rgba(30, 31, 31, 1);
+  --card-deposit-tooltip-color: rgba(255, 255, 255, 1);
+  --card-daily-bg-color:
+      url(../img/card-bg.svg) no-repeat top center / cover,
+      linear-gradient(0deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01)),
+      linear-gradient(180deg, #0b0c0c 0%, rgba(11, 12, 12, 0) 100%);
+  --card-daily-border-color: rgba(255, 255, 255, 0.04);
+  --card-daily-desc-color: rgba(255, 255, 255, 0.7);
+  --card-daily-title-color: rgba(255, 255, 255, 1);
+}
+
+.card {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius-md);
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 1023.9px) {
+  .card {
+    flex: 1 1 auto;
+  }
+}
+.card.primary {
+  background: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+}
+.card.secondary {
+  background: var(--card-bg-color);
+  border: 1px solid var(--card-border-color);
+}
+.card.secondary::before {
+  content: "";
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  top: -90px;
+  left: -35px;
+  background: var(--card-accident-color);
+  border: 1px solid var(--card-accident-color);
+  filter: blur(202px);
+}
+.card.secondary::after {
+  content: "";
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  bottom: -120px;
+  right: -35px;
+  background: var(--card-accident-color);
+  border: 1px solid var(--card-accident-color);
+  filter: blur(202px);
+}
+.card__header {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+}
+@media (max-width: 1023.9px) {
+  .card__header.statistic {
+    flex-direction: column;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__header.user {
+    flex-direction: column;
+  }
+}
+.card__header-user-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.card__header-user-avatar {
+  width: 46px;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.card__header-user-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card__header-user-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--title-sm);
+  font-weight: 500;
+  color: var(--card-header-title-color);
+}
+.card__header-user-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--desc-size-sm);
+  font-weight: 300;
+  color: var(--card-header-desc-color);
+}
+.card__header-user-date .date {
+  color: var(--card-header-date-color);
+}
+.card__header-user-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background: var(--card-header-user-icon-bg-color);
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50px;
+}
+.card__header-tooltip {
+  width: 100%;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  padding: var(--padding-xs);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: var(--border-radius-sm);
+  background: var(--card-header-tooltip-bg-color);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.05), inset -1px -1px 1px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+}
+@media (max-width: 767.9px) {
+  .card__header-tooltip {
+    max-width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+.card__header-tooltip-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--title-sm);
+  font-weight: 500;
+  color: var(--card-header-title-color);
+}
+.card__header-tooltip-desc {
+  font-size: var(--desc-size-sm);
+  font-weight: 300;
+  color: var(--card-header-desc-color);
+}
+.card__header-tooltip-desc .sum {
+  color: var(--card-header-sum-color);
+}
+.card__header-tooltip-desc .count {
+  color: var(--card-header-count-color);
+}
+.card__header-tooltip-icon {
+  width: 18px;
+  height: 18px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.card__daily {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+}
+@media (max-width: 659.9px) {
+  .card__daily {
+    flex-direction: column;
+  }
+}
+.card__header-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card__header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--title-sm);
+  font-weight: 500;
+  color: var(--card-header-title-color);
+}
+.card__header-desc {
+  font-size: var(--desc-size-md);
+  font-weight: 300;
+  color: var(--card-header-desc-color);
+}
+.card__header-desc .sum {
+  color: var(--card-header-sum-color);
+}
+.card__header-desc .count {
+  color: var(--card-header-count-color);
+}
+.card__header-btn {
+  width: 100%;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  padding: var(--padding-xs);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--desc-size-md);
+  font-weight: 300;
+  color: var(--card-header-btn-color);
+  background: var(--card-header-btn-bg-color);
+  border: 1px solid var(--card-header-btn-border-color);
+}
+.card__toggle-list {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--border-radius-sm);
+  background: var(--card-toggle-list-bg-color);
+}
+@media (max-width: 1023.9px) {
+  .card__toggle-list {
+    max-width: 100%;
+  }
+}
+.card__toggle-item {
+  flex: 1 1 auto;
+}
+@media (max-width: 1023.9px) {
+  .card__toggle-item {
+    flex: 1 1 100%;
+  }
+}
+.card__toggle-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-xs);
+  border-radius: var(--border-radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: var(--desc-size-md);
+  font-weight: 400;
+  color: var(--card-toggle-btn-color);
+}
+.card__toggle-btn.active {
+  background: var(--card-toggle-btn-bg-active-color);
+  border: 1px solid var(--card-toggle-btn-border-active-color);
+  color: var(--card-toggle-btn-active-color);
+}
+.card__deposit-wrap {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius-sm);
+  background: var(--card-deposit-bg-color);
+  border: 1px solid var(--card-deposit-border-color);
+}
+@media (max-width: 767.9px) {
+  .card__deposit-wrap {
+    flex-direction: column;
+  }
+}
+@media (min-width: 768px) {
+  .card__deposit-wrap > .card__deposit-info-date {
+    display: none !important;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__deposit-wrap > .card__deposit-info-date {
+    display: flex !important;
+  }
+}
+.card__deposit-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+@media (min-width: 768px) and (max-width: 1023.9px) {
+  .card__deposit-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__deposit-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+.card__deposit-wrapper.details {
+  width: 100%;
+  max-width: 150px;
+  padding: var(--padding-sm);
+  background: var(--card-deposit-details-bg-color);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.05), inset -1px -1px 1px rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  border-radius: var(--border-radius-sm);
+}
+@media (min-width: 768px) and (max-width: 1023.9px) {
+  .card__deposit-wrapper.details {
+    max-width: 230px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__deposit-wrapper.details {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+.card__deposit-wrapper.info {
+  justify-content: space-between;
+}
+.card__divider {
+  width: 100%;
+  height: 1px;
+  border: 1px dashed var(--card-deposit-hr-border-color);
+}
+@media (min-width: 768px) and (max-width: 1023.9px) {
+  .card__divider {
+    width: 1px;
+    height: 100%;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__divider {
+    width: 1px;
+    height: 40px;
+  }
+}
+.card__deposit-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.card__deposit-details-label {
+  font-size: var(--desc-size-sm);
+  font-weight: 300;
+  color: var(--card-deposit-details-label-color);
+}
+.card__deposit-details-desc {
+  font-size: var(--desc-size-lg);
+  font-weight: 300;
+  color: var(--card-deposit-details-desc-color);
+}
+.card__deposit-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .card__deposit-info > .card__deposit-info-date {
+    display: flex !important;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__deposit-info > .card__deposit-info-date {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023.9px) {
+  .card__deposit-info:last-child {
+    align-items: flex-end;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__deposit-info:last-child {
+    align-items: flex-end;
+  }
+}
+.card__deposit-info-title {
+  font-size: var(--desc-size-sm);
+  font-weight: 300;
+  color: var(--card-deposit-info-title-color);
+}
+.card__deposit-info-sum {
+  font-size: var(--title-lg);
+  font-weight: 600;
+  color: var(--card-deposit-info-sum-color);
+}
+.card__deposit-info-sum .fraction {
+  color: var(--card-deposit-info-sum-end-color);
+}
+.card__deposit-info-btn {
+  width: 100%;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  padding: var(--padding-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: var(--desc-size-lg);
+  font-weight: 300;
+  color: var(--card-deposit-details-desc-color);
+  background: var(--card-deposit-info-btn-bg-color);
+  border: 1px solid var(--card-deposit-info-btn-border-color);
+  border-radius: var(--border-radius-sm);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+@media (max-width: 767.9px) {
+  .card__deposit-info-btn span {
+    display: none;
+  }
+}
+.card__deposit-info-desc {
+  font-size: var(--desc-size-sm);
+  font-weight: 300;
+  color: var(--card-deposit-details-desc-color);
+}
+.card__deposit-info-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--desc-size-sm);
+  font-weight: 300;
+  color: var(--card-deposit-info-desc-color);
+}
+.card__deposit-info-date .date {
+  color: var(--card-deposit-info-date-color);
+}
+.card__deposit-tooltip {
+  position: absolute;
+  top: 20px;
+  left: 120px;
+  width: 200px;
+  padding: var(--padding-xs);
+  font-size: var(--desc-size-sm);
+  font-weight: 300;
+  color: var(--card-deposit-tooltip-color);
+  background: var(--card-deposit-tooltip-bg-color);
+  border: 1px solid var(--card-deposit-tooltip-border-color);
+  border-radius: var(--border-radius-sm);
+  z-index: 1;
+  transform: translateY(-50%);
+  display: none;
+}
+.card__deposit-tooltip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -12px;
+  transform: translateX(50%) translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: var(--card-deposit-tooltip-bg-color);
+  z-index: 0;
+}
+@media (min-width: 768px) and (max-width: 1023.9px) {
+  .card__deposit-tooltip::before {
+    top: auto;
+    left: 50%;
+    bottom: -12px;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+@media (max-width: 767.9px) {
+  .card__deposit-tooltip::before {
+    top: auto;
+    left: auto;
+    right: 10px;
+    bottom: -12px;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023.9px) {
+  .card__deposit-tooltip {
+    top: -50px;
+    left: auto;
+    right: -20%;
+  }
+}
+@media (max-width: 767.9px) {
+  .card__deposit-tooltip {
+    top: -50px;
+    left: auto;
+    right: 0;
+  }
+}
+
+.daily-list {
+  width: calc(100% - 200px);
+  height: 100%;
+  min-height: 150px;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  background: var(--card-daily-bg-color);
+  border: 1px solid var(--card-daily-border-color);
+  padding: 4px;
+  border-radius: var(--border-radius-md);
+}
+.daily-list .daily-item {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius-sm);
+}
+.daily-list .daily-item .daily-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: var(--desc-size-sm);
+  color: var(--card-daily-desc-color);
+}
+.daily-list .daily-item .daily-desc > span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+.daily-list .daily-item .daily-desc > span.cyan {
+  background-color: rgb(208, 247, 255);
+}
+.daily-list .daily-item .daily-desc > span.violet {
+  background-color: rgb(138, 177, 255);
+}
+.daily-list .daily-item .daily-desc > span.blue {
+  background-color: rgb(1, 123, 255);
+}
+.daily-list .daily-item .daily-title {
+  font-size: var(--title-md);
+  font-weight: 500;
+  color: var(--card-daily-title-color);
+}
+.daily-list .daily-item:nth-child(1) {
+  background: linear-gradient(151.6deg, rgba(208, 247, 255, 0.05) 5.73%, rgba(208, 247, 255, 0.2) 96.44%);
+}
+.daily-list .daily-item:nth-child(2) {
+  background: linear-gradient(151.6deg, rgba(138, 177, 255, 0.05) 5.73%, rgba(138, 177, 255, 0.2) 96.44%);
+}
+.daily-list .daily-item:nth-child(3) {
+  background: linear-gradient(151.6deg, rgba(1, 123, 255, 0.05) 5.73%, rgba(1, 123, 255, 0.15) 96.44%);
+}
+@media (min-width: 1024px) and (max-width: 1223.9px) {
+  .daily-list {
+    width: 100%;
+  }
+}
+@media (min-width: 660px) and (max-width: 1023.9px) {
+  .daily-list {
+    width: 100%;
+    height: 150px;
+  }
+}
+@media (max-width: 659.9px) {
+  .daily-list {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+.chart__bars {
+  width: 200px;
+  min-width: 200px;
+  height: 100%;
+  min-height: 150px;
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  padding: 4px;
+  border-radius: var(--border-radius-md);
+}
+@media (min-width: 1024px) and (max-width: 1223.9px) {
+  .chart__bars {
+    width: 100%;
+    min-width: auto;
+  }
+}
+@media (min-width: 660px) and (max-width: 1023.9px) {
+  .chart__bars {
+    width: 200px;
+    min-width: 200px;
+    height: 150px;
+  }
+}
+@media (max-width: 659.9px) {
+  .chart__bars {
+    width: 100%;
+    min-width: auto;
+    height: 150px;
+  }
+}
+.chart__bar {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+@media (max-width: 524.9px) {
+  .chart__bar {
+    flex: 1 1 100%;
+  }
+}
+.chart__bar-fill {
+  display: block;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  transition: height 0.4s ease;
+  background: transparent;
+}
+.chart__bar:nth-child(1) .chart__bar-fill {
+  background: #a0bcc2;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.chart__bar:nth-child(2) .chart__bar-fill {
+  background: #647cae;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.chart__bar:nth-child(3) .chart__bar-fill {
+  background: #0f529a;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+:root {
+  --card-bg-color: rgba(225, 232, 247, 0.05);
+  --card-border-color: rgba(225, 232, 247, 0.04);
+  --card-accident-color: rgba(1, 123, 255, 1);
+}
+
+.dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.dashboard__card-wrap {
+  display: flex;
+  gap: 20px;
+}
+@media (max-width: 1023.9px) {
+  .dashboard__card-wrap {
+    flex-direction: column;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -2305,6 +3012,7 @@ body {
 button {
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 ul {

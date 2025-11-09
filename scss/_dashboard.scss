@@ -1,0 +1,19 @@
+:root {
+    --card-bg-color: rgba(225, 232, 247, 0.05);
+    --card-border-color: rgba(225, 232, 247, 0.04);
+    --card-accident-color: rgba(1, 123, 255, 1);
+}
+
+.dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &__card-wrap {
+        display: flex;
+        gap: 20px;
+        @media (max-width: 1023.9px) {
+            flex-direction: column;
+        }
+    }
+}

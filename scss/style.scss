@@ -1,6 +1,7 @@
 :root {
     --bg-color: rgba(0, 0, 0, 1);
     --font-primary: "Euclid Circular B";
+    --padding-xs: clamp(8px, 2vw + 1rem, 12px);
     --padding-sm: clamp(12px, 2vw + 1rem, 16px);
     --padding-md: clamp(16px, 2vw + 1rem, 24px);
     --padding-lg: clamp(24px, 2vw + 1rem, 32px);
@@ -28,6 +29,8 @@
 @import "_content";
 @import "_tapbar";
 @import "_profile";
+@import "_card";
+@import "_dashboard";
 
 * {
     margin: 0;
@@ -49,6 +52,7 @@ body {
 button {
     border: none;
     outline: none;
+    cursor: pointer;
 }
 
 ul {

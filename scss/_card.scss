@@ -249,9 +249,30 @@
             color: var(--card-header-count-color);
         }
     }
+    &__header-btns-wrap {
+        width: 100%;
+        max-width: max-content;
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+        @media (max-width: 767.9px) {
+            max-width: 100%;
+            & .transaction__form-wrap--select {
+                width: 50%;
+            }
+            & .card__header-btn {
+                width: 100%;
+                max-width: 50%;
+                justify-content: center;
+            }
+        }
+    }
     &__header-btn {
         width: 100%;
         max-width: max-content;
+        display: flex;
+        align-items: center;
+        gap: 8px;
         padding: var(--padding-xs);
         border-radius: var(--border-radius-sm);
         font-size: var(--desc-size-md);

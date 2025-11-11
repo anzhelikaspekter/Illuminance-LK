@@ -12,536 +12,40 @@
 </head>
 
 <body style="background-color: var(--bg-color);">
-    <section class="dashboard">
-        <div class="dashboard__card-wrap">
-            <div class="card primary">
-                <div class="card__header user">
-                    <div class="card__header-user-wrap">
-                        <img src="img/user.webp" width="42" height="42" alt="User Photo"
-                            class="card__header-user-avatar">
-                        <div class="card__header-user-title-wrap">
-                            <h1 class="card__header-user-title">Jakub Hansen <img src="img/icon/check-success.svg"
-                                    width="16" height="16" alt="Validate Success icon" class="card__header-user-icon">
-                            </h1>
-                            <p class="card__header-user-date">Registration Date: <date class="date">15.09.2025</date>
-                                <span class="date">(28 days)</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card__header-tooltip">
-                        <p class="card__header-tooltip-title">
-                            <img src="img/icon/gold.svg" width="20" height="20" alt=""
-                                class="card__header-tooltip-icon"> Gold
-                        </p>
-                        <span class="card__header-tooltip-desc"><span class="sum">$ 43,755.71</span> to next
-                            level</span>
-                    </div>
-                </div>
-                <div class="card__daily">
-                    <ul class="daily-list">
-                        <li class="daily-item">
-                            <p class="daily-desc"><span class="cyan"></span>
-                                Daily
-                                Deposit</p>
-                            <h3 class="daily-title">$1000</h3>
-                        </li>
-                        <li class="daily-item">
-                            <p class="daily-desc"><span class="violet"></span>
-                                Daily Referral</p>
-                            <h3 class="daily-title">$1000</h3>
-                        </li>
-                        <li class="daily-item">
-                            <p class="daily-desc"><span class="blue"></span>
-                                Daily Total</p>
-                            <h3 class="daily-title">$1000</h3>
-                        </li>
-                    </ul>
-                    <ul class="chart__bars" role="list">
-                        <li class="chart__bar" aria-label="Category A: 25%">
-                            <span class="chart__bar-fill" style="height: 25%"></span>
-                        </li>
-                        <li class="chart__bar" aria-label="Category B: 55%">
-                            <span class="chart__bar-fill" style="height: 55%"></span>
-                        </li>
-                        <li class="chart__bar" aria-label="Category C: 80%">
-                            <span class="chart__bar-fill" style="height: 80%"></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="card secondary">
-                <div class="card__header">
-                    <div class="card__header-title-wrap">
-                        <h2 class="card__header-title">Active Deposit</h2>
-                        <p class="card__header-desc">Active: <span class="count">8 Deposit</span></p>
-                    </div>
-                    <button type="button" class="card__header-btn">View All</button>
-                </div>
-                <div class="card__deposit-wrap">
-                    <div class="card__deposit-wrapper info">
-                        <div class="card__deposit-info">
-                            <p class="card__deposit-info-title">Deposit 1</p>
-                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
-                        </div>
-                        <div class="card__deposit-info">
-                            <button type="button" class="card__deposit-info-btn" aria-label="View deposit details">
-                                <img src="img/icon/info.svg" width="20" height="20" alt="Info icon"
-                                    class="card__deposit-info-icon">
-                                <span>Details</span>
-                            </button>
-                            <!-- Enter Tooltip Text Here -->
-                            <p class="card__deposit-tooltip">Here will be text. Here will be text. Here will be text.
-                                Here will be text.</p>
-
-                            <p class="card__deposit-info-date">
-                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                            </p>
-
-                        </div>
-                    </div>
-                    <div class="card__deposit-wrapper details">
-                        <div class="card__deposit-details">
-                            <p class="card__deposit-details-label">Invested</p>
-                            <p class="card__deposit-details-desc">$1000</p>
-                        </div>
-                        <div class="card__divider" aria-hidden="true"></div>
-                        <div class="card__deposit-details">
-                            <p class="card__deposit-details-label">Daily %</p>
-                            <p class="card__deposit-details-desc">0.5%</p>
-                        </div>
-                    </div>
-                    <p class="card__deposit-info-date">
-                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                    </p>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="card primary">
-            <div class="card__header statistic">
-                <div class="card__header-title-wrap">
-                    <h2 class="card__header-title">Main Statistics</h2>
-                    <p class="card__header-desc">Comprehensive overview of your performance with detailed metrics and
-                        flexible filters.</p>
-                </div>
-                <ul class="card__toggle-list">
-                    <li class="card__toggle-item">
-                        <button type="button" class="card__toggle-btn active">Day</button>
-                    </li>
-                    <li class="card__toggle-item">
-                        <button type="button" class="card__toggle-btn">Month</button>
-                    </li>
-                    <li class="card__toggle-item">
-                        <button type="button" class="card__toggle-btn">Year</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="card__statistic-wrap">
-                <div class="card__statistic-profit-wrap">
-                    <div class="card__statistic-profit">
-                        <h2 class="card__statistic-title"><img src="img/icon/profit-success.svg" width="20" height="20"
-                                alt="" class="card__statistic-icon"> Total profit</h2>
-                        <span class="card__statistic-count">5,200 $</span>
-                    </div>
-                    <button type="button" class="card__statistic-profit-btn">
-                        <img src="img/icon/share.svg" width="20" height="20" alt="" class="card__statistic-profit-icon">
-                        <span>Share</span>
-                    </button>
-                </div>
-                <ul class="card__statistic-list">
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/referral-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Referral profit</h3>
-                        <span class="card__statistic-item-count">3,100 $</span>
-                    </li>
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/avg-daily-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> AVG Daily profit</h3>
-                        <span class="card__statistic-item-count">361 $</span>
-                    </li>
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/deposit-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Deposit Profit</h3>
-                        <span class="card__statistic-item-count">1,340 $</span>
-                    </li>
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/active-partners.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Active Partners</h3>
-                        <span class="card__statistic-item-count">8</span>
-                    </li>
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/bonus-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Bonus Profit</h3>
-                        <span class="card__statistic-item-count">1,340 $</span>
-                    </li>
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/best-day-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Best Day Profit</h3>
-                        <span class="card__statistic-item-count">6,145 $</span>
-                    </li>
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/rank-achievement.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> <span>Rank</span> Achievement</h3>
-                        <span class="card__statistic-item-count">1,340 $</span>
-                    </li>
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/partners.svg" width="20" height="20"
-                                alt="" class="card__statistic-item-icon"> Partners</h3>
-                        <span class="card__statistic-item-count">15</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
+    <section class="transaction">
         <div class="card primary">
             <div class="card__header">
                 <div class="card__header-title-wrap">
-                    <h2 class="card__header-title">Global Partners Map</h2>
-                    <p class="card__header-desc">Explore the geography of your partners with real-time highlights of
-                        activity and turnover.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card primary">
-            <div class="card__header">
-                <div class="card__header-title-wrap">
-                    <h2 class="card__header-title">Live Trading</h2>
+                    <h2 class="card__header-title"><img src="img/icon/arrow-back.svg" width="20" height="20" alt=""
+                            class="card__header-icon"> All Transactions</h2>
                     <p class="card__header-desc">Track your latest crypto activity with clear transaction history —
                         amounts, dates, fiat value, and status at a glance.</p>
                 </div>
-                <button type="button" class="card__header-btn">View All</button>
-            </div>
-            <div class="trades">
-                <table class="trades__table">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="trades__header-title">Actions <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Crypto <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Buy Price <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Buy Time <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Sell Price <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Sell Time <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">PNL % <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Status <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="trades__item">
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
-                            </td>
-                            <td class="trades__item">
-                                <img src="img/icon/btc.svg" alt="Bitcoin" class="trades__icon" />
-                                <span class="trades__desc">Bitcoin <span class="network">(BTC)</span></span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$67,200</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$52,145</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">
-                                    <span class="success">+2.76%</span>
-                                </span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__tooltip success">Complete</span>
-                            </td>
-                        </tr>
+                <div class="card__header-btns-wrap">
+                    <div class="transaction__form-wrap--select" role="listbox" aria-label="Select Network">
+                        <button type="button" class="transaction__form-wrap--select-field" aria-haspopup="listbox"
+                            aria-expanded="false">
+                            <p class="transaction__form-wrap--select-text">Last 3 month</p>
 
-                        <tr>
-                            <td class="trades__item">
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                            </td>
-                            <td class="trades__item">
-                                <img src="img/icon/sol.svg" alt="Solana" class="trades__icon" />
-                                <span class="trades__desc">Solana <span class="network">(SOL)</span></span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$3,450</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">May 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$12,192</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">May 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">
-                                    <span class="success">+8.46%</span>
-                                </span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__tooltip success">Complete</span>
-                            </td>
-                        </tr>
+                            <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
+                                class="transaction__form-wrap--select-arrow">
+                        </button>
 
-                        <tr>
-                            <td class="trades__item">
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades__logo" />
-                            </td>
-                            <td class="trades__item">
-                                <img src="img/icon/ada.svg" alt="Cardano" class="trades__icon" />
-                                <span class="trades__desc">Cardano <span class="network">(ADA)</span></span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$69,100</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$234,51</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">
-                                    <span class="failed">-8.46%</span>
-                                </span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__tooltip failed">Failed</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="trades-mobile">
-                <article class="trade-mobile">
-                    <header class="trade-mobile__header">#1 trade</header>
-                    <dl class="trade-mobile__list">
-                        <div class="trade-mobile__item">
-                            <dt>Actions</dt>
-                            <dd>
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/btc.svg" alt="Bitcoin" class="trades__icon" />
-                                <span class="trades__desc">Bitcoin <span class="network">(BTC)</span></span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Price</dt>
-                            <dd>
-                                <span class="trades__desc">$67,200</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Price</dt>
-                            <dd>
-                                <span class="trades__desc">$52,145</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>PNL %</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success">+2.76%</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
-                    </dl>
-                </article>
-
-                <article class="trade-mobile">
-                    <header class="trade-mobile__header">#2 trade</header>
-                    <dl class="trade-mobile__list">
-                        <div class="trade-mobile__item">
-                            <dt>Actions</dt>
-                            <dd>
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/sol.svg" alt="Solana" class="trades__icon" />
-                                <span class="trades__desc">Solana <span class="network">(SOL)</span></span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Price</dt>
-                            <dd>
-                                <span class="trades__desc">$3,450</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Time</dt>
-                            <dd>
-                                <span class="trades__desc">May 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Price</dt>
-                            <dd>
-                                <span class="trades__desc">$12,192</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Time</dt>
-                            <dd>
-                                <span class="trades__desc">May 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>PNL %</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success">+8.46%</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
-                    </dl>
-                </article>
-
-                <article class="trade-mobile">
-                    <header class="trade-mobile__header">#3 trade</header>
-                    <dl class="trade-mobile__list">
-                        <div class="trade-mobile__item">
-                            <dt>Actions</dt>
-                            <dd>
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades__logo" />
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/ada.svg" alt="Cardano" class="trades__icon" />
-                                <span class="trades__desc">Cardano <span class="network">(ADA)</span></span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Price</dt>
-                            <dd>
-                                <span class="trades__desc">$69,100</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Price</dt>
-                            <dd>
-                                <span class="trades__desc">$234,51</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>PNL %</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="failed">-8.46%</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="failed"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
-                    </dl>
-                </article>
-            </div>
-        </div>
-
-        <div class="card primary">
-            <div class="card__header">
-                <div class="card__header-title-wrap">
-                    <h2 class="card__header-title">Last Transactions</h2>
-                    <p class="card__header-desc">Track your latest crypto activity with clear transaction history —
-                        amounts, dates, fiat value, and status at a glance.</p>
+                        <ul class="transaction__form-wrap--select-dropdown" hidden>
+                            <li class="transaction__form-wrap--select-option active" data-value="Last 1 month">
+                                <p class="transaction__form-wrap--select-text">Last 1 month</p>
+                            </li>
+                            <li class="transaction__form-wrap--select-option" data-value="Last 3 month">
+                                <p class="transaction__form-wrap--select-text">Last 3 month</p>
+                            </li>
+                            <li class="transaction__form-wrap--select-option" data-value="Last 6 month">
+                                <p class="transaction__form-wrap--select-text">Last 1 month</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button" class="card__header-btn"><img src="img/icon/filters.svg" width="20"
+                            height="20" alt="" class="card__header-icon"> Filters</button>
                 </div>
-                <button type="button" class="card__header-btn">View All</button>
             </div>
             <div class="transactions">
                 <table class="transactions__table">
@@ -788,7 +292,7 @@
                         <div class="transaction-mobile__item">
                             <dt>Crypto</dt>
                             <dd>
-                                <img src="img/icon/sol.svg" alt="Solana" class="transactions__icon" />
+                                <img src="img/icon/sol.svg" alt="Solana" class="transaction-mobile__icon" />
                                 <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
                             </dd>
                         </div>
@@ -831,7 +335,7 @@
                         <div class="transaction-mobile__item">
                             <dt>Crypto</dt>
                             <dd>
-                                <img src="img/icon/ada.svg" alt="Cardano" class="transactions__icon" />
+                                <img src="img/icon/ada.svg" alt="Cardano" class="transaction-mobile__icon" />
                                 <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
                             </dd>
                         </div>
@@ -874,7 +378,7 @@
                         <div class="transaction-mobile__item">
                             <dt>Crypto</dt>
                             <dd>
-                                <img src="img/icon/xrp.svg" alt="Ripple" class="transactions__icon" />
+                                <img src="img/icon/xrp.svg" alt="Ripple" class="transaction-mobile__icon" />
                                 <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
                             </dd>
                         </div>
@@ -917,7 +421,7 @@
                         <div class="transaction-mobile__item">
                             <dt>Crypto</dt>
                             <dd>
-                                <img src="img/icon/sol.svg" alt="Solana" class="transactions__icon" />
+                                <img src="img/icon/sol.svg" alt="Solana" class="transaction-mobile__icon" />
                                 <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
                             </dd>
                         </div>
@@ -960,7 +464,7 @@
                         <div class="transaction-mobile__item">
                             <dt>Crypto</dt>
                             <dd>
-                                <img src="img/icon/ada.svg" alt="Cardano" class="transactions__icon" />
+                                <img src="img/icon/ada.svg" alt="Cardano" class="transaction-mobile__icon" />
                                 <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
                             </dd>
                         </div>
@@ -1003,7 +507,7 @@
                         <div class="transaction-mobile__item">
                             <dt>Crypto</dt>
                             <dd>
-                                <img src="img/icon/xrp.svg" alt="Ripple" class="transactions__icon" />
+                                <img src="img/icon/xrp.svg" alt="Ripple" class="transaction-mobile__icon" />
                                 <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
                             </dd>
                         </div>
@@ -1040,6 +544,45 @@
                     </dl>
                 </article>
             </div>
+            <nav class="pagination" aria-label="Page navigation">
+                <ul class="pagination__list">
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="First page">
+                            «
+                        </a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="Previous page">
+                            ‹
+                        </a>
+                    </li>
+
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link pagination__link--active" aria-current="page">1</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">2</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">3</a></li>
+                    <li class="pagination__item pagination__dots" aria-hidden="true">…</li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">10</a>
+                    </li>
+
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="Next page">
+                            ›
+                        </a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="Last page">
+                            »
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
     </section>
 
@@ -1063,24 +606,6 @@
                         iframe.classList.remove("active");
                         setTimeout(() => iframe.remove(), 250);
                     }
-                });
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const infoButtons = document.querySelectorAll(".card__deposit-info-btn");
-
-            infoButtons.forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    const card = btn.closest(".card__deposit-wrap");
-                    if (!card) return;
-
-                    const tooltip = card.querySelector(".card__deposit-tooltip");
-                    if (!tooltip) return;
-
-                    const isVisible = tooltip.style.display === "flex";
-                    tooltip.style.display = isVisible ? "none" : "flex";
                 });
             });
         });

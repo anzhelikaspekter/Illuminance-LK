@@ -1,0 +1,11 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_433_29639" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+<foreignObject x="0" y="0" width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(22px);clip-path:url(#bgblur_0_433_29639_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="44" d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 4.69686e-07 18.6274 1.04907e-06 12C1.62846e-06 5.37258 5.37259 4.69686e-07 12 1.04907e-06C18.6274 1.62846e-06 24 5.37259 24 12Z" fill="white" fill-opacity="0.1"/>
+</mask>
+<g mask="url(#mask0_433_29639)">
+<path opacity="0.5" d="M12.8333 7L12.8333 14.7846L15.8333 11.7385L17 12.9231L12 18L7 12.9231L8.16667 11.7385L11.1667 14.7846L11.1667 7L12.8333 7Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="bgblur_0_433_29639_clip_path" transform="translate(0 0)"><path d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 4.69686e-07 18.6274 1.04907e-06 12C1.62846e-06 5.37258 5.37259 4.69686e-07 12 1.04907e-06C18.6274 1.62846e-06 24 5.37259 24 12Z"/>
+</clipPath></defs>
+</svg>

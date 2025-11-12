@@ -3,7 +3,7 @@
     --notification-wrap-bg-color:
         url(../img/notification-bg.svg) no-repeat top / cover,
         linear-gradient(0deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.01)),
-        linear-gradient(180deg, #0b0c0c 0%, rgba(11, 12, 12, 0) 100%);
+        linear-gradient(180deg, rgba(12, 13, 13, 1) 0%, rgba(11, 12, 12, 1) 100%);
     --notification-title-color: #ffffff;
     --notification-desc-color: rgba(255, 255, 255, 0.5);
     --notification-label-color: rgba(255, 255, 255, 0.8);

@@ -304,13 +304,11 @@
                 iframe.allowTransparency = true;
                 iframe.style.background = "transparent";
 
-                iframe.onload = () => iframe.classList.add("active");
                 document.body.appendChild(iframe);
 
                 window.addEventListener("message", (e) => {
                     if (e.data.action === "closeModal") {
-                        iframe.classList.remove("active");
-                        setTimeout(() => iframe.remove(), 250);
+                        iframe.remove();
                     }
                 });
             });
@@ -327,24 +325,19 @@
 
             toggleBtn.setAttribute("aria-expanded", "false");
             assetsList.hidden = true;
-            assetsList.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
-            assetsList.style.maxHeight = "0";
-            assetsList.style.opacity = "0";
+            assetsList.style.maxHeight = "none";
+            assetsList.style.opacity = "1";
 
             toggleBtn.addEventListener("click", () => {
                 const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
                 toggleBtn.setAttribute("aria-expanded", String(!isExpanded));
 
                 if (isExpanded) {
-                    assetsList.style.maxHeight = "0";
-                    assetsList.style.opacity = "0";
+                    assetsList.hidden = true;
                     arrowIcon.style.transform = "rotate(0deg)";
                     toggleBtn.childNodes[0].nodeValue = "Show ";
-                    setTimeout(() => (assetsList.hidden = true), 300);
                 } else {
                     assetsList.hidden = false;
-                    assetsList.style.maxHeight = `${assetsList.scrollHeight}px`;
-                    assetsList.style.opacity = "1";
                     arrowIcon.style.transform = "rotate(180deg)";
                     toggleBtn.childNodes[0].nodeValue = "Hide ";
                 }
@@ -389,21 +382,8 @@
                 });
             };
 
-            const addHover = (btn) => {
-                const img = btn.querySelector("img");
-                if (!img) return;
-                const { base, active } = getIconPaths(img.src);
-                btn.addEventListener("mouseenter", () => {
-                    if (!btn.classList.contains("active")) img.src = active;
-                });
-                btn.addEventListener("mouseleave", () => {
-                    if (!btn.classList.contains("active")) img.src = base;
-                });
-            };
-
             navButtons.forEach((btn) => {
                 const name = btn.dataset.name;
-                addHover(btn);
                 btn.addEventListener("click", () => {
                     const isActive = btn.classList.contains("active");
                     resetAll();
@@ -452,16 +432,26 @@
         });
     </script>
 
-    <!-- Глобальная функция loadPage -->
+    <!-- Глобальная функция loadPage с preloader -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const content = document.querySelector(".content");
             const pageButtons = document.querySelectorAll("[data-page]");
             if (!content) return;
 
+            // создаём лёгкий лоадер один раз
+            const loaderHTML = `
+            <div class="loader" role="status" aria-label="Loading">
+                <div class="loader__spinner"></div>
+                <span class="loader__text">Loading...</span>
+            </div>`;
+
             // Глобальная функция
             window.loadPage = async (page) => {
                 try {
+                    // показываем лоадер
+                    content.innerHTML = loaderHTML;
+
                     const response = await fetch(`${page}.html`);
                     if (!response.ok) throw new Error("Page not found");
 
@@ -469,23 +459,17 @@
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(html, "text/html");
 
-                    // подгружаем контент
+                    // заменяем контент
                     content.innerHTML = doc.body.innerHTML;
 
-                    // подгружаем скрипты страницы
+                    // подключаем скрипты страницы
                     const scripts = doc.querySelectorAll("script");
                     scripts.forEach((oldScript) => {
                         const newScript = document.createElement("script");
                         if (oldScript.src) newScript.src = oldScript.src;
                         else newScript.textContent = oldScript.textContent;
+                        newScript.defer = true;
                         document.body.appendChild(newScript);
-                    });
-
-                    // плавная анимация появления
-                    content.style.opacity = 0;
-                    requestAnimationFrame(() => {
-                        content.style.transition = "opacity 0.3s ease";
-                        content.style.opacity = 1;
                     });
 
                     document.title =
@@ -503,7 +487,7 @@
             const initialPage = location.hash.replace("#", "") || "dashboard";
             window.loadPage(initialPage);
 
-            // кнопки на самой index (если есть)
+            // клики на кнопки data-page
             if (pageButtons.length) {
                 pageButtons.forEach((btn) => {
                     btn.addEventListener("click", () => {
@@ -515,7 +499,7 @@
                 });
             }
 
-            // навигация назад/вперёд
+            // обработка истории
             window.addEventListener("popstate", (e) => {
                 const page = e.state?.page || "dashboard";
                 window.loadPage(page);

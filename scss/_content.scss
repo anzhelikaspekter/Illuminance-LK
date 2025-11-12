@@ -11,6 +11,11 @@
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
+    will-change: transform;
+    transform: translateZ(0);
+    contain: layout paint;
+    backface-visibility: hidden;
+    overscroll-behavior: none;
     @media (max-width: 1023.9px) {
         width: 100%;
         height: calc(100vh - 175px);

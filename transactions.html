@@ -52,11 +52,28 @@
                         </ul>
                     </div>
 
-                    <button type="button" class="card__header-btn">
+                    <button type="button" class="card__header-btn" aria-expanded="false" aria-controls="filter-menu">
                         <img src="img/icon/filters.svg" width="20" height="20" alt="" class="card__header-icon"
                             aria-hidden="true">
                         Filters
                     </button>
+                    <div class="filter" id="filter-menu" hidden role="region" aria-label="Payment Type Filter">
+                        <h2 class="filter__title">Payment Type</h2>
+                        <ul class="filter__list" role="list">
+                            <li class="filter__item">
+                                <button type="button" class="filter__btn active" aria-pressed="true">All</button>
+                            </li>
+                            <li class="filter__item">
+                                <button type="button" class="filter__btn" aria-pressed="false">Loan Payment</button>
+                            </li>
+                            <li class="filter__item">
+                                <button type="button" class="filter__btn" aria-pressed="false">Received</button>
+                            </li>
+                            <li class="filter__item">
+                                <button type="button" class="filter__btn" aria-pressed="false">Paid</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </header>
             <!-- DESKTOP VERSION -->
@@ -572,6 +589,18 @@
                 }
             });
         })();
+    </script>
+    <script>
+        const filterBtn = document.querySelector(".card__header-btn");
+        const filterBlock = document.querySelector(".filter");
+
+        if (filterBtn && filterBlock) {
+            filterBtn.addEventListener("click", () => {
+                const isExpanded = filterBtn.getAttribute("aria-expanded") === "true";
+                filterBtn.setAttribute("aria-expanded", String(!isExpanded));
+                filterBlock.hidden = isExpanded;
+            });
+        }
     </script>
 </body>
 

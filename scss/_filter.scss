@@ -1,0 +1,76 @@
+:root {
+    --filter-bg-color: rgba(225, 232, 247, 0.05);
+    --filter-border-color: rgba(225, 232, 247, 0.05);
+    --filter-title-color: rgba(255, 255, 255, 1);
+    --filter-list-bg-color: rgba(225, 232, 247, 0.05);
+    --filter-list-border-color: ;
+    --filter-btn-active-bg-color: rgba(225, 232, 247, 0.06);
+    --filter-btn-active-border-color: rgba(225, 232, 247, 0.04);
+    --filter-btn-active-color: rgba(255, 255, 255, 1);
+    --filter-btn-color: rgba(255, 255, 255, 0.5);
+}
+
+.filter {
+    width: 580px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: var(--padding-sm);
+    border-radius: var(--border-radius-sm);
+    background: var(--filter-bg-color);
+    border: 1px solid var(--filter-border-color);
+    backdrop-filter: blur(50px);
+    position: absolute;
+    right: 0;
+    bottom: -120px;
+    @media (max-width: 767.9px) {
+        width: 100%;
+        max-width: 580px;
+    }
+    @media (max-width: 539.9px) {
+        bottom: -170px;
+    }
+    &[hidden] {
+        display: none !important;
+    }
+    &__title {
+        font-size: var(--desc-size-md);
+        font-weight: 400;
+        color: var(--filter-title-color);
+    }
+    &__list {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px;
+        background: var(--filter-list-bg-color);
+        border-radius: var(--border-radius-sm);
+        @media (max-width: 767.9px) {
+            flex-wrap: wrap;
+        }
+    }
+    &__item {
+        flex: 1 1 calc(100% / 4 - 8px);
+        @media (max-width: 539.9px) {
+            flex: 1 1 calc(50% - 8px);
+        }
+    }
+    &__btn {
+        width: 100%;
+        padding: var(--padding-xs);
+        border-radius: var(--border-radius-sm);
+        background: transparent;
+        border: 1px solid transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--filter-btn-color);
+        white-space: nowrap;
+        &.active {
+            background: var(--filter-btn-active-bg-color);
+            border: 1px solid var(--filter-btn-active-border-color);
+            color: var(--filter-btn-active-color);
+        }
+    }
+}

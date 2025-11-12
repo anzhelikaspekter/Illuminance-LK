@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dashboard">
+    <meta name="description" content="Dashboard overview with deposits, statistics, and transactions." />
+    <meta name="theme-color" content="#0b0f19" />
     <title>Dashboard</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.min.css">
@@ -14,49 +15,54 @@
 <body style="background-color: var(--bg-color);">
     <section class="dashboard">
         <div class="dashboard__card-wrap">
-            <div class="card primary">
-                <div class="card__header user">
+            <!-- USER CARD -->
+            <article class="card primary" aria-labelledby="user-card-title">
+                <header class="card__header user">
                     <div class="card__header-user-wrap">
                         <img src="img/user.webp" width="42" height="42" alt="User Photo"
                             class="card__header-user-avatar">
                         <div class="card__header-user-title-wrap">
-                            <h1 class="card__header-user-title">Jakub Hansen <img src="img/icon/check-success.svg"
-                                    width="16" height="16" alt="Validate Success icon" class="card__header-user-icon">
+                            <h1 id="user-card-title" class="card__header-user-title">
+                                Jakub Hansen
+                                <img src="img/icon/check-success.svg" width="16" height="16" alt="Verified user"
+                                    class="card__header-user-icon">
                             </h1>
-                            <p class="card__header-user-date">Registration Date: <date class="date">15.09.2025</date>
+                            <p class="card__header-user-date">
+                                Registration Date:
+                                <time datetime="2025-09-15" class="date">15.09.2025</time>
                                 <span class="date">(28 days)</span>
                             </p>
                         </div>
                     </div>
                     <div class="card__header-tooltip">
                         <p class="card__header-tooltip-title">
-                            <img src="img/icon/gold.svg" width="20" height="20" alt=""
-                                class="card__header-tooltip-icon"> Gold
+                            <img src="img/icon/gold.svg" width="20" height="20" alt="" class="card__header-tooltip-icon"
+                                aria-hidden="true">
+                            Gold
                         </p>
-                        <span class="card__header-tooltip-desc"><span class="sum">$ 43,755.71</span> to next
-                            level</span>
+                        <span class="card__header-tooltip-desc">
+                            <span class="sum">$ 43,755.71</span> to next level
+                        </span>
                     </div>
-                </div>
+                </header>
+
                 <div class="card__daily">
                     <ul class="daily-list">
                         <li class="daily-item">
-                            <p class="daily-desc"><span class="cyan"></span>
-                                Daily
-                                Deposit</p>
+                            <p class="daily-desc"><span class="cyan" aria-hidden="true"></span> Daily Deposit</p>
                             <h3 class="daily-title">$1000</h3>
                         </li>
                         <li class="daily-item">
-                            <p class="daily-desc"><span class="violet"></span>
-                                Daily Referral</p>
+                            <p class="daily-desc"><span class="violet" aria-hidden="true"></span> Daily Referral</p>
                             <h3 class="daily-title">$1000</h3>
                         </li>
                         <li class="daily-item">
-                            <p class="daily-desc"><span class="blue"></span>
-                                Daily Total</p>
+                            <p class="daily-desc"><span class="blue" aria-hidden="true"></span> Daily Total</p>
                             <h3 class="daily-title">$1000</h3>
                         </li>
                     </ul>
-                    <ul class="chart__bars" role="list">
+
+                    <ul class="chart__bars" role="list" aria-label="Daily earnings chart">
                         <li class="chart__bar" aria-label="Category A: 25%">
                             <span class="chart__bar-fill" style="height: 25%"></span>
                         </li>
@@ -68,37 +74,43 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="card secondary">
-                <div class="card__header">
+            </article>
+
+            <!-- ACTIVE DEPOSIT -->
+            <article class="card secondary" aria-labelledby="active-deposit-title">
+                <header class="card__header">
                     <div class="card__header-title-wrap">
-                        <h2 class="card__header-title">Active Deposit</h2>
-                        <p class="card__header-desc">Active: <span class="count">8 Deposit</span></p>
+                        <h2 id="active-deposit-title" class="card__header-title">Active Deposit</h2>
+                        <p class="card__header-desc">Active: <span class="count">8 Deposits</span></p>
                     </div>
-                    <button type="button" class="card__header-btn">View All</button>
-                </div>
+                    <button type="button" class="card__header-btn" data-page="deposit">View All</button>
+                </header>
+
                 <div class="card__deposit-wrap">
                     <div class="card__deposit-wrapper info">
                         <div class="card__deposit-info">
                             <p class="card__deposit-info-title">Deposit 1</p>
                             <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
                         </div>
+
                         <div class="card__deposit-info">
-                            <button type="button" class="card__deposit-info-btn" aria-label="View deposit details">
-                                <img src="img/icon/info.svg" width="20" height="20" alt="Info icon"
-                                    class="card__deposit-info-icon">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
                                 <span>Details</span>
                             </button>
-                            <!-- Enter Tooltip Text Here -->
-                            <p class="card__deposit-tooltip">Here will be text. Here will be text. Here will be text.
-                                Here will be text.</p>
+
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
 
                             <p class="card__deposit-info-date">
                                 Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
                             </p>
-
                         </div>
                     </div>
+
                     <div class="card__deposit-wrapper details">
                         <div class="card__deposit-details">
                             <p class="card__deposit-details-label">Invested</p>
@@ -110,978 +122,878 @@
                             <p class="card__deposit-details-desc">0.5%</p>
                         </div>
                     </div>
+
                     <p class="card__deposit-info-date">
                         Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
                     </p>
-
                 </div>
-            </div>
+            </article>
         </div>
-
-        <div class="card primary">
-            <div class="card__header statistic">
+        <!-- STATISTICS -->
+        <article class="card primary" aria-labelledby="main-statistics">
+            <header class="card__header statistic">
                 <div class="card__header-title-wrap">
-                    <h2 class="card__header-title">Main Statistics</h2>
-                    <p class="card__header-desc">Comprehensive overview of your performance with detailed metrics and
-                        flexible filters.</p>
+                    <h2 id="main-statistics" class="card__header-title">Main Statistics</h2>
+                    <p class="card__header-desc">
+                        Comprehensive overview of your performance with detailed metrics and flexible filters.
+                    </p>
                 </div>
-                <ul class="card__toggle-list">
-                    <li class="card__toggle-item">
-                        <button type="button" class="card__toggle-btn active">Day</button>
+
+                <ul class="card__toggle-list" role="tablist" aria-label="Statistics range">
+                    <li role="presentation" class="card__toggle-item">
+                        <button type="button" role="tab" aria-selected="true"
+                            class="card__toggle-btn active">Day</button>
                     </li>
-                    <li class="card__toggle-item">
-                        <button type="button" class="card__toggle-btn">Month</button>
+                    <li role="presentation" class="card__toggle-item">
+                        <button type="button" role="tab" aria-selected="false" class="card__toggle-btn">Month</button>
                     </li>
-                    <li class="card__toggle-item">
-                        <button type="button" class="card__toggle-btn">Year</button>
+                    <li role="presentation" class="card__toggle-item">
+                        <button type="button" role="tab" aria-selected="false" class="card__toggle-btn">Year</button>
                     </li>
                 </ul>
-            </div>
+            </header>
+
             <div class="card__statistic-wrap">
                 <div class="card__statistic-profit-wrap">
                     <div class="card__statistic-profit">
-                        <h2 class="card__statistic-title"><img src="img/icon/profit-success.svg" width="20" height="20"
-                                alt="" class="card__statistic-icon"> Total profit</h2>
-                        <span class="card__statistic-count">5,200 $</span>
+                        <h3 class="card__statistic-title">
+                            <img src="img/icon/profit-success.svg" width="20" height="20" alt=""
+                                class="card__statistic-icon" aria-hidden="true">
+                            Total profit
+                        </h3>
+                        <span class="card__statistic-count">
+                            <data value="5200">5,200 $</data>
+                        </span>
                     </div>
                     <button type="button" class="card__statistic-profit-btn">
-                        <img src="img/icon/share.svg" width="20" height="20" alt="" class="card__statistic-profit-icon">
+                        <img src="img/icon/share.svg" width="20" height="20" alt="" class="card__statistic-profit-icon"
+                            aria-hidden="true">
                         <span>Share</span>
                     </button>
                 </div>
+
                 <ul class="card__statistic-list">
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/referral-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Referral profit</h3>
-                        <span class="card__statistic-item-count">3,100 $</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/referral-profit.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            Referral profit
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="3100">3,100 $</data></span>
                     </li>
+
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/avg-daily-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> AVG Daily profit</h3>
-                        <span class="card__statistic-item-count">361 $</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/avg-daily-profit.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            AVG Daily profit
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="361">361 $</data></span>
                     </li>
+
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/deposit-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Deposit Profit</h3>
-                        <span class="card__statistic-item-count">1,340 $</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/deposit-profit.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            Deposit Profit
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
                     </li>
+
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/active-partners.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Active Partners</h3>
-                        <span class="card__statistic-item-count">8</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/active-partners.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            Active Partners
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="8">8</data></span>
                     </li>
+
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/bonus-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Bonus Profit</h3>
-                        <span class="card__statistic-item-count">1,340 $</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/bonus-profit.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            Bonus Profit
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
                     </li>
+
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/best-day-profit.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> Best Day Profit</h3>
-                        <span class="card__statistic-item-count">6,145 $</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/best-day-profit.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            Best Day Profit
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="6145">6,145 $</data></span>
                     </li>
+
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/rank-achievement.svg" width="20"
-                                height="20" alt="" class="card__statistic-item-icon"> <span>Rank</span> Achievement</h3>
-                        <span class="card__statistic-item-count">1,340 $</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/rank-achievement.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            <span>Rank</span> Achievement
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
                     </li>
+
                     <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title"><img src="img/icon/partners.svg" width="20" height="20"
-                                alt="" class="card__statistic-item-icon"> Partners</h3>
-                        <span class="card__statistic-item-count">15</span>
+                        <h3 class="card__statistic-item-title">
+                            <img src="img/icon/partners.svg" width="20" height="20" alt=""
+                                class="card__statistic-item-icon" aria-hidden="true">
+                            Partners
+                        </h3>
+                        <span class="card__statistic-item-count"><data value="15">15</data></span>
                     </li>
                 </ul>
             </div>
-        </div>
+        </article>
 
-        <div class="card primary">
-            <div class="card__header">
+        <!-- GLOBAL PARTNERS MAP -->
+        <article class="card primary" aria-labelledby="global-partners">
+            <header class="card__header">
                 <div class="card__header-title-wrap">
-                    <h2 class="card__header-title">Global Partners Map</h2>
+                    <h2 id="global-partners" class="card__header-title">Global Partners Map</h2>
                     <p class="card__header-desc">Explore the geography of your partners with real-time highlights of
                         activity and turnover.</p>
                 </div>
-            </div>
-        </div>
+            </header>
+        </article>
 
-        <div class="card primary">
-            <div class="card__header">
+        <!-- LIVE TRADING -->
+        <article class="card primary" aria-labelledby="live-trading">
+            <header class="card__header">
                 <div class="card__header-title-wrap">
-                    <h2 class="card__header-title">Live Trading</h2>
-                    <p class="card__header-desc">Track your latest crypto activity with clear transaction history —
-                        amounts, dates, fiat value, and status at a glance.</p>
+                    <h2 id="live-trading" class="card__header-title">Live Trading</h2>
+                    <p class="card__header-desc">
+                        Track your latest crypto activity with clear transaction history —
+                        amounts, dates, fiat value, and status at a glance.
+                    </p>
                 </div>
-                <button type="button" class="card__header-btn">View All</button>
-            </div>
-            <div class="trades">
-                <table class="trades__table">
+                <button type="button" class="card__header-btn" data-page="trades">View All</button>
+            </header>
+            <!-- DESKTOP VERSION -->
+            <div class="trades-desktop">
+                <table class="trades-desktop__table">
+                    <caption class="visually-hidden">
+                        Recent cryptocurrency trades-desktop overview
+                    </caption>
                     <thead>
                         <tr>
-                            <th scope="col" class="trades__header-title">Actions <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Crypto <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Buy Price <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Buy Time <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Sell Price <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Sell Time <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">PNL % <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
-                            <th scope="col" class="trades__header-title">Status <img
-                                    src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="trades__header-icon"></th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Actions
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Crypto
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Buy Price
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Buy Time
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Sell Price
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Sell Time
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                PNL %
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Status
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="trades__item">
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
+                            <td class="trades-desktop__item">
+                                <img src="img/binance.svg" width="80" height="15" alt="Binance"
+                                    class="trades-desktop__logo">
                                 <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
+                                    class="trades-desktop__icon">
+                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit"
+                                    class="trades-desktop__logo">
                             </td>
-                            <td class="trades__item">
-                                <img src="img/icon/btc.svg" alt="Bitcoin" class="trades__icon" />
-                                <span class="trades__desc">Bitcoin <span class="network">(BTC)</span></span>
+                            <td class="trades-desktop__item">
+                                <img src="img/icon/btc.svg" alt="Bitcoin" class="trades-desktop__icon">
+                                <span class="trades-desktop__desc">Bitcoin <span class="network">(BTC)</span></span>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$67,200</span>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$67,200</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$52,145</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$52,145</span>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__desc"><span class="success">+2.76%</span></span>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">
-                                    <span class="success">+2.76%</span>
-                                </span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__tooltip success">Complete</span>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__tooltip success">Complete</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="trades__item">
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
+                            <td class="trades-desktop__item">
+                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit"
+                                    class="trades-desktop__logo">
                                 <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
+                                    class="trades-desktop__icon">
+                                <img src="img/binance.svg" width="80" height="15" alt="Binance"
+                                    class="trades-desktop__logo">
                             </td>
-                            <td class="trades__item">
-                                <img src="img/icon/sol.svg" alt="Solana" class="trades__icon" />
-                                <span class="trades__desc">Solana <span class="network">(SOL)</span></span>
+                            <td class="trades-desktop__item">
+                                <img src="img/icon/sol.svg" alt="Solana" class="trades-desktop__icon">
+                                <span class="trades-desktop__desc">Solana <span class="network">(SOL)</span></span>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$3,450</span>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$3,450</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-05-23T10:34:59" class="trades-desktop__desc">May 23,
+                                    10:34:59</time>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">May 23, 10:34:59</span>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$12,192</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-05-23T10:34:59" class="trades-desktop__desc">May 23,
+                                    10:34:59</time>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$12,192</span>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__desc"><span class="success">+8.46%</span></span>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">May 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">
-                                    <span class="success">+8.46%</span>
-                                </span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__tooltip success">Complete</span>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__tooltip success">Complete</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="trades__item">
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
+                            <td class="trades-desktop__item">
+                                <img src="img/binance.svg" width="80" height="15" alt="Binance"
+                                    class="trades-desktop__logo">
                                 <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades__logo" />
+                                    class="trades-desktop__icon">
+                                <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades-desktop__logo">
                             </td>
-                            <td class="trades__item">
-                                <img src="img/icon/ada.svg" alt="Cardano" class="trades__icon" />
-                                <span class="trades__desc">Cardano <span class="network">(ADA)</span></span>
+                            <td class="trades-desktop__item">
+                                <img src="img/icon/ada.svg" alt="Cardano" class="trades-desktop__icon">
+                                <span class="trades-desktop__desc">Cardano <span class="network">(ADA)</span></span>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$69,100</span>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$69,100</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$234.51</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">$234,51</span>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__desc"><span class="failed">-8.46%</span></span>
                             </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__desc">
-                                    <span class="failed">-8.46%</span>
-                                </span>
-                            </td>
-                            <td class="trades__item">
-                                <span class="trades__tooltip failed">Failed</span>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__tooltip failed">Failed</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <!-- MOBILE VERSION -->
             <div class="trades-mobile">
                 <article class="trade-mobile">
                     <header class="trade-mobile__header">#1 trade</header>
                     <dl class="trade-mobile__list">
-                        <div class="trade-mobile__item">
-                            <dt>Actions</dt>
-                            <dd>
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/btc.svg" alt="Bitcoin" class="trades__icon" />
-                                <span class="trades__desc">Bitcoin <span class="network">(BTC)</span></span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Price</dt>
-                            <dd>
-                                <span class="trades__desc">$67,200</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Price</dt>
-                            <dd>
-                                <span class="trades__desc">$52,145</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>PNL %</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success">+2.76%</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Actions</dt>
+                        <dd>
+                            <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo">
+                            <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to" class="trades__icon">
+                            <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo">
+                        </dd>
+
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/btc.svg" alt="Bitcoin" class="trades__icon">
+                            <span class="trades__desc">Bitcoin <span class="network">(BTC)</span></span>
+                        </dd>
+
+                        <dt>Buy Price</dt>
+                        <dd><span class="trades__desc">$67,200</span></dd>
+
+                        <dt>Buy Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>Sell Price</dt>
+                        <dd><span class="trades__desc">$52,145</span></dd>
+
+                        <dt>Sell Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>PNL %</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success">+2.76%</span></span>
+                        </dd>
+
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success"><span class="dot"
+                                        aria-hidden="true"></span> Complete</span></span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="trade-mobile">
                     <header class="trade-mobile__header">#2 trade</header>
                     <dl class="trade-mobile__list">
-                        <div class="trade-mobile__item">
-                            <dt>Actions</dt>
-                            <dd>
-                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/sol.svg" alt="Solana" class="trades__icon" />
-                                <span class="trades__desc">Solana <span class="network">(SOL)</span></span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Price</dt>
-                            <dd>
-                                <span class="trades__desc">$3,450</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Time</dt>
-                            <dd>
-                                <span class="trades__desc">May 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Price</dt>
-                            <dd>
-                                <span class="trades__desc">$12,192</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Time</dt>
-                            <dd>
-                                <span class="trades__desc">May 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>PNL %</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success">+8.46%</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="success"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Actions</dt>
+                        <dd>
+                            <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo">
+                            <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to" class="trades__icon">
+                            <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo">
+                        </dd>
+
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/sol.svg" alt="Solana" class="trades__icon">
+                            <span class="trades__desc">Solana <span class="network">(SOL)</span></span>
+                        </dd>
+
+                        <dt>Buy Price</dt>
+                        <dd><span class="trades__desc">$3,450</span></dd>
+
+                        <dt>Buy Time</dt>
+                        <dd><span class="trades__desc">May 23, 10:34:59</span></dd>
+
+                        <dt>Sell Price</dt>
+                        <dd><span class="trades__desc">$12,192</span></dd>
+
+                        <dt>Sell Time</dt>
+                        <dd><span class="trades__desc">May 23, 10:34:59</span></dd>
+
+                        <dt>PNL %</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success">+8.46%</span></span>
+                        </dd>
+
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success"><span class="dot"
+                                        aria-hidden="true"></span> Complete</span></span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="trade-mobile">
                     <header class="trade-mobile__header">#3 trade</header>
                     <dl class="trade-mobile__list">
-                        <div class="trade-mobile__item">
-                            <dt>Actions</dt>
-                            <dd>
-                                <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo" />
-                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
-                                    class="trades__icon" />
-                                <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades__logo" />
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/ada.svg" alt="Cardano" class="trades__icon" />
-                                <span class="trades__desc">Cardano <span class="network">(ADA)</span></span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Price</dt>
-                            <dd>
-                                <span class="trades__desc">$69,100</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Buy Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Price</dt>
-                            <dd>
-                                <span class="trades__desc">$234,51</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Sell Time</dt>
-                            <dd>
-                                <span class="trades__desc">Aug 23, 10:34:59</span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>PNL %</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="failed">-8.46%</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="trade-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="trades__desc">
-                                    <span class="failed"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Actions</dt>
+                        <dd>
+                            <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo">
+                            <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to" class="trades__icon">
+                            <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades__logo">
+                        </dd>
+
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/ada.svg" alt="Cardano" class="trades__icon">
+                            <span class="trades__desc">Cardano <span class="network">(ADA)</span></span>
+                        </dd>
+
+                        <dt>Buy Price</dt>
+                        <dd><span class="trades__desc">$69,100</span></dd>
+
+                        <dt>Buy Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>Sell Price</dt>
+                        <dd><span class="trades__desc">$234.51</span></dd>
+
+                        <dt>Sell Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>PNL %</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="failed">-8.46%</span></span>
+                        </dd>
+
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="failed"><span class="dot" aria-hidden="true"></span>
+                                    Failed</span></span>
+                        </dd>
                     </dl>
                 </article>
             </div>
-        </div>
+        </article>
 
-        <div class="card primary">
-            <div class="card__header">
+        <!-- LAST TRANSACTIONS -->
+        <article class="card primary" aria-labelledby="last-transactions">
+            <header class="card__header">
                 <div class="card__header-title-wrap">
                     <h2 class="card__header-title">Last Transactions</h2>
                     <p class="card__header-desc">Track your latest crypto activity with clear transaction history —
                         amounts, dates, fiat value, and status at a glance.</p>
                 </div>
-                <button type="button" class="card__header-btn">View All</button>
-            </div>
-            <div class="transactions">
-                <table class="transactions__table">
+                <button type="button" class="card__header-btn" data-page="transactions">View All</button>
+            </header>
+            <!-- DESKTOP VERSION -->
+            <div class="transactions-desktop">
+                <table class="transactions-desktop__table" aria-describedby="transactions-desktop-desc">
+                    <caption id="transactions-desktop-desc" class="visually-hidden">
+                        Overview of recent transactions-desktop including crypto type, amount, date, and status
+                    </caption>
                     <thead>
                         <tr>
-                            <th scope="col" class="transactions__header-title">Crypto <img
+                            <th scope="col" class="transactions-desktop__header-title">Crypto <img
                                     src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="transactions__header-icon"></th>
-                            <th scope="col" class="transactions__header-title">Amount <img
+                                    class="transactions-desktop__header-icon"></th>
+                            <th scope="col" class="transactions-desktop__header-title">Amount <img
                                     src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="transactions__header-icon"></th>
-                            <th scope="col" class="transactions__header-title">Type <img
+                                    class="transactions-desktop__header-icon"></th>
+                            <th scope="col" class="transactions-desktop__header-title">Type <img
                                     src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="transactions__header-icon"></th>
-                            <th scope="col" class="transactions__header-title">Date <img
+                                    class="transactions-desktop__header-icon"></th>
+                            <th scope="col" class="transactions-desktop__header-title">Date <img
                                     src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="transactions__header-icon"></th>
-                            <th scope="col" class="transactions__header-title">Payout <img
+                                    class="transactions-desktop__header-icon"></th>
+                            <th scope="col" class="transactions-desktop__header-title">Payout <img
                                     src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="transactions__header-icon"></th>
-                            <th scope="col" class="transactions__header-title">Status <img
+                                    class="transactions-desktop__header-icon"></th>
+                            <th scope="col" class="transactions-desktop__header-title">Status <img
                                     src="img/icon/table-column-filter.svg" width="16" height="16" alt="filter"
-                                    class="transactions__header-icon"></th>
+                                    class="transactions-desktop__header-icon"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="transactions__item">
-                                <img src="img/icon/btc.svg" alt="Bitcoin" class="transactions__icon" />
-                                <span class="transactions__desc">Bitcoin <span class="network">(BTC)</span></span>
+                            <td class="transactions-desktop__item">
+                                <img src="img/icon/btc.svg" alt="Bitcoin" class="transactions-desktop__icon" />
+                                <span class="transactions-desktop__desc">Bitcoin <span
+                                        class="network">(BTC)</span></span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">0.12 BTC</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">0.12 BTC</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">Loan Payment</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">Loan Payment</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">20 May 2024</span>
+                            <td class="transactions-desktop__item">
+                                <time datetime="2024.05.20" class="transactions-desktop__desc">20 May 2024</time>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">
                                     <span class="success">+$8,500</span>
                                 </span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__tooltip success">Complete</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__tooltip success">Complete</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="transactions__item">
-                                <img src="img/icon/sol.svg" alt="Solana" class="transactions__icon" />
-                                <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
+                            <td class="transactions-desktop__item">
+                                <img src="img/icon/sol.svg" alt="Solana" class="transactions-desktop__icon" />
+                                <span class="transactions-desktop__desc">Solana <span
+                                        class="network">(SOL)</span></span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">15 BTC</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">15 BTC</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">Received</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">Received</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">5 Jun 2024</span>
+                            <td class="transactions-desktop__item">
+                                <time datetime="2024.06.05" class="transactions-desktop__desc">5 Jun 2024</time>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">
                                     <span class="failed">-$4,200</span>
                                 </span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__tooltip failed">Failed</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__tooltip failed">Failed</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="transactions__item">
-                                <img src="img/icon/ada.svg" alt="Cardano" class="transactions__icon" />
-                                <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
+                            <td class="transactions-desktop__item">
+                                <img src="img/icon/ada.svg" alt="Cardano" class="transactions-desktop__icon" />
+                                <span class="transactions-desktop__desc">Cardano <span
+                                        class="network">(ADA)</span></span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">30.08 ADA</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">30.08 ADA</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">Paid</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">Paid</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">30 Jul 2024</span>
+                            <td class="transactions-desktop__item">
+                                <time datetime="2024.07.30" class="transactions-desktop__desc">30 Jul 2024</time>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">
                                     <span class="success">+$6,300</span>
                                 </span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__tooltip success">Complete</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__tooltip success">Complete</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="transactions__item">
-                                <img src="img/icon/xrp.svg" alt="Ripple" class="transactions__icon" />
-                                <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
+                            <td class="transactions-desktop__item">
+                                <img src="img/icon/xrp.svg" alt="Ripple" class="transactions-desktop__icon" />
+                                <span class="transactions-desktop__desc">Ripple <span
+                                        class="network">(XRP)</span></span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">25.30 XRP</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">25.30 XRP</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">Received</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">Received</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">15 Aug 2024</span>
+                            <td class="transactions-desktop__item">
+                                <time datetime="2024.08.15" class="transactions-desktop__desc">15 Aug 2024</time>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">
                                     <span class="failed">-$3,750</span>
                                 </span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__tooltip failed">Failed</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__tooltip failed">Failed</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="transactions__item">
-                                <img src="img/icon/sol.svg" alt="Solana" class="transactions__icon" />
-                                <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
+                            <td class="transactions-desktop__item">
+                                <img src="img/icon/sol.svg" alt="Solana" class="transactions-desktop__icon" />
+                                <span class="transactions-desktop__desc">Solana <span
+                                        class="network">(SOL)</span></span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">15 BTC</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">15 BTC</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">Received</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">Received</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">5 Jun 2024</span>
+                            <td class="transactions-desktop__item">
+                                <time datetime="2024.06.05" class="transactions-desktop__desc">5 Jun 2024</time>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">
                                     <span class="failed">-$4,200</span>
                                 </span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__tooltip failed">Failed</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__tooltip failed">Failed</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="transactions__item">
-                                <img src="img/icon/ada.svg" alt="Cardano" class="transactions__icon" />
-                                <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
+                            <td class="transactions-desktop__item">
+                                <img src="img/icon/ada.svg" alt="Cardano" class="transactions-desktop__icon" />
+                                <span class="transactions-desktop__desc">Cardano <span
+                                        class="network">(ADA)</span></span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">30.08 ADA</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">30.08 ADA</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">Paid</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">Paid</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">30 Jul 2024</span>
+                            <td class="transactions-desktop__item">
+                                <time datetime="2024.07.30" class="transactions-desktop__desc">30 Jul 2024</time>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">
                                     <span class="success">+$6,300</span>
                                 </span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__tooltip success">Complete</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__tooltip success">Complete</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <td class="transactions__item">
-                                <img src="img/icon/xrp.svg" alt="Ripple" class="transactions__icon" />
-                                <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
+                            <td class="transactions-desktop__item">
+                                <img src="img/icon/xrp.svg" alt="Ripple" class="transactions-desktop__icon" />
+                                <span class="transactions-desktop__desc">Ripple <span
+                                        class="network">(XRP)</span></span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">25.30 XRP</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">25.30 XRP</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">Received</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">Received</span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">15 Aug 2024</span>
+                            <td class="transactions-desktop__item">
+                                <time datetime="2024.08.15" class="transactions-desktop__desc">15 Aug 2024</time>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__desc">
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__desc">
                                     <span class="failed">-$3,750</span>
                                 </span>
                             </td>
-                            <td class="transactions__item">
-                                <span class="transactions__tooltip failed">Failed</span>
+                            <td class="transactions-desktop__item">
+                                <span class="transactions-desktop__tooltip failed">Failed</span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            <!-- MOBILE VERSION -->
             <div class="transactions-mobile">
                 <article class="transaction-mobile">
                     <header class="transaction-mobile__header">#1 Transactions</header>
                     <dl class="transaction-mobile__list">
-                        <div class="transaction-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/btc.svg" alt="Bitcoin" class="transaction-mobile__icon" />
-                                <span class="transactions__desc">Bitcoin <span class="network">(BTC)</span></span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Amount</dt>
-                            <dd><span class="transactions__desc">0.12 BTC</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Type</dt>
-                            <dd><span class="transactions__desc">Loan Payment</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Date</dt>
-                            <dd>
-                                <span class="transactions__desc">20 May 2024</span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Payout</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="success">+$8,500</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="success"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/btc.svg" alt="Bitcoin" class="transaction-mobile__icon" />
+                            <span class="transactions__desc">Bitcoin <span class="network">(BTC)</span></span>
+                        </dd>
+                        <dt>Amount</dt>
+                        <dd><span class="transactions__desc">0.12 BTC</span></dd>
+                        <dt>Type</dt>
+                        <dd><span class="transactions__desc">Loan Payment</span></dd>
+                        <dt>Date</dt>
+                        <dd>
+                            <time datetime="2024.05.20" class="transactions__desc">20 May 2024</time>
+                        </dd>
+                        <dt>Payout</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="success">+$8,500</span>
+                            </span>
+                        </dd>
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="success"><span class="dot"></span> Complete</span>
+                            </span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="transaction-mobile">
                     <header class="transaction-mobile__header">#2 Transactions</header>
                     <dl class="transaction-mobile__list">
-                        <div class="transaction-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/sol.svg" alt="Solana" class="transaction-mobile__icon" />
-                                <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Amount</dt>
-                            <dd><span class="transactions__desc">15 BTC</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Type</dt>
-                            <dd><span class="transactions__desc">Received</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Date</dt>
-                            <dd>
-                                <span class="transactions__desc">5 Jun 2024</span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Payout</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed">-$4,200</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed"><span class="dot"></span> Failed</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/sol.svg" alt="Solana" class="transaction-mobile__icon" />
+                            <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
+                        </dd>
+                        <dt>Amount</dt>
+                        <dd><span class="transactions__desc">15 BTC</span></dd>
+                        <dt>Type</dt>
+                        <dd><span class="transactions__desc">Received</span></dd>
+                        <dt>Date</dt>
+                        <dd>
+                            <time datetime="2024.06.05" class="transactions__desc">5 Jun 2024</time>
+                        </dd>
+                        <dt>Payout</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed">-$4,200</span>
+                            </span>
+                        </dd>
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed"><span class="dot"></span> Failed</span>
+                            </span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="transaction-mobile">
                     <header class="transaction-mobile__header">#3 Transactions</header>
                     <dl class="transaction-mobile__list">
-                        <div class="transaction-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/ada.svg" alt="Cardano" class="transaction-mobile__icon" />
-                                <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Amount</dt>
-                            <dd><span class="transactions__desc">30.08 ADA</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Type</dt>
-                            <dd><span class="transactions__desc">Paid</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Date</dt>
-                            <dd>
-                                <span class="transactions__desc">30 Jul 2024</span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Payout</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="success">+$6,300</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="success"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/ada.svg" alt="Cardano" class="transaction-mobile__icon" />
+                            <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
+                        </dd>
+                        <dt>Amount</dt>
+                        <dd><span class="transactions__desc">30.08 ADA</span></dd>
+                        <dt>Type</dt>
+                        <dd><span class="transactions__desc">Paid</span></dd>
+                        <dt>Date</dt>
+                        <dd>
+                            <time datetime="2024.07.30" class="transactions__desc">30 Jul 2024</time>
+                        </dd>
+                        <dt>Payout</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="success">+$6,300</span>
+                            </span>
+                        </dd>
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="success"><span class="dot"></span> Complete</span>
+                            </span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="transaction-mobile">
                     <header class="transaction-mobile__header">#4 Transactions</header>
                     <dl class="transaction-mobile__list">
-                        <div class="transaction-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/xrp.svg" alt="Ripple" class="transaction-mobile__icon" />
-                                <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Amount</dt>
-                            <dd><span class="transactions__desc">25.30 XRP</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Type</dt>
-                            <dd><span class="transactions__desc">Received</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Date</dt>
-                            <dd>
-                                <span class="transactions__desc">15 Aug 2024</span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Payout</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed">-$3,750</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed"><span class="dot"></span> Failed</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/xrp.svg" alt="Ripple" class="transaction-mobile__icon" />
+                            <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
+                        </dd>
+                        <dt>Amount</dt>
+                        <dd><span class="transactions__desc">25.30 XRP</span></dd>
+                        <dt>Type</dt>
+                        <dd><span class="transactions__desc">Received</span></dd>
+                        <dt>Date</dt>
+                        <dd>
+                            <time datetime="2024.08.15" class="transactions__desc">15 Aug 2024</time>
+                        </dd>
+                        <dt>Payout</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed">-$3,750</span>
+                            </span>
+                        </dd>
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed"><span class="dot"></span> Failed</span>
+                            </span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="transaction-mobile">
                     <header class="transaction-mobile__header">#5 Transactions</header>
                     <dl class="transaction-mobile__list">
-                        <div class="transaction-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/sol.svg" alt="Solana" class="transaction-mobile__icon" />
-                                <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Amount</dt>
-                            <dd><span class="transactions__desc">15 BTC</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Type</dt>
-                            <dd><span class="transactions__desc">Received</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Date</dt>
-                            <dd>
-                                <span class="transactions__desc">5 Jun 2024</span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Payout</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed">-$4,200</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed"><span class="dot"></span> Failed</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/sol.svg" alt="Solana" class="transaction-mobile__icon" />
+                            <span class="transactions__desc">Solana <span class="network">(SOL)</span></span>
+                        </dd>
+                        <dt>Amount</dt>
+                        <dd><span class="transactions__desc">15 BTC</span></dd>
+                        <dt>Type</dt>
+                        <dd><span class="transactions__desc">Received</span></dd>
+                        <dt>Date</dt>
+                        <dd>
+                            <time datetime="2024.06.05" class="transactions__desc">5 Jun 2024</time>
+                        </dd>
+                        <dt>Payout</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed">-$4,200</span>
+                            </span>
+                        </dd>
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed"><span class="dot"></span> Failed</span>
+                            </span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="transaction-mobile">
                     <header class="transaction-mobile__header">#6 Transactions</header>
                     <dl class="transaction-mobile__list">
-                        <div class="transaction-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/ada.svg" alt="Cardano" class="transaction-mobile__icon" />
-                                <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Amount</dt>
-                            <dd><span class="transactions__desc">30.08 ADA</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Type</dt>
-                            <dd><span class="transactions__desc">Paid</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Date</dt>
-                            <dd>
-                                <span class="transactions__desc">30 Jul 2024</span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Payout</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="success">+$6,300</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="success"><span class="dot"></span> Complete</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/ada.svg" alt="Cardano" class="transaction-mobile__icon" />
+                            <span class="transactions__desc">Cardano <span class="network">(ADA)</span></span>
+                        </dd>
+                        <dt>Amount</dt>
+                        <dd><span class="transactions__desc">30.08 ADA</span></dd>
+                        <dt>Type</dt>
+                        <dd><span class="transactions__desc">Paid</span></dd>
+                        <dt>Date</dt>
+                        <dd>
+                            <time datetime="2024.07.30" class="transactions__desc">30 Jul 2024</time>
+                        </dd>
+                        <dt>Payout</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="success">+$6,300</span>
+                            </span>
+                        </dd>
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="success"><span class="dot"></span> Complete</span>
+                            </span>
+                        </dd>
                     </dl>
                 </article>
 
                 <article class="transaction-mobile">
                     <header class="transaction-mobile__header">#7 Transactions</header>
                     <dl class="transaction-mobile__list">
-                        <div class="transaction-mobile__item">
-                            <dt>Crypto</dt>
-                            <dd>
-                                <img src="img/icon/xrp.svg" alt="Ripple" class="transaction-mobile__icon" />
-                                <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Amount</dt>
-                            <dd><span class="transactions__desc">25.30 XRP</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Type</dt>
-                            <dd><span class="transactions__desc">Received</span></dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Date</dt>
-                            <dd>
-                                <span class="transactions__desc">15 Aug 2024</span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Payout</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed">-$3,750</span>
-                                </span>
-                            </dd>
-                        </div>
-                        <div class="transaction-mobile__item">
-                            <dt>Status</dt>
-                            <dd>
-                                <span class="transactions__desc">
-                                    <span class="failed"><span class="dot"></span> Failed</span>
-                                </span>
-                            </dd>
-                        </div>
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/xrp.svg" alt="Ripple" class="transaction-mobile__icon" />
+                            <span class="transactions__desc">Ripple <span class="network">(XRP)</span></span>
+                        </dd>
+                        <dt>Amount</dt>
+                        <dd><span class="transactions__desc">25.30 XRP</span></dd>
+                        <dt>Type</dt>
+                        <dd><span class="transactions__desc">Received</span></dd>
+                        <dt>Date</dt>
+                        <dd>
+                            <time datetime="2024.08.15" class="transactions__desc">15 Aug 2024</time>
+                        </dd>
+                        <dt>Payout</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed">-$3,750</span>
+                            </span>
+                        </dd>
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="transactions__desc">
+                                <span class="failed"><span class="dot"></span> Failed</span>
+                            </span>
+                        </dd>
                     </dl>
                 </article>
             </div>
-        </div>
+        </article>
     </section>
 
     <div id="modal-container" allowtransparency="true"></div>
 
     <script>
-        document.querySelectorAll("[data-modal]").forEach((btn) => {
+        /* --- Tooltip Details --- */
+        document.querySelectorAll(".card__deposit-info-btn").forEach((btn) => {
             btn.addEventListener("click", () => {
-                const modalPage = btn.getAttribute("data-modal");
-                const iframe = document.createElement("iframe");
-                iframe.src = `${modalPage}.html`;
-                iframe.className = "modal-iframe";
-                iframe.allowTransparency = true;
-                iframe.style.background = "transparent";
+                const tooltipId = btn.getAttribute("aria-controls");
+                const tooltip = document.getElementById(tooltipId);
+                if (!tooltip) return;
 
-                iframe.onload = () => iframe.classList.add("active");
-                document.body.appendChild(iframe);
-
-                window.addEventListener("message", (e) => {
-                    if (e.data.action === "closeModal") {
-                        iframe.classList.remove("active");
-                        setTimeout(() => iframe.remove(), 250);
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const infoButtons = document.querySelectorAll(".card__deposit-info-btn");
-
-            infoButtons.forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    const card = btn.closest(".card__deposit-wrap");
-                    if (!card) return;
-
-                    const tooltip = card.querySelector(".card__deposit-tooltip");
-                    if (!tooltip) return;
-
-                    const isVisible = tooltip.style.display === "flex";
-                    tooltip.style.display = isVisible ? "none" : "flex";
-                });
+                const isVisible = !tooltip.hasAttribute("hidden");
+                tooltip.toggleAttribute("hidden", isVisible);
+                btn.setAttribute("aria-expanded", String(!isVisible));
             });
         });
     </script>

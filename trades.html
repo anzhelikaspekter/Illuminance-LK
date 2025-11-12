@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Trades">
+    <title>Trades</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body style="background-color: var(--bg-color);">
+    <section class="trades">
+        <article class="card primary">
+            <header class="card__header">
+                <div class="card__header-title-wrap">
+                    <div class="card__header-back-field">
+                        <button type="button" class="card__back-btn" aria-label="Go back">
+                            <img src="img/icon/arrow-back.svg" width="20" height="20" alt="" class="card__header-icon"
+                                aria-hidden="true">
+                        </button>
+                        <h2 class="card__header-title">All Trades</h2>
+                    </div>
+                    <p class="card__header-desc">
+                        Track your latest crypto activity with clear trades history —
+                        amounts, dates, fiat value, and status at a glance.
+                    </p>
+                </div>
+
+                <div class="card__header-btns-wrap">
+                    <div class="trades__form-wrap--select" role="listbox" aria-label="Select period">
+                        <button type="button" class="trades__form-wrap--select-field" aria-haspopup="listbox"
+                            aria-expanded="false">
+                            <p class="trades__form-wrap--select-text">Last 3 month</p>
+                            <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
+                                class="trades__form-wrap--select-arrow" aria-hidden="true">
+                        </button>
+
+                        <ul class="trades__form-wrap--select-dropdown" hidden>
+                            <li class="trades__form-wrap--select-option active" role="option" data-value="Last 1 month">
+                                <p class="trades__form-wrap--select-text">Last 1 month</p>
+                            </li>
+                            <li class="trades__form-wrap--select-option" role="option" data-value="Last 3 month">
+                                <p class="trades__form-wrap--select-text">Last 3 month</p>
+                            </li>
+                            <li class="trades__form-wrap--select-option" role="option" data-value="Last 6 month">
+                                <p class="trades__form-wrap--select-text">Last 6 month</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" class="card__header-btn">
+                        <img src="img/icon/filters.svg" width="20" height="20" alt="" class="card__header-icon"
+                            aria-hidden="true">
+                        Filters
+                    </button>
+                </div>
+            </header>
+            <!-- DESKTOP VERSION -->
+            <div class="trades-desktop">
+                <table class="trades-desktop__table">
+                    <caption class="visually-hidden">
+                        Recent cryptocurrency trades-desktop overview
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Actions
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Crypto
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Buy Price
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Buy Time
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Sell Price
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Sell Time
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                PNL %
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                            <th scope="col" class="trades-desktop__header-title">
+                                Status
+                                <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                    aria-hidden="true" class="trades-desktop__header-icon">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="trades-desktop__item">
+                                <img src="img/binance.svg" width="80" height="15" alt="Binance"
+                                    class="trades-desktop__logo">
+                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
+                                    class="trades-desktop__icon">
+                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit"
+                                    class="trades-desktop__logo">
+                            </td>
+                            <td class="trades-desktop__item">
+                                <img src="img/icon/btc.svg" alt="Bitcoin" class="trades-desktop__icon">
+                                <span class="trades-desktop__desc">Bitcoin <span class="network">(BTC)</span></span>
+                            </td>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$67,200</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
+                            </td>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$52,145</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
+                            </td>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__desc"><span class="success">+2.76%</span></span>
+                            </td>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__tooltip success">Complete</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="trades-desktop__item">
+                                <img src="img/bybit.svg" width="40" height="15" alt="Bybit"
+                                    class="trades-desktop__logo">
+                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
+                                    class="trades-desktop__icon">
+                                <img src="img/binance.svg" width="80" height="15" alt="Binance"
+                                    class="trades-desktop__logo">
+                            </td>
+                            <td class="trades-desktop__item">
+                                <img src="img/icon/sol.svg" alt="Solana" class="trades-desktop__icon">
+                                <span class="trades-desktop__desc">Solana <span class="network">(SOL)</span></span>
+                            </td>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$3,450</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-05-23T10:34:59" class="trades-desktop__desc">May 23,
+                                    10:34:59</time>
+                            </td>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$12,192</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-05-23T10:34:59" class="trades-desktop__desc">May 23,
+                                    10:34:59</time>
+                            </td>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__desc"><span class="success">+8.46%</span></span>
+                            </td>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__tooltip success">Complete</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="trades-desktop__item">
+                                <img src="img/binance.svg" width="80" height="15" alt="Binance"
+                                    class="trades-desktop__logo">
+                                <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to"
+                                    class="trades-desktop__icon">
+                                <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades-desktop__logo">
+                            </td>
+                            <td class="trades-desktop__item">
+                                <img src="img/icon/ada.svg" alt="Cardano" class="trades-desktop__icon">
+                                <span class="trades-desktop__desc">Cardano <span class="network">(ADA)</span></span>
+                            </td>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$69,100</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
+                            </td>
+                            <td class="trades-desktop__item"><span class="trades-desktop__desc">$234.51</span></td>
+                            <td class="trades-desktop__item">
+                                <time datetime="2025-08-23T10:34:59" class="trades-desktop__desc">Aug 23,
+                                    10:34:59</time>
+                            </td>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__desc"><span class="failed">-8.46%</span></span>
+                            </td>
+                            <td class="trades-desktop__item">
+                                <span class="trades-desktop__tooltip failed">Failed</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- MOBILE VERSION -->
+            <div class="trades-mobile">
+                <article class="trade-mobile">
+                    <header class="trade-mobile__header">#1 trade</header>
+                    <dl class="trade-mobile__list">
+                        <dt>Actions</dt>
+                        <dd>
+                            <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo">
+                            <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to" class="trades__icon">
+                            <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo">
+                        </dd>
+
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/btc.svg" alt="Bitcoin" class="trades__icon">
+                            <span class="trades__desc">Bitcoin <span class="network">(BTC)</span></span>
+                        </dd>
+
+                        <dt>Buy Price</dt>
+                        <dd><span class="trades__desc">$67,200</span></dd>
+
+                        <dt>Buy Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>Sell Price</dt>
+                        <dd><span class="trades__desc">$52,145</span></dd>
+
+                        <dt>Sell Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>PNL %</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success">+2.76%</span></span>
+                        </dd>
+
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success"><span class="dot"
+                                        aria-hidden="true"></span> Complete</span></span>
+                        </dd>
+                    </dl>
+                </article>
+
+                <article class="trade-mobile">
+                    <header class="trade-mobile__header">#2 trade</header>
+                    <dl class="trade-mobile__list">
+                        <dt>Actions</dt>
+                        <dd>
+                            <img src="img/bybit.svg" width="40" height="15" alt="Bybit" class="trades__logo">
+                            <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to" class="trades__icon">
+                            <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo">
+                        </dd>
+
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/sol.svg" alt="Solana" class="trades__icon">
+                            <span class="trades__desc">Solana <span class="network">(SOL)</span></span>
+                        </dd>
+
+                        <dt>Buy Price</dt>
+                        <dd><span class="trades__desc">$3,450</span></dd>
+
+                        <dt>Buy Time</dt>
+                        <dd><span class="trades__desc">May 23, 10:34:59</span></dd>
+
+                        <dt>Sell Price</dt>
+                        <dd><span class="trades__desc">$12,192</span></dd>
+
+                        <dt>Sell Time</dt>
+                        <dd><span class="trades__desc">May 23, 10:34:59</span></dd>
+
+                        <dt>PNL %</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success">+8.46%</span></span>
+                        </dd>
+
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="success"><span class="dot"
+                                        aria-hidden="true"></span> Complete</span></span>
+                        </dd>
+                    </dl>
+                </article>
+
+                <article class="trade-mobile">
+                    <header class="trade-mobile__header">#3 trade</header>
+                    <dl class="trade-mobile__list">
+                        <dt>Actions</dt>
+                        <dd>
+                            <img src="img/binance.svg" width="80" height="15" alt="Binance" class="trades__logo">
+                            <img src="img/icon/arrow-right.svg" width="16" height="16" alt="to" class="trades__icon">
+                            <img src="img/okx.svg" width="80" height="15" alt="OKX" class="trades__logo">
+                        </dd>
+
+                        <dt>Crypto</dt>
+                        <dd>
+                            <img src="img/icon/ada.svg" alt="Cardano" class="trades__icon">
+                            <span class="trades__desc">Cardano <span class="network">(ADA)</span></span>
+                        </dd>
+
+                        <dt>Buy Price</dt>
+                        <dd><span class="trades__desc">$69,100</span></dd>
+
+                        <dt>Buy Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>Sell Price</dt>
+                        <dd><span class="trades__desc">$234.51</span></dd>
+
+                        <dt>Sell Time</dt>
+                        <dd><span class="trades__desc">Aug 23, 10:34:59</span></dd>
+
+                        <dt>PNL %</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="failed">-8.46%</span></span>
+                        </dd>
+
+                        <dt>Status</dt>
+                        <dd>
+                            <span class="trades__desc"><span class="failed"><span class="dot" aria-hidden="true"></span>
+                                    Failed</span></span>
+                        </dd>
+                    </dl>
+                </article>
+            </div>
+            <!-- PAGINATION -->
+            <nav class="pagination" aria-label="Page navigation">
+                <ul class="pagination__list">
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="First page">
+                            «
+                        </a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="Previous page">
+                            ‹
+                        </a>
+                    </li>
+
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link pagination__link--active" aria-current="page">1</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">2</a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">3</a>
+                    </li>
+                    <li class="pagination__item pagination__dots" aria-hidden="true">…</li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link">10</a>
+                    </li>
+
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="Next page">
+                            ›
+                        </a>
+                    </li>
+                    <li class="pagination__item">
+                        <a href="#" class="pagination__link" aria-label="Last page">
+                            »
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </article>
+    </section>
+
+    <script>
+        document.querySelector('.card__back-btn').addEventListener('click', () => {
+            if (document.referrer && document.referrer !== window.location.href) {
+                window.history.back();
+            } else {
+                window.location.href = '/dashboard.html';
+            }
+        });
+    </script>
+    <script>
+        (function () {
+            const select = document.querySelector('.trades__form-wrap--select');
+            if (!select) return;
+
+            const button = select.querySelector('.trades__form-wrap--select-field');
+            const dropdown = select.querySelector('.trades__form-wrap--select-dropdown');
+            const options = select.querySelectorAll('.trades__form-wrap--select-option');
+            const selectedText = select.querySelector('.trades__form-wrap--select-text');
+
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const expanded = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', !expanded);
+                dropdown.hidden = expanded;
+            });
+
+            options.forEach((option) => {
+                option.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    options.forEach((opt) => opt.classList.remove('active'));
+                    option.classList.add('active');
+                    const value = option.dataset.value;
+                    selectedText.textContent = value;
+                    button.setAttribute('aria-expanded', 'false');
+                    dropdown.hidden = true;
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!select.contains(e.target)) {
+                    dropdown.hidden = true;
+                    button.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-.transaction {
+.trades {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -115,7 +115,7 @@
             display: flex;
             flex-direction: column;
             gap: 4px;
-            height: max-content;
+            height: 140px;
             background: var(--modal-select-dropdown-bg-color);
             border-radius: var(--border-radius-md);
             padding: 4px;
@@ -155,7 +155,7 @@
     }
 }
 
-.transactions-desktop {
+.trades-desktop {
     height: 100%;
     overflow: hidden;
     overflow-x: auto;
@@ -192,25 +192,33 @@
         padding: var(--padding-xs);
         &:nth-child(1) {
             width: 100%;
-            min-width: 170px;
+            min-width: 220px;
         }
         &:nth-child(2) {
             width: 100%;
-            min-width: 150px;
+            min-width: 170px;
         }
         &:nth-child(3) {
             width: 100%;
-            min-width: 150px;
+            min-width: 120px;
         }
         &:nth-child(4) {
             width: 100%;
-            min-width: 150px;
+            min-width: 170px;
         }
         &:nth-child(5) {
             width: 100%;
-            min-width: 150px;
+            min-width: 120px;
         }
         &:nth-child(6) {
+            width: 100%;
+            min-width: 170px;
+        }
+        &:nth-child(7) {
+            width: 120px;
+            min-width: 120px;
+        }
+        &:nth-child(8) {
             width: 120px;
             min-width: 120px;
         }
@@ -232,25 +240,33 @@
         padding: var(--padding-xs);
         &:nth-child(1) {
             width: 100%;
-            min-width: 170px;
+            min-width: 220px;
         }
         &:nth-child(2) {
             width: 100%;
-            min-width: 150px;
+            min-width: 170px;
         }
         &:nth-child(3) {
             width: 100%;
-            min-width: 150px;
+            min-width: 120px;
         }
         &:nth-child(4) {
             width: 100%;
-            min-width: 150px;
+            min-width: 170px;
         }
         &:nth-child(5) {
             width: 100%;
-            min-width: 150px;
+            min-width: 120px;
         }
         &:nth-child(6) {
+            width: 100%;
+            min-width: 170px;
+        }
+        &:nth-child(7) {
+            width: 120px;
+            min-width: 120px;
+        }
+        &:nth-child(8) {
             width: 120px;
             min-width: 120px;
         }
@@ -317,7 +333,7 @@
     }
 }
 
-.transactions-mobile {
+.trades-mobile {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -329,7 +345,7 @@
     @media (min-width: 768px) {
         display: none;
     }
-    .transaction-mobile {
+    .trade-mobile {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -357,7 +373,6 @@
             flex-wrap: wrap;
             gap: 0;
         }
-
         dt {
             width: 40%;
             font-size: var(--desc-size-md);
@@ -390,68 +405,6 @@
             width: 24px;
             height: 24px;
             object-fit: contain;
-        }
-    }
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--padding-sm);
-
-    &__list {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    &__item {
-        display: flex;
-    }
-
-    &__link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border-radius: var(--border-radius-sm);
-        font-size: var(--desc-size-md);
-        color: rgba(255, 255, 255, 0.4);
-        text-decoration: none;
-        transition: all 0.2s ease;
-        background: transparent;
-
-        &:hover,
-        &:focus-visible {
-            background: rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 1);
-            outline: none;
-        }
-
-        &--active {
-            background: rgba(255, 255, 255, 0.05);
-            color: rgba(255, 255, 255, 1);
-            cursor: default;
-            pointer-events: none;
-        }
-    }
-
-    &__dots {
-        color: rgba(255, 255, 255, 0.4);
-        padding: 0 4px;
-        user-select: none;
-    }
-
-    @media (max-width: 480px) {
-        &__list {
-            gap: 2px;
-        }
-        &__link {
-            width: 28px;
-            height: 28px;
-            font-size: 13px;
         }
     }
 }

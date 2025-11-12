@@ -293,6 +293,7 @@
 
     <div id="modal-container" allowtransparency="true"></div>
 
+    <!-- Подгрузка модалок -->
     <script>
         document.querySelectorAll("[data-modal]").forEach((btn) => {
             btn.addEventListener("click", () => {
@@ -315,43 +316,43 @@
             });
         });
     </script>
+
+    <!-- Кнопка Assets -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const toggleBtn = document.querySelector(".sidebar__assets-btn");
             const assetsList = document.querySelector(".sidebar__assets-list");
-            const arrowIcon = toggleBtn.querySelector(".sidebar__assets-icon");
-
+            const arrowIcon = toggleBtn?.querySelector(".sidebar__assets-icon");
             if (!toggleBtn || !assetsList) return;
 
             toggleBtn.setAttribute("aria-expanded", "false");
             assetsList.hidden = true;
-
             assetsList.style.transition = "max-height 0.3s ease, opacity 0.3s ease";
             assetsList.style.maxHeight = "0";
             assetsList.style.opacity = "0";
 
             toggleBtn.addEventListener("click", () => {
                 const isExpanded = toggleBtn.getAttribute("aria-expanded") === "true";
-
                 toggleBtn.setAttribute("aria-expanded", String(!isExpanded));
 
                 if (isExpanded) {
                     assetsList.style.maxHeight = "0";
                     assetsList.style.opacity = "0";
                     arrowIcon.style.transform = "rotate(0deg)";
-                    toggleBtn.childNodes[0].nodeValue = "Show "; // Меняем надпись
+                    toggleBtn.childNodes[0].nodeValue = "Show ";
                     setTimeout(() => (assetsList.hidden = true), 300);
                 } else {
                     assetsList.hidden = false;
-                    const scrollHeight = assetsList.scrollHeight;
-                    assetsList.style.maxHeight = `${scrollHeight}px`;
+                    assetsList.style.maxHeight = `${assetsList.scrollHeight}px`;
                     assetsList.style.opacity = "1";
                     arrowIcon.style.transform = "rotate(180deg)";
-                    toggleBtn.childNodes[0].nodeValue = "Hide "; // Меняем надпись
+                    toggleBtn.childNodes[0].nodeValue = "Hide ";
                 }
             });
         });
     </script>
+
+    <!-- Навигация и hover на иконках -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const navButtons = document.querySelectorAll(
@@ -371,12 +372,8 @@
                     btn.classList.remove("active");
                     btn.setAttribute("aria-pressed", "false");
                     btn.removeAttribute("aria-current");
-
                     const img = btn.querySelector("img");
-                    if (img) {
-                        const { base } = getIconPaths(img.src);
-                        img.src = base;
-                    }
+                    if (img) img.src = getIconPaths(img.src).base;
                 });
             };
 
@@ -386,12 +383,8 @@
                         btn.classList.add("active");
                         btn.setAttribute("aria-pressed", "true");
                         btn.setAttribute("aria-current", "page");
-
                         const img = btn.querySelector("img");
-                        if (img) {
-                            const { active } = getIconPaths(img.src);
-                            img.src = active;
-                        }
+                        if (img) img.src = getIconPaths(img.src).active;
                     }
                 });
             };
@@ -400,7 +393,6 @@
                 const img = btn.querySelector("img");
                 if (!img) return;
                 const { base, active } = getIconPaths(img.src);
-
                 btn.addEventListener("mouseenter", () => {
                     if (!btn.classList.contains("active")) img.src = active;
                 });
@@ -412,7 +404,6 @@
             navButtons.forEach((btn) => {
                 const name = btn.dataset.name;
                 addHover(btn);
-
                 btn.addEventListener("click", () => {
                     const isActive = btn.classList.contains("active");
                     resetAll();
@@ -420,8 +411,9 @@
                 });
             });
         });
-
     </script>
+
+    <!-- Сайдбар -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const sidebar = document.querySelector(".sidebar");
@@ -430,14 +422,11 @@
             );
 
             if (!sidebar || !sidebarToggle) return;
-
             let isSidebarOpen = false;
 
             const toggleSidebar = (forceClose = false) => {
                 isSidebarOpen = forceClose ? false : !isSidebarOpen;
-
                 sidebar.style.display = isSidebarOpen ? "flex" : "none";
-
                 sidebarToggle.setAttribute("aria-pressed", isSidebarOpen);
                 sidebarToggle.setAttribute("aria-expanded", isSidebarOpen);
             };
@@ -458,21 +447,20 @@
             });
 
             document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && isSidebarOpen) {
-                    toggleSidebar(true);
-                }
+                if (e.key === "Escape" && isSidebarOpen) toggleSidebar(true);
             });
         });
-
     </script>
+
+    <!-- Глобальная функция loadPage -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const content = document.querySelector(".content");
             const pageButtons = document.querySelectorAll("[data-page]");
+            if (!content) return;
 
-            if (!content || !pageButtons.length) return;
-
-            const loadPage = async (page) => {
+            // Глобальная функция
+            window.loadPage = async (page) => {
                 try {
                     const response = await fetch(`${page}.html`);
                     if (!response.ok) throw new Error("Page not found");
@@ -481,19 +469,19 @@
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(html, "text/html");
 
+                    // подгружаем контент
                     content.innerHTML = doc.body.innerHTML;
 
+                    // подгружаем скрипты страницы
                     const scripts = doc.querySelectorAll("script");
                     scripts.forEach((oldScript) => {
                         const newScript = document.createElement("script");
-                        if (oldScript.src) {
-                            newScript.src = oldScript.src;
-                        } else {
-                            newScript.textContent = oldScript.textContent;
-                        }
+                        if (oldScript.src) newScript.src = oldScript.src;
+                        else newScript.textContent = oldScript.textContent;
                         document.body.appendChild(newScript);
                     });
 
+                    // плавная анимация появления
                     content.style.opacity = 0;
                     requestAnimationFrame(() => {
                         content.style.transition = "opacity 0.3s ease";
@@ -502,40 +490,55 @@
 
                     document.title =
                         page.charAt(0).toUpperCase() + page.slice(1) + " | Illuminance";
-
-                    if (typeof window.initPageScripts === "function") {
-                        window.initPageScripts(page);
-                    }
-
-                    if (typeof window.initProfileToggle === "function") {
-                        window.initProfileToggle();
-                    }
                 } catch (err) {
                     content.innerHTML = `
-                        <div class="error-message">
-                            <p>⚠️ Failed to load <strong>${page}.html</strong></p>
-                            <p>${err.message}</p>
-                        </div>`;
+        <div class="error-message">
+          <p>⚠️ Failed to load <strong>${page}.html</strong></p>
+          <p>${err.message}</p>
+        </div>`;
                 }
             };
 
+            // начальная страница
+            const initialPage = location.hash.replace("#", "") || "dashboard";
+            window.loadPage(initialPage);
 
-            pageButtons.forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    const page = btn.dataset.page;
-                    if (!page) return;
-                    loadPage(page);
-                    history.pushState({ page }, "", `#${page}`);
+            // кнопки на самой index (если есть)
+            if (pageButtons.length) {
+                pageButtons.forEach((btn) => {
+                    btn.addEventListener("click", () => {
+                        const page = btn.dataset.page;
+                        if (!page) return;
+                        window.loadPage(page);
+                        history.pushState({ page }, "", `#${page}`);
+                    });
                 });
-            });
+            }
 
+            // навигация назад/вперёд
             window.addEventListener("popstate", (e) => {
                 const page = e.state?.page || "dashboard";
-                loadPage(page);
+                window.loadPage(page);
             });
+        });
+    </script>
 
-            const initialPage = location.hash.replace("#", "") || "dashboard";
-            loadPage(initialPage);
+    <!-- Делегат для кликов по data-page на подгруженных страницах -->
+    <script>
+        document.addEventListener("click", (e) => {
+            const btn = e.target.closest("[data-page]");
+            if (!btn) return;
+
+            e.preventDefault();
+            const page = btn.dataset.page;
+            if (!page) return;
+
+            if (typeof window.loadPage === "function") {
+                window.loadPage(page);
+                history.pushState({ page }, "", `#${page}`);
+            } else {
+                window.location.href = `${page}.html`;
+            }
         });
     </script>
 </body>

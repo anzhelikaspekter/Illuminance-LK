@@ -83,7 +83,7 @@
                         <h2 id="active-deposit-title" class="card__header-title">Active Deposit</h2>
                         <p class="card__header-desc">Active: <span class="count">8 Deposits</span></p>
                     </div>
-                    <button type="button" class="card__header-btn" data-page="deposit">View All</button>
+                    <button type="button" class="card__header-btn" data-page="deposit-all">View All</button>
                 </header>
 
                 <div class="card__deposit-wrap">
@@ -141,113 +141,304 @@
 
                 <ul class="card__toggle-list" role="tablist" aria-label="Statistics range">
                     <li role="presentation" class="card__toggle-item">
-                        <button type="button" role="tab" aria-selected="true"
+                        <button type="button" role="tab" aria-selected="true" aria-controls="stat-day" id="tab-day"
                             class="card__toggle-btn active">Day</button>
                     </li>
                     <li role="presentation" class="card__toggle-item">
-                        <button type="button" role="tab" aria-selected="false" class="card__toggle-btn">Month</button>
+                        <button type="button" role="tab" aria-selected="false" aria-controls="stat-month" id="tab-month"
+                            class="card__toggle-btn">Month</button>
                     </li>
                     <li role="presentation" class="card__toggle-item">
-                        <button type="button" role="tab" aria-selected="false" class="card__toggle-btn">Year</button>
+                        <button type="button" role="tab" aria-selected="false" aria-controls="stat-year" id="tab-year"
+                            class="card__toggle-btn">Year</button>
                     </li>
                 </ul>
             </header>
 
-            <div class="card__statistic-wrap">
-                <div class="card__statistic-profit-wrap">
-                    <div class="card__statistic-profit">
-                        <h3 class="card__statistic-title">
-                            <img src="img/icon/profit-success.svg" width="20" height="20" alt=""
-                                class="card__statistic-icon" aria-hidden="true">
-                            Total profit
-                        </h3>
-                        <span class="card__statistic-count">
-                            <data value="5200">5,200 $</data>
-                        </span>
+            <div class="card__statistic-container">
+                <div id="stat-day" class="card__statistic-wrap" role="tabpanel" aria-labelledby="tab-day">
+                    <div class="card__statistic-profit-wrap">
+                        <div class="card__statistic-profit">
+                            <h3 class="card__statistic-title">
+                                <img src="img/icon/profit-success.svg" width="20" height="20" alt=""
+                                    class="card__statistic-icon" aria-hidden="true">
+                                Total profit Daily
+                            </h3>
+                            <span class="card__statistic-count">
+                                <data value="5200">5,200 $</data>
+                            </span>
+                        </div>
+                        <button type="button" class="card__statistic-profit-btn">
+                            <img src="img/icon/share.svg" width="20" height="20" alt=""
+                                class="card__statistic-profit-icon" aria-hidden="true">
+                            <span>Share</span>
+                        </button>
                     </div>
-                    <button type="button" class="card__statistic-profit-btn">
-                        <img src="img/icon/share.svg" width="20" height="20" alt="" class="card__statistic-profit-icon"
-                            aria-hidden="true">
-                        <span>Share</span>
-                    </button>
+
+                    <ul class="card__statistic-list">
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/referral-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Referral profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="3100">3,100 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/avg-daily-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                AVG Daily profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="361">361 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/deposit-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Deposit Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/active-partners.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Active Partners
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="8">8</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/bonus-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Bonus Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/best-day-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Best Day Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="6145">6,145 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/rank-achievement.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                <span>Rank</span> Achievement
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/partners.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Partners
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="15">15</data></span>
+                        </li>
+                    </ul>
                 </div>
 
-                <ul class="card__statistic-list">
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/referral-profit.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            Referral profit
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="3100">3,100 $</data></span>
-                    </li>
+                <div id="stat-month" class="card__statistic-wrap" role="tabpanel" aria-labelledby="tab-month" hidden>
+                    <div class="card__statistic-profit-wrap">
+                        <div class="card__statistic-profit">
+                            <h3 class="card__statistic-title">
+                                <img src="img/icon/profit-success.svg" width="20" height="20" alt=""
+                                    class="card__statistic-icon" aria-hidden="true">
+                                Total profit Month
+                            </h3>
+                            <span class="card__statistic-count">
+                                <data value="5200">5,200 $</data>
+                            </span>
+                        </div>
+                        <button type="button" class="card__statistic-profit-btn">
+                            <img src="img/icon/share.svg" width="20" height="20" alt=""
+                                class="card__statistic-profit-icon" aria-hidden="true">
+                            <span>Share</span>
+                        </button>
+                    </div>
 
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/avg-daily-profit.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            AVG Daily profit
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="361">361 $</data></span>
-                    </li>
+                    <ul class="card__statistic-list">
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/referral-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Referral profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="3100">3,100 $</data></span>
+                        </li>
 
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/deposit-profit.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            Deposit Profit
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
-                    </li>
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/avg-daily-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                AVG Daily profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="361">361 $</data></span>
+                        </li>
 
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/active-partners.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            Active Partners
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="8">8</data></span>
-                    </li>
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/deposit-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Deposit Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
 
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/bonus-profit.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            Bonus Profit
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
-                    </li>
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/active-partners.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Active Partners
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="8">8</data></span>
+                        </li>
 
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/best-day-profit.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            Best Day Profit
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="6145">6,145 $</data></span>
-                    </li>
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/bonus-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Bonus Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
 
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/rank-achievement.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            <span>Rank</span> Achievement
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
-                    </li>
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/best-day-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Best Day Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="6145">6,145 $</data></span>
+                        </li>
 
-                    <li class="card__statistic-item">
-                        <h3 class="card__statistic-item-title">
-                            <img src="img/icon/partners.svg" width="20" height="20" alt=""
-                                class="card__statistic-item-icon" aria-hidden="true">
-                            Partners
-                        </h3>
-                        <span class="card__statistic-item-count"><data value="15">15</data></span>
-                    </li>
-                </ul>
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/rank-achievement.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                <span>Rank</span> Achievement
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/partners.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Partners
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="15">15</data></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="stat-year" class="card__statistic-wrap" role="tabpanel" aria-labelledby="tab-year" hidden>
+                    <div class="card__statistic-profit-wrap">
+                        <div class="card__statistic-profit">
+                            <h3 class="card__statistic-title">
+                                <img src="img/icon/profit-success.svg" width="20" height="20" alt=""
+                                    class="card__statistic-icon" aria-hidden="true">
+                                Total profit Yearly
+                            </h3>
+                            <span class="card__statistic-count">
+                                <data value="5200">5,200 $</data>
+                            </span>
+                        </div>
+                        <button type="button" class="card__statistic-profit-btn">
+                            <img src="img/icon/share.svg" width="20" height="20" alt=""
+                                class="card__statistic-profit-icon" aria-hidden="true">
+                            <span>Share</span>
+                        </button>
+                    </div>
+
+                    <ul class="card__statistic-list">
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/referral-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Referral profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="3100">3,100 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/avg-daily-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                AVG Daily profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="361">361 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/deposit-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Deposit Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/active-partners.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Active Partners
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="8">8</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/bonus-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Bonus Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/best-day-profit.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Best Day Profit
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="6145">6,145 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/rank-achievement.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                <span>Rank</span> Achievement
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="1340">1,340 $</data></span>
+                        </li>
+
+                        <li class="card__statistic-item">
+                            <h3 class="card__statistic-item-title">
+                                <img src="img/icon/partners.svg" width="20" height="20" alt=""
+                                    class="card__statistic-item-icon" aria-hidden="true">
+                                Partners
+                            </h3>
+                            <span class="card__statistic-item-count"><data value="15">15</data></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </article>
-
         <!-- GLOBAL PARTNERS MAP -->
         <article class="card primary" aria-labelledby="global-partners">
             <header class="card__header">
@@ -258,7 +449,6 @@
                 </div>
             </header>
         </article>
-
         <!-- LIVE TRADING -->
         <article class="card primary" aria-labelledby="live-trading">
             <header class="card__header">
@@ -542,7 +732,6 @@
                 </article>
             </div>
         </article>
-
         <!-- LAST TRANSACTIONS -->
         <article class="card primary" aria-labelledby="last-transactions">
             <header class="card__header">
@@ -997,6 +1186,29 @@
             });
         });
     </script>
+    <script>
+        const tabButtons = document.querySelectorAll('.card__toggle-btn');
+        const tabPanels = document.querySelectorAll('.card__statistic-wrap');
+
+        if (tabButtons.length && tabPanels.length) {
+            tabButtons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('aria-controls');
+
+                    tabButtons.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    tabPanels.forEach(panel => panel.hidden = true);
+
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    document.getElementById(targetId).hidden = false;
+                });
+            });
+        }
+    </script>
+
 </body>
 
 </html>

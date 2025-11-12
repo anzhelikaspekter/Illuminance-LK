@@ -5,307 +5,576 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Deposit">
+    <meta name="description" content="Dashboard overview with deposits, statistics, and transactions." />
+    <meta name="theme-color" content="#0b0f19" />
     <title>Deposit</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
-<body>
-    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
-        <div class="modal__wrap">
-            <button type="button" class="modal__close" aria-label="Close modal">
-                <img src="img/icon/close.svg" width="18" height="18" alt="Close icon">
-            </button>
-
-            <header class="modal__header">
-                <div class="modal__icon-wrap classic" aria-label="Deposit">
-                    <img src="img/icon/deposit.svg" width="18" height="18" alt="Add-icon">
+<body style="background-color: var(--bg-color);">
+    <section class="deposit">
+        <div class="deposit__card-list">
+            <header class="card__header">
+                <div class="card__header-title-wrap">
+                    <h2 class="card__header-title">Active Deposit</h2>
+                    <p class="card__header-desc">Active: <span class="count">12 Deposits</span></p>
                 </div>
+                <button type="button" class="card__header-btn" data-page="deposit-all">View All</button>
             </header>
-
-            <div class="modal__content">
-                <div class="modal__title-wrap">
-                    <h1 id="modal-title" class="modal__title">Deposit</h1>
-                    <p id="modal-desc" class="modal__desc">
-                        Add funds to your account to start trading and using exchange services.
-                    </p>
-                </div>
-
-                <form action="" method="post" class="modal__form">
-                    <div class="modal__form-wrap-fill withdraw">
-                        <div class="modal__form-wrap-fill--withdraw">
-                            <label for="amount" class="modal__form-wrap--label">From</label>
-                            <div class="modal__form-wrap-fill--input-field">
-                                <input type="number" id="amount" name="amount" placeholder="0.00"
-                                    class="modal__form-wrap-fill--input">
-
-                                <div class="modal__form-wrap-fill--select-mini" role="listbox"
-                                    aria-label="Select Network">
-                                    <button type="button" class="modal__form-wrap-fill--select-field"
-                                        aria-haspopup="listbox" aria-expanded="false">
-                                        <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
-                                            class="modal__form-wrap-fill--select-icon">
-
-                                        <p class="modal__form-wrap-fill--select-text">USDT</p>
-
-                                        <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
-                                            class="modal__form-wrap-fill--select-arrow">
-                                    </button>
-
-                                    <ul class="modal__form-wrap-fill--select-dropdown" hidden>
-                                        <li class="modal__form-wrap-fill--select-option active" data-value="USDT">
-                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
-                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
-                                        </li>
-                                        <li class="modal__form-wrap-fill--select-option" data-value="BTC">
-                                            <img src="img/icon/btc.svg" width="20" height="20" alt="BTC icon">
-                                            <p class="modal__form-wrap-fill--select-text">BTC</p>
-                                        </li>
-                                        <li class="modal__form-wrap-fill--select-option" data-value="ETH">
-                                            <img src="img/icon/eth.svg" width="20" height="20" alt="ETH icon">
-                                            <p class="modal__form-wrap-fill--select-text">ETH</p>
-                                        </li>
-                                        <li class="modal__form-wrap-fill--select-option" data-value="USDT">
-                                            <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon">
-                                            <p class="modal__form-wrap-fill--select-text">USDT</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <p id="modal-desc" class="modal__form-wrap-fill--desc">Minimal amount: $20</p>
+            <!-- ACTIVE DEPOSIT -->
+            <article class="card__deposit-wrap">
+                <div class="card__deposit-wrapper info">
+                    <div class="card__deposit-info">
+                        <p class="card__deposit-info-title">Deposit 1</p>
+                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
                     </div>
 
-                    <div class="modal__form-wrap-fill">
-                        <label class="modal__form-wrap-fill--label">Network</label>
+                    <div class="card__deposit-info">
+                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                            aria-controls="deposit-tooltip-1">
+                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
+                                aria-hidden="true">
+                            <span>Details</span>
+                        </button>
 
-                        <div class="modal__form-wrap-fill--select" role="listbox" aria-label="Select Network">
-                            <button type="button" class="modal__form-wrap-fill--select-field" aria-haspopup="listbox"
-                                aria-expanded="false">
-                                <p class="modal__form-wrap-fill--select-text"><span class="secondary">Select a
-                                        chain</span>
+                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                            Here will be text. Here will be text. Here will be text. Here will be text.
+                        </p>
+
+                        <p class="card__deposit-info-date">
+                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__deposit-wrapper details">
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Invested</p>
+                        <p class="card__deposit-details-desc">$1000</p>
+                    </div>
+                    <div class="card__divider" aria-hidden="true"></div>
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Daily %</p>
+                        <p class="card__deposit-details-desc">0.5%</p>
+                    </div>
+                </div>
+
+                <p class="card__deposit-info-date">
+                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                </p>
+            </article>
+            <article class="card__deposit-wrap">
+                <div class="card__deposit-wrapper info">
+                    <div class="card__deposit-info">
+                        <p class="card__deposit-info-title">Deposit 1</p>
+                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    </div>
+
+                    <div class="card__deposit-info">
+                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                            aria-controls="deposit-tooltip-1">
+                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
+                                aria-hidden="true">
+                            <span>Details</span>
+                        </button>
+
+                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                            Here will be text. Here will be text. Here will be text. Here will be text.
+                        </p>
+
+                        <p class="card__deposit-info-date">
+                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__deposit-wrapper details">
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Invested</p>
+                        <p class="card__deposit-details-desc">$1000</p>
+                    </div>
+                    <div class="card__divider" aria-hidden="true"></div>
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Daily %</p>
+                        <p class="card__deposit-details-desc">0.5%</p>
+                    </div>
+                </div>
+
+                <p class="card__deposit-info-date">
+                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                </p>
+            </article>
+            <article class="card__deposit-wrap">
+                <div class="card__deposit-wrapper info">
+                    <div class="card__deposit-info">
+                        <p class="card__deposit-info-title">Deposit 1</p>
+                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    </div>
+
+                    <div class="card__deposit-info">
+                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                            aria-controls="deposit-tooltip-1">
+                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
+                                aria-hidden="true">
+                            <span>Details</span>
+                        </button>
+
+                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                            Here will be text. Here will be text. Here will be text. Here will be text.
+                        </p>
+
+                        <p class="card__deposit-info-date">
+                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__deposit-wrapper details">
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Invested</p>
+                        <p class="card__deposit-details-desc">$1000</p>
+                    </div>
+                    <div class="card__divider" aria-hidden="true"></div>
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Daily %</p>
+                        <p class="card__deposit-details-desc">0.5%</p>
+                    </div>
+                </div>
+
+                <p class="card__deposit-info-date">
+                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                </p>
+            </article>
+            <article class="card__deposit-wrap">
+                <div class="card__deposit-wrapper info">
+                    <div class="card__deposit-info">
+                        <p class="card__deposit-info-title">Deposit 1</p>
+                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    </div>
+
+                    <div class="card__deposit-info">
+                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                            aria-controls="deposit-tooltip-1">
+                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
+                                aria-hidden="true">
+                            <span>Details</span>
+                        </button>
+
+                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                            Here will be text. Here will be text. Here will be text. Here will be text.
+                        </p>
+
+                        <p class="card__deposit-info-date">
+                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__deposit-wrapper details">
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Invested</p>
+                        <p class="card__deposit-details-desc">$1000</p>
+                    </div>
+                    <div class="card__divider" aria-hidden="true"></div>
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Daily %</p>
+                        <p class="card__deposit-details-desc">0.5%</p>
+                    </div>
+                </div>
+
+                <p class="card__deposit-info-date">
+                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                </p>
+            </article>
+            <article class="card__deposit-wrap">
+                <div class="card__deposit-wrapper info">
+                    <div class="card__deposit-info">
+                        <p class="card__deposit-info-title">Deposit 1</p>
+                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    </div>
+
+                    <div class="card__deposit-info">
+                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                            aria-controls="deposit-tooltip-1">
+                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
+                                aria-hidden="true">
+                            <span>Details</span>
+                        </button>
+
+                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                            Here will be text. Here will be text. Here will be text. Here will be text.
+                        </p>
+
+                        <p class="card__deposit-info-date">
+                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__deposit-wrapper details">
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Invested</p>
+                        <p class="card__deposit-details-desc">$1000</p>
+                    </div>
+                    <div class="card__divider" aria-hidden="true"></div>
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Daily %</p>
+                        <p class="card__deposit-details-desc">0.5%</p>
+                    </div>
+                </div>
+
+                <p class="card__deposit-info-date">
+                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                </p>
+            </article>
+            <article class="card__deposit-wrap">
+                <div class="card__deposit-wrapper info">
+                    <div class="card__deposit-info">
+                        <p class="card__deposit-info-title">Deposit 1</p>
+                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    </div>
+
+                    <div class="card__deposit-info">
+                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                            aria-controls="deposit-tooltip-1">
+                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
+                                aria-hidden="true">
+                            <span>Details</span>
+                        </button>
+
+                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                            Here will be text. Here will be text. Here will be text. Here will be text.
+                        </p>
+
+                        <p class="card__deposit-info-date">
+                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__deposit-wrapper details">
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Invested</p>
+                        <p class="card__deposit-details-desc">$1000</p>
+                    </div>
+                    <div class="card__divider" aria-hidden="true"></div>
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Daily %</p>
+                        <p class="card__deposit-details-desc">0.5%</p>
+                    </div>
+                </div>
+
+                <p class="card__deposit-info-date">
+                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                </p>
+            </article>
+            <article class="card__deposit-wrap">
+                <div class="card__deposit-wrapper info">
+                    <div class="card__deposit-info">
+                        <p class="card__deposit-info-title">Deposit 1</p>
+                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    </div>
+
+                    <div class="card__deposit-info">
+                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                            aria-controls="deposit-tooltip-1">
+                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
+                                aria-hidden="true">
+                            <span>Details</span>
+                        </button>
+
+                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                            Here will be text. Here will be text. Here will be text. Here will be text.
+                        </p>
+
+                        <p class="card__deposit-info-date">
+                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card__deposit-wrapper details">
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Invested</p>
+                        <p class="card__deposit-details-desc">$1000</p>
+                    </div>
+                    <div class="card__divider" aria-hidden="true"></div>
+                    <div class="card__deposit-details">
+                        <p class="card__deposit-details-label">Daily %</p>
+                        <p class="card__deposit-details-desc">0.5%</p>
+                    </div>
+                </div>
+
+                <p class="card__deposit-info-date">
+                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                </p>
+            </article>
+        </div>
+        <div class="deposit__create-deposit">
+            <header class="card__header">
+                <div class="card__header-title-wrap">
+                    <h2 class="card__header-title">Create a New Deposit</h2>
+                    <p class="card__header-desc">Choose your daily percentage, currency, and amount to start earning.
+                    </p>
+                </div>
+            </header>
+            <form action="#" class="deposit__form" novalidate>
+                <!-- Reinvestment -->
+                <div class="deposit__form-group">
+                    <label class="deposit__form-label">Reinvestment</label>
+                    <div class="deposit__switch" role="group" aria-label="Reinvestment">
+                        <button type="button" class="deposit__switch-btn active" data-value="on"
+                            aria-pressed="true">On</button>
+                        <button type="button" class="deposit__switch-btn" data-value="off"
+                            aria-pressed="false">Off</button>
+                    </div>
+                </div>
+                <!-- Daily Percentage -->
+                <div class="deposit__form-group">
+                    <label class="deposit__form-label">Daily Percentage</label>
+                    <div class="deposit__percent" role="group" aria-label="Daily percentage">
+                        <button type="button" class="deposit__percent-btn active" data-percent="0.1">0.1%</button>
+                        <button type="button" class="deposit__percent-btn" data-percent="0.2">0.2%</button>
+                        <button type="button" class="deposit__percent-btn" data-percent="0.4">0.4%</button>
+                        <button type="button" class="deposit__percent-btn" data-percent="0.5">0.5%</button>
+                        <button type="button" class="deposit__percent-btn" data-percent="1">1%</button>
+                    </div>
+                </div>
+                <!-- Currency -->
+                <div class="deposit__form-group">
+                    <label for="currency" class="deposit__form-label">Currency</label>
+                    <div class="deposit__select" role="listbox" aria-label="Currency">
+                        <button type="button" class="deposit__select-field" aria-haspopup="listbox"
+                            aria-expanded="false">
+                            <img src="img/icon/eth.svg" width="20" height="20" alt="ETH" class="deposit__select-icon">
+
+                            <p class="deposit__select-text">Ethereum <span class="secondary">ERC 20</span>
+                            </p>
+
+                            <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
+                                class="deposit__select-arrow">
+                        </button>
+
+                        <ul class="deposit__select-dropdown" hidden>
+                            <li class="deposit__select-option" data-value="USDT TRC 20">
+                                <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                    class="deposit__select-icon">
+                                <p class="deposit__select-text">USDT <span class="secondary">TRC 20</span>
                                 </p>
+                            </li>
+                            <li class="deposit__select-option" data-value="BTC Bitcoin">
+                                <img src="img/icon/btc.svg" width="20" height="20" alt="BTC icon"
+                                    class="deposit__select-icon">
+                                <p class="deposit__select-text">BTC <span class="secondary">Bitcoin</span>
+                                </p>
+                            </li>
+                            <li class="deposit__select-option active" data-value="ETH ERC 20">
+                                <img src="img/icon/eth.svg" width="20" height="20" alt="ETH icon"
+                                    class="deposit__select-icon">
+                                <p class="deposit__select-text">ETH <span class="secondary">ERC 20</span>
+                                </p>
+                            </li>
+                            <li class="deposit__select-option" data-value="USDT TRC 20">
+                                <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                    class="deposit__select-icon">
+                                <p class="deposit__select-text">USDT <span class="secondary">TRC 20</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Amount -->
+                <div class="deposit__form-group">
+                    <label for="amount" class="deposit__form-label">Amount</label>
+                    <div class="deposit__input-field">
+                        <input type="number" id="amount" name="amount" placeholder="0.00" class="deposit__input">
+
+                        <button type="button" class="deposit__link">Max</button>
+
+                        <div class="deposit__select-mini" role="listbox" aria-label="Select Network">
+                            <button type="button" class="deposit__select-field" aria-haspopup="listbox"
+                                aria-expanded="false">
+                                <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                    class="deposit__select-icon">
+
+                                <p class="deposit__select-text">USDT</p>
+
                                 <img src="img/icon/arrow-down.svg" width="14" height="14" alt=""
-                                    class="modal__form-wrap-fill--select-arrow">
+                                    class="deposit__select-arrow">
                             </button>
 
-                            <ul class="modal__form-wrap-fill--select-dropdown down" hidden>
-                                <li class="modal__form-wrap-fill--select-option active" data-value="ERC-20">
-                                    <p class="modal__form-wrap-fill--select-text">ERC-20</p>
+                            <ul class="deposit__select-dropdown" hidden>
+                                <li class="deposit__select-option active" data-value="USDT">
+                                    <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                        class="deposit__icon">
+                                    <p class="deposit__select-text">USDT</p>
                                 </li>
-                                <li class="modal__form-wrap-fill--select-option" data-value="TRC-20">
-                                    <p class="modal__form-wrap-fill--select-text">TRC-20</p>
+                                <li class="deposit__select-option" data-value="BTC">
+                                    <img src="img/icon/btc.svg" width="20" height="20" alt="BTC icon"
+                                        class="deposit__icon">
+                                    <p class="deposit__select-text">BTC</p>
                                 </li>
-                                <li class="modal__form-wrap-fill--select-option" data-value="BEP-20">
-                                    <p class="modal__form-wrap-fill--select-text">BEP-20</p>
+                                <li class="deposit__select-option" data-value="ETH">
+                                    <img src="img/icon/eth.svg" width="20" height="20" alt="ETH icon"
+                                        class="deposit__icon">
+                                    <p class="deposit__select-text">ETH</p>
                                 </li>
-                                <li class="modal__form-wrap-fill--select-option" data-value="MATIC">
-                                    <p class="modal__form-wrap-fill--select-text">MATIC</p>
-                                </li>
-                                <li class="modal__form-wrap-fill--select-option" data-value="SPL">
-                                    <p class="modal__form-wrap-fill--select-text">SPL</p>
+                                <li class="deposit__select-option" data-value="USDT">
+                                    <img src="img/icon/usdt.svg" width="20" height="20" alt="USDT icon"
+                                        class="deposit__icon">
+                                    <p class="deposit__select-text">USDT</p>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    <p class="deposit__min">minimum: <span class="sum">100 USD</span></p>
+                </div>
+                <!-- Result -->
+                <div class="deposit__result">
+                    <h3 class="deposit__result-title">You will receive 🚀</h3>
+                    <p class="deposit__result-sum">$<span class="deposit__result-value">1,374<span
+                                class="fraction">.40</span></span></p>
+                    <div class="devinder"></div>
+                    <ul class="deposit__result-list">
+                        <li class="deposit__result-item">
+                            <span>Invested</span><strong>$1000</strong>
+                        </li>
+                        <li class="deposit__result-item">
+                            <span>Daily %</span><strong>0.5%</strong>
+                        </li>
+                        <li class="deposit__result-item">
+                            <span>Effective %</span><strong>12.32%</strong>
+                        </li>
+                        <li class="deposit__result-item">
+                            <span>Tax withheld</span><strong>$73.60</strong>
+                        </li>
+                    </ul>
+                </div>
 
-                    <div class="modal__qr-wrap" hidden>
-                        <img src="img/qr-code.webp" width="120" height="120" alt="QR Code" class="modal__qr">
-                    </div>
-
-                    <div class="modal__form-wrap-fill" id="wallet-block" hidden>
-                        <label class="modal__form-wrap-fill--label">Wallet Address</label>
-
-                        <input type="text" id="address" name="address" placeholder="Enter your withdrawal address"
-                            class="modal__form-wrap-fill--input deposit">
-                        <button type="button" class="modal__form-wrap-fill--link deposit">Paste</button>
-                    </div>
-
-                    <button type="button" class="modal__btn" aria-label="Confirm">Confirm</button>
-                </form>
-            </div>
+                <button type="submit" class="deposit__btn">Create Deposit</button>
+            </form>
         </div>
     </section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const modal = document.querySelector(".modal");
-            const closeBtn = modal.querySelector(".modal__close");
+    <div id="modal-container" allowtransparency="true"></div>
 
-            closeBtn.addEventListener("click", () => {
-                if (window.parent && window.parent !== window) {
-                    window.parent.postMessage({ action: "closeModal" }, "*");
-                } else {
-                    window.history.back();
-                }
-            });
+    <script>
+        /* --- Tooltip Details --- */
+        document.querySelectorAll(".card__deposit-info-btn").forEach((btn) => {
+            btn.onclick = () => {
+                const parent = btn.closest(".card__deposit-info");
+                const tooltip = parent?.querySelector(".card__deposit-tooltip");
+                if (!tooltip) return;
+
+                const isVisible = !tooltip.hasAttribute("hidden");
+                tooltip.toggleAttribute("hidden", isVisible);
+                btn.setAttribute("aria-expanded", String(!isVisible));
+            };
         });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const selects = document.querySelectorAll(
-                ".modal__form-wrap-fill--select, .modal__form-wrap-fill--select-mini"
+
+        /* --- Toggle Groups (Reinvest / Percent) --- */
+        const reinvestBtns = document.querySelectorAll(".deposit__switch-btn");
+        const percentBtns = document.querySelectorAll(".deposit__percent-btn");
+        const amountInput = document.querySelector("#amount");
+        const resultValue = document.querySelector(".deposit__result-value");
+
+        /* --- Переключатель reinvest --- */
+        reinvestBtns.forEach((btn) => {
+            btn.onclick = () => {
+                reinvestBtns.forEach((b) => {
+                    b.classList.remove("active");
+                    b.setAttribute("aria-pressed", "false");
+                });
+                btn.classList.add("active");
+                btn.setAttribute("aria-pressed", "true");
+            };
+        });
+
+        /* --- Переключатель процентов --- */
+        percentBtns.forEach((btn) => {
+            btn.onclick = () => {
+                percentBtns.forEach((b) => {
+                    b.classList.remove("active");
+                    b.setAttribute("aria-pressed", "false");
+                });
+                btn.classList.add("active");
+                btn.setAttribute("aria-pressed", "true");
+                updateResult();
+            };
+        });
+
+        /* --- Обновление результата --- */
+        function updateResult() {
+            const amount = parseFloat(amountInput.value) || 0;
+            const percent = parseFloat(
+                document.querySelector(".deposit__percent-btn.active")?.dataset.percent || 0
             );
+            const result = amount + amount * (percent / 100) * 30 * 0.45; // пример формулы
+            resultValue.textContent = result.toFixed(2);
+        }
 
-            const qrWrap = document.querySelector(".modal__qr-wrap");
-            const qrImage = qrWrap?.querySelector(".modal__qr");
-            const walletBlock = document.querySelector("#wallet-block");
-            const addressInput = document.querySelector("#address");
+        amountInput.oninput = updateResult;
 
-            const networkData = {
-                "ERC-20": {
-                    qr: "img/qr/erc20.webp",
-                    address: "0x7aA44B5D7B9c68C452E53E7aD7Aaa1cB81cE18C7",
-                },
-                "TRC-20": {
-                    qr: "img/qr/trc20.webp",
-                    address: "TRj45V5fLJ8wKj8bZKJt52JzZ6p4Lq9w8n",
-                },
-                "BEP-20": {
-                    qr: "img/qr/bep20.webp",
-                    address: "0x8bC6c2A9bDd78208e9214E0A38A2b8B72C67eB5C",
-                },
-                "MATIC": {
-                    qr: "img/qr/matic.webp",
-                    address: "0x4A63a1C9F58BfC2BAdbC8d8eC0aE13a1dF2f9b01",
-                },
-                "SPL": {
-                    qr: "img/qr/spl.webp",
-                    address: "G5xvJwZ1RjS6h2r9kU7dFT2LxE1N2z3mYj8Pp9Qx",
-                },
+        /* --- Max кнопка --- */
+        document.querySelector(".deposit__link")?.addEventListener("click", () => {
+            amountInput.value = 1000;
+            updateResult();
+        });
+
+        /* --- Кастомные dropdowns --- */
+        document.querySelectorAll(".deposit__select, .deposit__select-mini").forEach((select) => {
+            const trigger = select.querySelector(".deposit__select-field");
+            const dropdown = select.querySelector(".deposit__select-dropdown");
+            const options = select.querySelectorAll(".deposit__select-option");
+
+            if (!trigger || !dropdown) return;
+
+            // Открытие / закрытие
+            trigger.onclick = (e) => {
+                e.stopPropagation();
+                const expanded = trigger.getAttribute("aria-expanded") === "true";
+                trigger.setAttribute("aria-expanded", String(!expanded));
+                dropdown.hidden = expanded;
             };
 
-            selects.forEach((select) => {
-                const field = select.querySelector(".modal__form-wrap-fill--select-field");
-                const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
-                const options = select.querySelectorAll(".modal__form-wrap-fill--select-option");
-                const textField = select.querySelector(".modal__form-wrap-fill--select-text");
-                const iconField = select.querySelector(".modal__form-wrap-fill--select-icon");
-                const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
+            // Выбор элемента
+            options.forEach((option) => {
+                option.onclick = () => {
+                    options.forEach((o) => o.classList.remove("active"));
+                    option.classList.add("active");
 
-                if (!field || !dropdown) return;
+                    // Обновляем содержимое триггера
+                    const icon = option.querySelector("img")?.cloneNode(true);
+                    const text = option.querySelector(".deposit__select-text")?.innerHTML || "";
+                    const currentIcon = trigger.querySelector(".deposit__select-icon");
+                    const currentText = trigger.querySelector(".deposit__select-text");
 
-                field.addEventListener("click", (e) => {
-                    e.stopPropagation();
-                    const expanded = field.getAttribute("aria-expanded") === "true";
-                    const newState = !expanded;
+                    if (currentIcon && icon) currentIcon.replaceWith(icon);
+                    if (currentText) currentText.innerHTML = text;
 
-                    selects.forEach((s) => {
-                        if (s !== select) {
-                            const otherField = s.querySelector(".modal__form-wrap-fill--select-field");
-                            const otherDropdown = s.querySelector(".modal__form-wrap-fill--select-dropdown");
-                            const otherArrow = s.querySelector(".modal__form-wrap-fill--select-arrow");
-                            otherField?.setAttribute("aria-expanded", "false");
-                            if (otherDropdown) otherDropdown.hidden = true;
-                            if (otherArrow) otherArrow.style.transform = "rotate(0deg)";
-                        }
-                    });
-
-                    field.setAttribute("aria-expanded", String(newState));
-                    dropdown.hidden = expanded;
-                    arrow.style.transform = newState ? "rotate(180deg)" : "rotate(0deg)";
-                    arrow.style.transition = "transform 0.25s ease";
-                });
-
-                options.forEach((option) => {
-                    option.addEventListener("click", (e) => {
-                        e.stopPropagation();
-                        options.forEach((o) => o.classList.remove("active"));
-                        option.classList.add("active");
-
-                        const imgEl = option.querySelector("img");
-                        const newIconSrc = imgEl ? imgEl.getAttribute("src") : null;
-                        const newIconAlt = imgEl ? imgEl.getAttribute("alt") : null;
-                        const mainText = option
-                            .querySelector(".modal__form-wrap-fill--select-text")
-                            .childNodes[0].textContent.trim();
-
-                        textField.textContent = mainText;
-
-                        if (iconField && newIconSrc) {
-                            iconField.src = newIconSrc;
-                            iconField.alt = newIconAlt;
-                            iconField.hidden = false;
-                        }
-
-                        dropdown.hidden = true;
-                        field.setAttribute("aria-expanded", "false");
-                        arrow.style.transform = "rotate(0deg)";
-
-                        if (select.classList.contains("modal__form-wrap-fill--select")) {
-                            const selectedValue = option.dataset.value;
-                            const data = networkData[selectedValue];
-
-                            if (data) {
-                                qrImage.src = data.qr;
-                                qrImage.alt = `QR code for ${selectedValue}`;
-                                qrWrap.hidden = false;
-
-                                if (walletBlock) walletBlock.hidden = false;
-
-                                addressInput.value = data.address;
-                                addressInput.setAttribute("title", data.address);
-                            } else {
-                                qrWrap.hidden = true;
-                                if (walletBlock) walletBlock.hidden = true;
-                                addressInput.value = "";
-                                addressInput.removeAttribute("title");
-                            }
-                        }
-                    });
-                });
+                    // Закрываем выпадающий список
+                    trigger.setAttribute("aria-expanded", "false");
+                    dropdown.hidden = true;
+                };
             });
+        });
 
-            document.addEventListener("click", () => {
-                selects.forEach((select) => {
-                    const field = select.querySelector(".modal__form-wrap-fill--select-field");
-                    const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
-                    const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
-                    field?.setAttribute("aria-expanded", "false");
-                    if (dropdown) dropdown.hidden = true;
-                    if (arrow) arrow.style.transform = "rotate(0deg)";
-                });
-            });
+        // Клик вне выпадающих списков — закрыть все
+        document.addEventListener("click", (e) => {
+            document.querySelectorAll(".deposit__select, .deposit__select-mini").forEach((select) => {
+                const trigger = select.querySelector(".deposit__select-field");
+                const dropdown = select.querySelector(".deposit__select-dropdown");
+                if (!trigger || !dropdown) return;
 
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") {
-                    selects.forEach((select) => {
-                        const field = select.querySelector(".modal__form-wrap-fill--select-field");
-                        const dropdown = select.querySelector(".modal__form-wrap-fill--select-dropdown");
-                        const arrow = select.querySelector(".modal__form-wrap-fill--select-arrow");
-                        field?.setAttribute("aria-expanded", "false");
-                        if (dropdown) dropdown.hidden = true;
-                        if (arrow) arrow.style.transform = "rotate(0deg)";
-                    });
-                    if (qrWrap) qrWrap.hidden = true;
-                    if (walletBlock) walletBlock.hidden = true;
+                if (!select.contains(e.target)) {
+                    trigger.setAttribute("aria-expanded", "false");
+                    dropdown.hidden = true;
                 }
             });
-
-            const pasteBtn = document.querySelector(".modal__form-wrap-fill--link.withdraw");
-            if (pasteBtn && addressInput) {
-                pasteBtn.addEventListener("click", async () => {
-                    try {
-                        const clipboardText = await navigator.clipboard.readText();
-                        if (!clipboardText) return;
-                        addressInput.value = clipboardText.trim();
-                        addressInput.setAttribute("title", clipboardText.trim());
-
-                        const original = pasteBtn.textContent;
-                        pasteBtn.textContent = "Pasted!";
-                        pasteBtn.classList.add("success");
-                        setTimeout(() => {
-                            pasteBtn.textContent = original;
-                            pasteBtn.classList.remove("success");
-                        }, 1500);
-                    } catch (err) {
-
-                    }
-                });
-            }
         });
     </script>
+
 </body>
 
 </html>

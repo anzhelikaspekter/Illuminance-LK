@@ -591,14 +591,22 @@
         })();
     </script>
     <script>
-        const filterBtn = document.querySelector(".card__header-btn");
-        const filterBlock = document.querySelector(".filter");
+        const filterBtn = document.querySelector('[aria-controls="filter-menu"]');
+        const filterMenu = document.getElementById("filter-menu");
 
-        if (filterBtn && filterBlock) {
-            filterBtn.addEventListener("click", () => {
-                const isExpanded = filterBtn.getAttribute("aria-expanded") === "true";
-                filterBtn.setAttribute("aria-expanded", String(!isExpanded));
-                filterBlock.hidden = isExpanded;
+        if (filterBtn && filterMenu) {
+            filterBtn.onclick = (e) => {
+                e.stopPropagation();
+                const expanded = filterBtn.getAttribute("aria-expanded") === "true";
+                filterBtn.setAttribute("aria-expanded", String(!expanded));
+                filterMenu.hidden = expanded;
+            };
+
+            document.addEventListener("click", (e) => {
+                if (!filterMenu.hidden && !filterMenu.contains(e.target) && e.target !== filterBtn) {
+                    filterMenu.hidden = true;
+                    filterBtn.setAttribute("aria-expanded", "false");
+                }
             });
         }
     </script>

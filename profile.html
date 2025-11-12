@@ -144,9 +144,8 @@
             });
         });
     </script>
-
     <script>
-        window.initProfileToggle = function () {
+        (function () {
             const toggle = document.querySelector(".toggle");
             if (!toggle) return;
 
@@ -157,32 +156,33 @@
                 if (isOn) {
                     stateBtn.dataset.state = "on";
                     stateBtn.innerHTML = `
-        <img src="img/icon/profile-auth-on.svg" width="18" height="18" alt="On icon">
-        <span>On</span>`;
+                        <img src="img/icon/profile-auth-on.svg" width="18" height="18" alt="On icon">
+                        <span>On</span>`;
                     toggle.setAttribute("aria-checked", "true");
                 } else {
                     stateBtn.dataset.state = "off";
                     stateBtn.innerHTML = `
-        <img src="img/icon/profile-auth-off.svg" width="18" height="18" alt="Off icon">
-        <span>Off</span>`;
+                        <img src="img/icon/profile-auth-off.svg" width="18" height="18" alt="Off icon">
+                        <span>Off</span>`;
                     toggle.setAttribute("aria-checked", "false");
                 }
             }
 
-            actionBtn.addEventListener("click", () => {
+            actionBtn.onclick = () => {
                 const isOn = stateBtn.dataset.state === "on";
                 setState(!isOn);
-            });
+            };
 
-            toggle.addEventListener("keydown", (e) => {
+            toggle.onkeydown = (e) => {
                 if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     const isOn = stateBtn.dataset.state === "on";
                     setState(!isOn);
                 }
-            });
-        };
+            };
+        })();
     </script>
+
 </body>
 
 </html>

@@ -93,7 +93,7 @@
             </div>
 
             <div class="sidebar__total-balance-btns-wrap">
-                <button type="button" class="sidebar__total-balance-btn primary" data-modal="deposit">
+                <button type="button" class="sidebar__total-balance-btn primary" data-modal="deposit-modal">
                     Deposit
                 </button>
 
@@ -353,12 +353,32 @@
             );
 
             const getIconPaths = (src) => {
-                const clean = src.replace("-active.svg", ".svg");
+                const clean = src.replace(/-active\.svg$/, ".svg");
                 return {
                     base: clean,
                     active: clean.replace(".svg", "-active.svg"),
                 };
             };
+
+            navButtons.forEach((btn) => {
+                btn.classList.remove("active");
+                btn.removeAttribute("aria-current");
+                btn.setAttribute("aria-pressed", "false");
+
+                const img = btn.querySelector("img");
+                if (!img) return;
+                const { base, active } = getIconPaths(img.src);
+                img.dataset.base = base;
+                img.dataset.active = active;
+                img.src = base;
+
+                btn.addEventListener("mouseenter", () => {
+                    if (!btn.classList.contains("active")) img.src = active;
+                });
+                btn.addEventListener("mouseleave", () => {
+                    if (!btn.classList.contains("active")) img.src = base;
+                });
+            });
 
             const resetAll = () => {
                 navButtons.forEach((btn) => {
@@ -366,21 +386,27 @@
                     btn.setAttribute("aria-pressed", "false");
                     btn.removeAttribute("aria-current");
                     const img = btn.querySelector("img");
-                    if (img) img.src = getIconPaths(img.src).base;
+                    if (img) img.src = img.dataset.base;
                 });
             };
 
             const activateByName = (name) => {
+                resetAll();
                 navButtons.forEach((btn) => {
                     if (btn.dataset.name === name) {
                         btn.classList.add("active");
                         btn.setAttribute("aria-pressed", "true");
                         btn.setAttribute("aria-current", "page");
                         const img = btn.querySelector("img");
-                        if (img) img.src = getIconPaths(img.src).active;
+                        if (img) img.src = img.dataset.active;
                     }
                 });
             };
+
+            const hash = location.hash.replace("#", "");
+            if (hash) {
+                activateByName(hash);
+            }
 
             navButtons.forEach((btn) => {
                 const name = btn.dataset.name;
@@ -390,6 +416,23 @@
                     if (!isActive) activateByName(name);
                 });
             });
+
+            window.addEventListener("hashchange", () => {
+                const newHash = location.hash.replace("#", "");
+                if (newHash) {
+                    activateByName(newHash);
+                } else {
+                    resetAll();
+                }
+            });
+
+            const originalLoadPage = window.loadPage;
+            if (typeof originalLoadPage === "function") {
+                window.loadPage = async (page) => {
+                    await originalLoadPage(page);
+                    activateByName(page);
+                };
+            }
         });
     </script>
 

@@ -2703,7 +2703,8 @@ html {
 }
 .card__deposit-wrapper.details {
   width: 100%;
-  max-width: 150px;
+  min-width: 150px;
+  max-width: 10vw;
   padding: var(--padding-sm);
   background: var(--card-deposit-details-bg-color);
   box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.05), inset -1px -1px 1px rgba(0, 0, 0, 0.25);
@@ -2901,11 +2902,18 @@ html {
     right: 0;
   }
 }
+.card__statistic-container {
+  width: 100%;
+  overflow: hidden;
+}
 .card__statistic-wrap {
   width: 100%;
   display: flex;
   align-items: stretch;
   gap: 8px;
+}
+.card__statistic-wrap[hidden] {
+  display: none !important;
 }
 @media (max-width: 1023.9px) {
   .card__statistic-wrap {
@@ -4188,6 +4196,465 @@ html {
   background: var(--filter-btn-active-bg-color);
   border: 1px solid var(--filter-btn-active-border-color);
   color: var(--filter-btn-active-color);
+}
+
+:root {
+  --deposit-card-bg-color: rgba(225, 232, 247, 0.05);
+  --deposit-card-border-color: rgba(225, 232, 247, 0.04);
+  --depoait-card-bg-color: url(../img/card-bg.svg) no-repeat top / cover, rgba(255, 255, 255, 0.05);
+  --deposit-card-border-color: rgba(255, 255, 255, 0.07);
+  --deposit-card-wrapper-bg-color: rgba(255, 255, 255, 0.04);
+  --deposit-card-frst-bg-color: url(../img/deposit-card-bg.svg) no-repeat top / cover, rgba(1, 123, 255, 0.25);
+  --deposit-card-frst-border-color: rgba(1, 123, 255, 0.15);
+  --deposit-card-wrapper-frst-bg-color: rgba(1, 123, 255, 0.15);
+  --deposit-card-scnd-bg-color: url(../img/deposit-card-bg-scnd.svg) no-repeat top / cover, rgba(1, 123, 255, 0.18);
+  --deposit-card-scnd-border-color: rgba(1, 123, 255, 0.1);
+  --deposit-card-wrapper-scnd-bg-color: rgba(1, 123, 255, 0.1);
+  --deposit-card-thrd-bg-color: url(../img/deposit-card-bg-thrd.svg) no-repeat top / cover, rgba(1, 123, 255, 0.12);
+  --deposit-card-thrd-border-color: rgba(1, 123, 255, 0.08);
+  --deposit-card-wrapper-thrd-bg-color: rgba(1, 123, 255, 0.08);
+  --deposit-card-frth-bg-color: url(../img/deposit-card-bg-frth.svg) no-repeat top / cover, rgba(1, 123, 255, 0.08);
+  --deposit-card-frth-border-color: rgba(1, 123, 255, 0.05);
+  --deposit-card-wrapper-frth-bg-color: rgba(1, 123, 255, 0.05);
+  --deposit-card-ffth-bg-color: url(../img/deposit-card-bg-ffth.svg) no-repeat top / cover, rgba(1, 123, 255, 0.02);
+  --deposit-card-wrapper-ffth-bg-color: rgba(255, 255, 255, 0.04);
+  --deposit-btn-bg-color: rgba(71, 114, 202, 1);
+  --deposit-btn-color: rgba(255, 255, 255, 1);
+  --deposit-form-label-color: rgba(255, 255, 255, 1);
+  --deposit-form-switch-bg-color: rgba(225, 232, 247, 0.06);
+  --deposit-form-switch-color: rgba(255, 255, 255, 0.5);
+  --deposit-form-switch-active-color: rgba(71, 114, 202, 1);
+  --deposit-form-select-bg-color: rgba(255, 255, 255, 0.05);
+  --deposit-form-select-color: rgba(255, 255, 255, 1);
+  --deposit-form-select-field-color: rgba(23, 24, 24, 1);
+  --deposit-form-select-secondary-color: rgba(255, 255, 255, 0.5);
+  --deposit-form-select-option-bg-active-color: rgba(71, 114, 202, 0.1);
+  --deposit-form-min-color: rgba(255, 255, 255, 0.5);
+  --deposit-form-sum-color: rgba(255, 255, 255, 0.7);
+  --deposit-devinder-color: rgba(255, 255, 255, 0.04);
+  --deposit-result-item-color: rgba(255, 255, 255, 0.5);
+  --deposit-result-item-color-strong: rgba(255, 255, 255, 1);
+}
+
+.deposit {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  overflow: hidden;
+}
+@media (max-width: 1279.9px) {
+  .deposit {
+    flex-direction: column;
+  }
+}
+.deposit__card-list {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: var(--padding-sm);
+  background: var(--deposit-card-bg-color);
+  border: 1px solid var(--deposit-card-border-color);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: layout paint;
+  backface-visibility: hidden;
+  overscroll-behavior: none;
+}
+@media (max-width: 1279.9px) {
+  .deposit__card-list {
+    flex: 1 1 100%;
+    max-height: 750px;
+  }
+}
+.deposit__card-list .card__deposit-wrap {
+  background: var(--depoait-card-bg-color);
+  border: 1px solid var(--deposit-card-border-color);
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(1) {
+  background: var(--deposit-card-frst-bg-color) !important;
+  border: 1px solid var(--deposit-card-frst-border-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(1) .card__deposit-wrapper.details {
+  background: var(--deposit-card-wrapper-frst-bg-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(2) {
+  background: var(--deposit-card-scnd-bg-color) !important;
+  border: 1px solid var(--deposit-card-scnd-border-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(2) .card__deposit-wrapper.details {
+  background: var(--deposit-card-wrapper-scnd-bg-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(3) {
+  background: var(--deposit-card-thrd-bg-color) !important;
+  border: 1px solid var(--deposit-card-thrd-border-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(3) .card__deposit-wrapper.details {
+  background: var(--deposit-card-wrapper-thrd-bg-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(4) {
+  background: var(--deposit-card-frth-bg-color) !important;
+  border: 1px solid var(--deposit-card-frth-border-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(4) .card__deposit-wrapper.details {
+  background: var(--deposit-card-wrapper-frth-bg-color) !important;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(5) {
+  background: var(--deposit-card-ffth-bg-color) !important;
+  border: 1px solid transparent;
+}
+.deposit__card-list .card__deposit-wrap:nth-of-type(5) .card__deposit-wrapper.details {
+  background: var(--deposit-card-wrapper-ffth-bg-color) !important;
+}
+.deposit__card-list .card__deposit-wrap .card__deposit-wrapper.details {
+  background: var(--deposit-card-wrapper-bg-color);
+}
+.deposit__create-deposit {
+  width: 100%;
+  height: auto;
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: var(--padding-sm);
+  background: var(--deposit-card-bg-color);
+  border: 1px solid var(--deposit-card-border-color);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.deposit__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+.deposit__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.deposit__form-label {
+  font-size: var(--desc-size-md);
+  font-weight: 400;
+  color: var(--deposit-form-label-color);
+}
+.deposit__switch, .deposit__percent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--deposit-form-switch-bg-color);
+  border-radius: var(--border-radius-sm);
+  padding: 4px;
+}
+@media (max-width: 464.9px) {
+  .deposit__percent {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+.deposit__switch-btn, .deposit__percent-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--desc-size-md);
+  font-weight: 500;
+  color: var(--deposit-form-switch-color);
+}
+.deposit__switch-btn.active, .deposit__percent-btn.active {
+  background: rgba(71, 114, 202, 0.1);
+  box-shadow: inset -1px -1px 1px rgba(0, 0, 0, 0.25);
+  color: var(--deposit-form-switch-active-color);
+}
+.deposit__switch-btn:hover:not(.active), .deposit__percent-btn:hover:not(.active) {
+  background: rgba(71, 114, 202, 0.1);
+  box-shadow: inset -1px -1px 1px rgba(0, 0, 0, 0.25);
+  color: var(--deposit-form-switch-active-color);
+}
+.deposit__select {
+  position: relative;
+  width: 100%;
+}
+.deposit__input-field {
+  position: relative;
+}
+.deposit__input {
+  display: block;
+  width: calc(100% - 140px);
+  padding: var(--padding-sm);
+  font-size: var(--desc-size-md);
+  font-weight: 400;
+  color: var(--deposit-form-select-color);
+  background: var(--deposit-form-select-field-color);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.deposit__input::-moz-placeholder {
+  font-size: var(--desc-size-lg);
+  font-weight: 300;
+}
+.deposit__input::placeholder {
+  font-size: var(--desc-size-lg);
+  font-weight: 300;
+}
+.deposit__input:focus, .deposit__input:active {
+  color: var(--deposit-form-select-color) !important;
+  background: transparent !important;
+}
+.deposit__input:focus, .deposit__input:focus-visible {
+  color: var(--deposit-form-select-color) !important;
+  background: transparent !important;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+.deposit__input:-webkit-autofill, .deposit__input:-webkit-autofill:focus, .deposit__input:-webkit-autofill:hover, .deposit__input:-webkit-autofill:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -webkit-text-fill-color: var(--deposit-form-select-color) !important;
+  -webkit-transition: background-color 9999s ease-in-out 0s;
+  transition: background-color 9999s ease-in-out 0s;
+}
+.deposit__input:focus {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.deposit__link {
+  padding: 4px;
+  font-size: var(--desc-size-md);
+  font-weight: 500;
+  color: var(--modal-link-color);
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 50%;
+  right: 160px;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.deposit__select-mini {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 100%;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  background: transparent;
+  border-radius: var(--border-radius-sm);
+  transform: translateY(-50%);
+}
+.deposit__select-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: var(--padding-sm);
+  background: var(--deposit-form-select-field-color);
+  border-radius: var(--border-radius-sm);
+  border: none;
+}
+.deposit__select-icon {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.deposit__select-icon:not([hidden]) {
+  visibility: visible;
+}
+.deposit__select-text {
+  font-size: var(--desc-size-md);
+  font-weight: 400;
+  color: var(--deposit-form-select-color);
+}
+.deposit__select-text .secondary {
+  color: var(--deposit-form-select-secondary-color);
+}
+.deposit__select-arrow {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-left: auto;
+}
+.deposit__select-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 140px;
+  background: var(--deposit-form-select-field-color);
+  border-radius: var(--border-radius-md);
+  padding: 4px;
+  list-style: none;
+  z-index: 999;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.deposit__select-dropdown[hidden] {
+  display: none !important;
+}
+@media (max-width: 549.9px) {
+  .deposit__select-dropdown.down {
+    height: 100px;
+  }
+}
+.deposit__select-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--padding-xs);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+}
+.deposit__select-option:hover {
+  background: var(--deposit-form-select-option-bg-active-color);
+}
+.deposit__select-option.active {
+  background: var(--deposit-form-select-option-bg-active-color);
+}
+.deposit__select-option[aria-selected=true] {
+  background: var(--deposit-form-select-option-bg-active-color);
+}
+.deposit__icon {
+  width: 24px;
+  height: 24px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.deposit__amount {
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.4rem;
+}
+.deposit__amount input {
+  flex: 1;
+  padding: 0.8rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+}
+.deposit__amount .deposit__max {
+  background: var(--accent-dim);
+  color: var(--accent-text);
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.deposit__amount .deposit__select--currency {
+  margin-left: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+.deposit__min {
+  font-size: var(--desc-size-sm);
+  color: var(--deposit-form-min-color);
+}
+.deposit__min .sum {
+  color: var(--deposit-form-sum-color);
+}
+.deposit__result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--depoait-card-bg-color);
+  border: 1px solid var(--deposit-card-border-color);
+  border-radius: var(--border-radius-sm);
+  padding: var(--padding-sm);
+}
+.deposit__result-title {
+  font-size: var(--desc-size-sm);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+}
+.deposit__result-sum {
+  font-size: var(--title-lg);
+  font-weight: 600;
+  color: var(--card-deposit-info-sum-color);
+}
+.deposit__result-sum .fraction {
+  color: var(--card-deposit-info-sum-end-color);
+}
+.deposit__result-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 464.9px) {
+  .deposit__result-list {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+.deposit__result-item {
+  flex: 1 1 calc(25% - 8px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: var(--desc-size-sm);
+  color: var(--deposit-result-item-color);
+}
+.deposit__result-item strong {
+  font-size: var(--title-sm);
+  color: var(--deposit-result-item-color-strong);
+}
+@media (max-width: 464.9px) {
+  .deposit__result-item {
+    flex: 1 1 calc(50% - 8px);
+  }
+}
+.deposit__result .devinder {
+  width: 100%;
+  height: 1px;
+  background: var(--deposit-devinder-color);
+}
+.deposit__btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--padding-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--desc-size-md);
+  font-weight: 400;
+  color: var(--deposit-btn-color);
+  background: var(--deposit-btn-bg-color);
+  box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.25), inset -1px -1px 1px rgba(0, 0, 0, 0.25);
 }
 
 * {

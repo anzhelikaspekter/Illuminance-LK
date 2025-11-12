@@ -379,7 +379,8 @@
         }
         &.details {
             width: 100%;
-            max-width: 150px;
+            min-width: 150px;
+            max-width: 10vw;
             padding: var(--padding-sm);
             background: var(--card-deposit-details-bg-color);
             box-shadow:
@@ -557,11 +558,18 @@
             right: 0;
         }
     }
+    &__statistic-container {
+        width: 100%;
+        overflow: hidden;
+    }
     &__statistic-wrap {
         width: 100%;
         display: flex;
         align-items: stretch;
         gap: 8px;
+        &[hidden] {
+            display: none !important;
+        }
         @media (max-width: 1023.9px) {
             flex-direction: column;
         }

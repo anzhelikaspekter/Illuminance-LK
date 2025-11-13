@@ -15,7 +15,7 @@
 <body style="background-color: var(--bg-color);">
     <section class="deposit">
         <div class="deposit__card-list">
-            <header class="card__header">
+            <header class="card__header" id="activeDeposit">
                 <div class="card__header-title-wrap">
                     <h2 class="card__header-title">Active Deposit</h2>
                     <p class="card__header-desc">Active: <span class="count">12 Deposits</span></p>
@@ -23,293 +23,295 @@
                 <button type="button" class="card__header-btn" data-page="deposit-all">View All</button>
             </header>
             <!-- ACTIVE DEPOSIT -->
-            <article class="card__deposit-wrap">
-                <div class="card__deposit-wrapper info">
-                    <div class="card__deposit-info">
-                        <p class="card__deposit-info-title">Deposit 1</p>
-                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+            <div class="deposit__card-list-wrap">
+                <article class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
+
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
+                                <span>Details</span>
+                            </button>
+
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
+
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="card__deposit-info">
-                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
-                            aria-controls="deposit-tooltip-1">
-                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
-                                aria-hidden="true">
-                            <span>Details</span>
-                        </button>
-
-                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
-                            Here will be text. Here will be text. Here will be text. Here will be text.
-                        </p>
-
-                        <p class="card__deposit-info-date">
-                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card__deposit-wrapper details">
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Invested</p>
-                        <p class="card__deposit-details-desc">$1000</p>
-                    </div>
-                    <div class="card__divider" aria-hidden="true"></div>
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Daily %</p>
-                        <p class="card__deposit-details-desc">0.5%</p>
-                    </div>
-                </div>
-
-                <p class="card__deposit-info-date">
-                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                </p>
-            </article>
-            <article class="card__deposit-wrap">
-                <div class="card__deposit-wrapper info">
-                    <div class="card__deposit-info">
-                        <p class="card__deposit-info-title">Deposit 1</p>
-                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
                     </div>
 
-                    <div class="card__deposit-info">
-                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
-                            aria-controls="deposit-tooltip-1">
-                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
-                                aria-hidden="true">
-                            <span>Details</span>
-                        </button>
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+                </article>
+                <article class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
 
-                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
-                            Here will be text. Here will be text. Here will be text. Here will be text.
-                        </p>
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
+                                <span>Details</span>
+                            </button>
 
-                        <p class="card__deposit-info-date">
-                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                        </p>
-                    </div>
-                </div>
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
 
-                <div class="card__deposit-wrapper details">
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Invested</p>
-                        <p class="card__deposit-details-desc">$1000</p>
-                    </div>
-                    <div class="card__divider" aria-hidden="true"></div>
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Daily %</p>
-                        <p class="card__deposit-details-desc">0.5%</p>
-                    </div>
-                </div>
-
-                <p class="card__deposit-info-date">
-                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                </p>
-            </article>
-            <article class="card__deposit-wrap">
-                <div class="card__deposit-wrapper info">
-                    <div class="card__deposit-info">
-                        <p class="card__deposit-info-title">Deposit 1</p>
-                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="card__deposit-info">
-                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
-                            aria-controls="deposit-tooltip-1">
-                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
-                                aria-hidden="true">
-                            <span>Details</span>
-                        </button>
-
-                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
-                            Here will be text. Here will be text. Here will be text. Here will be text.
-                        </p>
-
-                        <p class="card__deposit-info-date">
-                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card__deposit-wrapper details">
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Invested</p>
-                        <p class="card__deposit-details-desc">$1000</p>
-                    </div>
-                    <div class="card__divider" aria-hidden="true"></div>
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Daily %</p>
-                        <p class="card__deposit-details-desc">0.5%</p>
-                    </div>
-                </div>
-
-                <p class="card__deposit-info-date">
-                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                </p>
-            </article>
-            <article class="card__deposit-wrap">
-                <div class="card__deposit-wrapper info">
-                    <div class="card__deposit-info">
-                        <p class="card__deposit-info-title">Deposit 1</p>
-                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
                     </div>
 
-                    <div class="card__deposit-info">
-                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
-                            aria-controls="deposit-tooltip-1">
-                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
-                                aria-hidden="true">
-                            <span>Details</span>
-                        </button>
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+                </article>
+                <article class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
 
-                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
-                            Here will be text. Here will be text. Here will be text. Here will be text.
-                        </p>
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
+                                <span>Details</span>
+                            </button>
 
-                        <p class="card__deposit-info-date">
-                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                        </p>
-                    </div>
-                </div>
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
 
-                <div class="card__deposit-wrapper details">
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Invested</p>
-                        <p class="card__deposit-details-desc">$1000</p>
-                    </div>
-                    <div class="card__divider" aria-hidden="true"></div>
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Daily %</p>
-                        <p class="card__deposit-details-desc">0.5%</p>
-                    </div>
-                </div>
-
-                <p class="card__deposit-info-date">
-                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                </p>
-            </article>
-            <article class="card__deposit-wrap">
-                <div class="card__deposit-wrapper info">
-                    <div class="card__deposit-info">
-                        <p class="card__deposit-info-title">Deposit 1</p>
-                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="card__deposit-info">
-                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
-                            aria-controls="deposit-tooltip-1">
-                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
-                                aria-hidden="true">
-                            <span>Details</span>
-                        </button>
-
-                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
-                            Here will be text. Here will be text. Here will be text. Here will be text.
-                        </p>
-
-                        <p class="card__deposit-info-date">
-                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                        </p>
-                    </div>
-                </div>
-
-                <div class="card__deposit-wrapper details">
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Invested</p>
-                        <p class="card__deposit-details-desc">$1000</p>
-                    </div>
-                    <div class="card__divider" aria-hidden="true"></div>
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Daily %</p>
-                        <p class="card__deposit-details-desc">0.5%</p>
-                    </div>
-                </div>
-
-                <p class="card__deposit-info-date">
-                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                </p>
-            </article>
-            <article class="card__deposit-wrap">
-                <div class="card__deposit-wrapper info">
-                    <div class="card__deposit-info">
-                        <p class="card__deposit-info-title">Deposit 1</p>
-                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
                     </div>
 
-                    <div class="card__deposit-info">
-                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
-                            aria-controls="deposit-tooltip-1">
-                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
-                                aria-hidden="true">
-                            <span>Details</span>
-                        </button>
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+                </article>
+                <article class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
 
-                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
-                            Here will be text. Here will be text. Here will be text. Here will be text.
-                        </p>
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
+                                <span>Details</span>
+                            </button>
 
-                        <p class="card__deposit-info-date">
-                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                        </p>
-                    </div>
-                </div>
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
 
-                <div class="card__deposit-wrapper details">
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Invested</p>
-                        <p class="card__deposit-details-desc">$1000</p>
-                    </div>
-                    <div class="card__divider" aria-hidden="true"></div>
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Daily %</p>
-                        <p class="card__deposit-details-desc">0.5%</p>
-                    </div>
-                </div>
-
-                <p class="card__deposit-info-date">
-                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                </p>
-            </article>
-            <article class="card__deposit-wrap">
-                <div class="card__deposit-wrapper info">
-                    <div class="card__deposit-info">
-                        <p class="card__deposit-info-title">Deposit 1</p>
-                        <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="card__deposit-info">
-                        <button type="button" class="card__deposit-info-btn" aria-expanded="false"
-                            aria-controls="deposit-tooltip-1">
-                            <img src="img/icon/info.svg" width="20" height="20" alt="" class="card__deposit-info-icon"
-                                aria-hidden="true">
-                            <span>Details</span>
-                        </button>
-
-                        <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
-                            Here will be text. Here will be text. Here will be text. Here will be text.
-                        </p>
-
-                        <p class="card__deposit-info-date">
-                            Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                        </p>
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card__deposit-wrapper details">
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Invested</p>
-                        <p class="card__deposit-details-desc">$1000</p>
-                    </div>
-                    <div class="card__divider" aria-hidden="true"></div>
-                    <div class="card__deposit-details">
-                        <p class="card__deposit-details-label">Daily %</p>
-                        <p class="card__deposit-details-desc">0.5%</p>
-                    </div>
-                </div>
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+                </article>
+                <article class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
 
-                <p class="card__deposit-info-date">
-                    Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
-                </p>
-            </article>
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
+                                <span>Details</span>
+                            </button>
+
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
+
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
+                    </div>
+
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+                </article>
+                <article class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
+
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
+                                <span>Details</span>
+                            </button>
+
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
+
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
+                    </div>
+
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+                </article>
+                <article class="card__deposit-wrap">
+                    <div class="card__deposit-wrapper info">
+                        <div class="card__deposit-info">
+                            <p class="card__deposit-info-title">Deposit 1</p>
+                            <p class="card__deposit-info-sum">$1,374<span class="fraction">.40</span></p>
+                        </div>
+
+                        <div class="card__deposit-info">
+                            <button type="button" class="card__deposit-info-btn" aria-expanded="false"
+                                aria-controls="deposit-tooltip-1">
+                                <img src="img/icon/info.svg" width="20" height="20" alt=""
+                                    class="card__deposit-info-icon" aria-hidden="true">
+                                <span>Details</span>
+                            </button>
+
+                            <p id="deposit-tooltip-1" class="card__deposit-tooltip" hidden>
+                                Here will be text. Here will be text. Here will be text. Here will be text.
+                            </p>
+
+                            <p class="card__deposit-info-date">
+                                Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card__deposit-wrapper details">
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Invested</p>
+                            <p class="card__deposit-details-desc">$1000</p>
+                        </div>
+                        <div class="card__divider" aria-hidden="true"></div>
+                        <div class="card__deposit-details">
+                            <p class="card__deposit-details-label">Daily %</p>
+                            <p class="card__deposit-details-desc">0.5%</p>
+                        </div>
+                    </div>
+
+                    <p class="card__deposit-info-date">
+                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                    </p>
+                </article>
+            </div>
         </div>
         <div class="deposit__create-deposit">
             <header class="card__header">
@@ -457,8 +459,6 @@
         </div>
     </section>
 
-    <div id="modal-container" allowtransparency="true"></div>
-
     <script>
         /* --- Tooltip Details --- */
         document.querySelectorAll(".card__deposit-info-btn").forEach((btn) => {
@@ -479,7 +479,7 @@
         const amountInput = document.querySelector("#amount");
         const resultValue = document.querySelector(".deposit__result-value");
 
-        /* --- Переключатель reinvest --- */
+        /* --- Reinvest switch --- */
         reinvestBtns.forEach((btn) => {
             btn.onclick = () => {
                 reinvestBtns.forEach((b) => {
@@ -491,7 +491,7 @@
             };
         });
 
-        /* --- Переключатель процентов --- */
+        /* --- Percentage switch --- */
         percentBtns.forEach((btn) => {
             btn.onclick = () => {
                 percentBtns.forEach((b) => {
@@ -504,7 +504,7 @@
             };
         });
 
-        /* --- Обновление результата --- */
+        /* --- Update result --- */
         function updateResult() {
             const amount = parseFloat(amountInput.value) || 0;
             const percent = parseFloat(
@@ -516,13 +516,13 @@
 
         amountInput.oninput = updateResult;
 
-        /* --- Max кнопка --- */
+        /* --- Max Button --- */
         document.querySelector(".deposit__link")?.addEventListener("click", () => {
             amountInput.value = 1000;
             updateResult();
         });
 
-        /* --- Кастомные dropdowns --- */
+        /* --- Custom dropdowns --- */
         document.querySelectorAll(".deposit__select, .deposit__select-mini").forEach((select) => {
             const trigger = select.querySelector(".deposit__select-field");
             const dropdown = select.querySelector(".deposit__select-dropdown");
@@ -530,7 +530,6 @@
 
             if (!trigger || !dropdown) return;
 
-            // Открытие / закрытие
             trigger.onclick = (e) => {
                 e.stopPropagation();
                 const expanded = trigger.getAttribute("aria-expanded") === "true";
@@ -538,13 +537,11 @@
                 dropdown.hidden = expanded;
             };
 
-            // Выбор элемента
             options.forEach((option) => {
                 option.onclick = () => {
                     options.forEach((o) => o.classList.remove("active"));
                     option.classList.add("active");
 
-                    // Обновляем содержимое триггера
                     const icon = option.querySelector("img")?.cloneNode(true);
                     const text = option.querySelector(".deposit__select-text")?.innerHTML || "";
                     const currentIcon = trigger.querySelector(".deposit__select-icon");
@@ -553,14 +550,13 @@
                     if (currentIcon && icon) currentIcon.replaceWith(icon);
                     if (currentText) currentText.innerHTML = text;
 
-                    // Закрываем выпадающий список
                     trigger.setAttribute("aria-expanded", "false");
                     dropdown.hidden = true;
                 };
             });
         });
 
-        // Клик вне выпадающих списков — закрыть все
+        // Click outside the drop-down lists to close all
         document.addEventListener("click", (e) => {
             document.querySelectorAll(".deposit__select, .deposit__select-mini").forEach((select) => {
                 const trigger = select.querySelector(".deposit__select-field");

@@ -135,6 +135,13 @@
                 flex-direction: column;
             }
         }
+        &#activeDeposit {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            padding: var(--padding-sm) 0;
+            background-color: #0b0c0c;
+        }
     }
     &__header-user-wrap {
         display: flex;
@@ -360,7 +367,7 @@
         flex-direction: column;
         justify-content: space-between;
         gap: 20px;
-        @media (min-width: 768px) and (max-width: 1439.9px) {
+        @media (min-width: 1024px) and (max-width: 1439.9px) {
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -386,12 +393,24 @@
                 inset -1px -1px 1px rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(12px);
             border-radius: var(--border-radius-sm);
-            @media (min-width: 1024px) and (max-width: 1439.9px) {
+            @media (min-width: 1275px) and (max-width: 1439.9px) {
                 flex-direction: column;
                 gap: 20px;
             }
+            @media (min-width: 1024px) and (max-width: 1274.9px) {
+                width: 100%;
+                min-width: 100px;
+                max-width: max-content;
+                flex-direction: row;
+                gap: 20px;
+                white-space: nowrap;
+            }
             @media (min-width: 768px) and (max-width: 1023.9px) {
-                max-width: 230px;
+                width: 100%;
+                min-width: 100px;
+                max-width: max-content;
+                flex-direction: row;
+                gap: 20px;
                 white-space: nowrap;
             }
             @media (max-width: 767.9px) {
@@ -404,8 +423,21 @@
         }
         &.info {
             justify-content: space-between;
-            @media (min-width: 1024px) and (max-width: 1439.9px) {
+            @media (min-width: 1275px) and (max-width: 1439.9px) {
                 flex-direction: column;
+                gap: 20px;
+            }
+            @media (min-width: 1024px) and (max-width: 1274.9px) {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 16px;
+            }
+            @media (min-width: 768px) and (max-width: 1023.9px) {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 16px;
             }
         }
     }
@@ -413,6 +445,10 @@
         width: 100%;
         height: 1px;
         border: 1px dashed var(--card-deposit-hr-border-color);
+        @media (min-width: 1024px) and (max-width: 1274.9px) {
+            width: 1px;
+            height: 100%;
+        }
         @media (min-width: 768px) and (max-width: 1023.9px) {
             width: 1px;
             height: 100%;
@@ -453,8 +489,11 @@
             }
         }
         &:last-child {
-            @media (min-width: 1024px) and (max-width: 1439.9px) {
+            @media (min-width: 1275px) and (max-width: 1439.9px) {
                 align-items: flex-start;
+            }
+            @media (min-width: 1024px) and (max-width: 1274.9px) {
+                align-items: flex-end;
             }
             @media (min-width: 768px) and (max-width: 1023.9px) {
                 align-items: flex-end;

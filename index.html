@@ -285,7 +285,7 @@
 
     <div id="modal-container" allowtransparency="true"></div>
 
-    <!-- Подгрузка модалок -->
+    <!-- Loading modals -->
     <script>
         document.querySelectorAll("[data-modal]").forEach((btn) => {
             btn.addEventListener("click", () => {
@@ -307,7 +307,7 @@
         });
     </script>
 
-    <!-- Кнопка Assets -->
+    <!-- Button Assets -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const toggleBtn = document.querySelector(".sidebar__assets-btn");
@@ -337,7 +337,7 @@
         });
     </script>
 
-    <!-- Навигация и hover на иконках -->
+    <!-- Navigation -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const navButtons = document.querySelectorAll(".topbar__btn[data-name], .tapbar__btn[data-name]");
@@ -362,17 +362,13 @@
                 localStorage.setItem("activePage", name);
             };
 
-            // Получаем текущую страницу
             const hash = location.hash.replace("#", "");
             const stored = localStorage.getItem("activePage");
 
-            // Определяем, что активировать
             let currentPage = hash || stored || "dashboard";
 
-            // Активируем текущую страницу
             activateByName(currentPage);
 
-            // Клик по кнопке
             navButtons.forEach((btn) => {
                 const name = btn.dataset.name;
                 btn.addEventListener("click", () => {
@@ -383,13 +379,11 @@
                 });
             });
 
-            // Отслеживаем изменение хеша
             window.addEventListener("hashchange", () => {
                 const newHash = location.hash.replace("#", "");
                 if (newHash) activateByName(newHash);
             });
 
-            // Синхронизация с loadPage (если есть динамическая загрузка)
             const originalLoadPage = window.loadPage;
             if (typeof originalLoadPage === "function") {
                 window.loadPage = async (page) => {
@@ -400,7 +394,7 @@
         });
     </script>
 
-    <!-- Сайдбар -->
+    <!-- Sidebar -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const sidebar = document.querySelector(".sidebar");
@@ -439,24 +433,21 @@
         });
     </script>
 
-    <!-- Глобальная функция loadPage с preloader -->
+    <!-- Global loadPage function with preloader -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const content = document.querySelector(".content");
             const pageButtons = document.querySelectorAll("[data-page]");
             if (!content) return;
 
-            // создаём лёгкий лоадер один раз
             const loaderHTML = `
             <div class="loader" role="status" aria-label="Loading">
                 <div class="loader__spinner"></div>
                 <span class="loader__text">Loading...</span>
             </div>`;
 
-            // Глобальная функция
             window.loadPage = async (page) => {
                 try {
-                    // показываем лоадер
                     content.innerHTML = loaderHTML;
 
                     const response = await fetch(`${page}.html`);
@@ -466,10 +457,8 @@
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(html, "text/html");
 
-                    // заменяем контент
                     content.innerHTML = doc.body.innerHTML;
 
-                    // подключаем скрипты страницы
                     const scripts = doc.querySelectorAll("script");
                     scripts.forEach((oldScript) => {
                         const newScript = document.createElement("script");
@@ -483,18 +472,16 @@
                         page.charAt(0).toUpperCase() + page.slice(1) + " | Illuminance";
                 } catch (err) {
                     content.innerHTML = `
-        <div class="error-message">
-          <p>⚠️ Failed to load <strong>${page}.html</strong></p>
-          <p>${err.message}</p>
-        </div>`;
+                    <div class="error-message">
+                        <p>⚠️ Failed to load <strong>${page}.html</strong></p>
+                        <p>${err.message}</p>
+                    </div>`;
                 }
             };
 
-            // начальная страница
             const initialPage = location.hash.replace("#", "") || "dashboard";
             window.loadPage(initialPage);
 
-            // клики на кнопки data-page
             if (pageButtons.length) {
                 pageButtons.forEach((btn) => {
                     btn.addEventListener("click", () => {
@@ -506,7 +493,6 @@
                 });
             }
 
-            // обработка истории
             window.addEventListener("popstate", (e) => {
                 const page = e.state?.page || "dashboard";
                 window.loadPage(page);
@@ -514,7 +500,7 @@
         });
     </script>
 
-    <!-- Делегат для кликов по data-page на подгруженных страницах -->
+    <!-- Delegate for clicks on data-page on loaded pages -->
     <script>
         document.addEventListener("click", (e) => {
             const btn = e.target.closest("[data-page]");

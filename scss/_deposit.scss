@@ -52,11 +52,15 @@
     align-items: flex-start;
     gap: 20px;
     overflow: hidden;
-    @media (max-width: 1279.9px) {
+    @media (min-width: 768px) and (max-width: 1279.9px) {
+        height: auto;
         flex-direction: column;
+        overflow-y: auto;
+        scrollbar-width: none;
     }
     @media (max-width: 767.9px) {
         height: auto;
+        flex-direction: column;
         overflow-y: auto;
         scrollbar-width: none;
     }
@@ -66,27 +70,55 @@
         flex: 1 1 50%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 0;
         padding: var(--padding-sm);
+        padding-top: 0;
         background: var(--deposit-card-bg-color);
         border: 1px solid var(--deposit-card-border-color);
         border-radius: var(--border-radius-md);
         overflow: hidden;
-        overflow-y: auto;
+        overflow-y: scroll;
         scrollbar-width: none;
         will-change: transform;
         transform: translateZ(0);
         contain: layout paint;
         backface-visibility: hidden;
         overscroll-behavior: none;
-        @media (max-width: 1279.9px) {
+        @media (min-width: 768px) and (max-width: 1279.9px) {
             flex: 1 1 100%;
-            max-height: 750px;
-        }
-        @media (max-width: 767.9px) {
-            height: auto;
             max-height: 500px;
         }
+        @media (max-width: 767.9px) {
+            flex: 1 1 100%;
+            max-height: 500px;
+        }
+    }
+    &__create-deposit {
+        width: 100%;
+        height: max-content;
+        flex: 1 1 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: var(--padding-sm);
+        background: var(--deposit-card-bg-color);
+        border: 1px solid var(--deposit-card-border-color);
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        @media (min-width: 1024px) and (max-width: 1279.9px) {
+            flex: 1 1 100%;
+            height: auto;
+        }
+        @media (max-width: 767.9px) {
+            height: max-content;
+        }
+    }
+    &__card-list-wrap {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
         & .card__deposit-wrap {
             background: var(--depoait-card-bg-color);
             border: 1px solid var(--deposit-card-border-color);
@@ -142,22 +174,6 @@
             }
         }
     }
-    &__create-deposit {
-        width: 100%;
-        height: auto;
-        flex: 1 1 50%;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: var(--padding-sm);
-        background: var(--deposit-card-bg-color);
-        border: 1px solid var(--deposit-card-border-color);
-        border-radius: var(--border-radius-md);
-        overflow: hidden;
-        @media (max-width: 767.9px) {
-            height: max-content;
-        }
-    }
     &__form {
         width: 100%;
         display: flex;
@@ -191,7 +207,7 @@
     &__percent {
         @media (max-width: 464.9px) {
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 8px;
         }
     }
     &__switch-btn,
@@ -215,6 +231,14 @@
             background: rgba(71, 114, 202, 0.1);
             box-shadow: inset -1px -1px 1px rgba(0, 0, 0, 0.25);
             color: var(--deposit-form-switch-active-color);
+        }
+
+        @media (max-width: 464.9px) {
+            flex: 1 1 calc(100% / 3 - 8px);
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
         }
     }
     &__select {
@@ -421,7 +445,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
         background: var(--depoait-card-bg-color);
         border: 1px solid var(--deposit-card-border-color);
         border-radius: var(--border-radius-sm);
@@ -432,7 +456,6 @@
             font-weight: 400;
             color: rgba(255, 255, 255, 0.5);
         }
-
         &-sum {
             font-size: var(--title-lg);
             font-weight: 600;
@@ -441,11 +464,24 @@
                 color: var(--card-deposit-info-sum-end-color);
             }
         }
-
         &-list {
             display: flex;
             align-items: center;
             gap: 8px;
+            @media (min-width: 1275px) and (max-width: 1439.9px) {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            @media (min-width: 1024px) and (max-width: 1274.9px) {
+                flex-wrap: nowrap;
+            }
+            @media (min-width: 768px) and (max-width: 1023.9px) {
+                flex-wrap: nowrap;
+            }
+            @media (min-width: 465px) and (max-width: 767.9px) {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
             @media (max-width: 464.9px) {
                 flex-wrap: wrap;
                 gap: 16px;
@@ -456,14 +492,44 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            font-size: var(--desc-size-sm);
+            font-size: var(--desc-size-md);
             color: var(--deposit-result-item-color);
             & strong {
                 font-size: var(--title-sm);
                 color: var(--deposit-result-item-color-strong);
             }
+            @media (min-width: 1275px) and (max-width: 1439.9px) {
+                flex: 1 1 calc(50% - 16px);
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 8px;
+            }
+            @media (min-width: 1024px) and (max-width: 1274.9px) {
+                flex: 1 1 calc(100% / 4 - 8px);
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            @media (min-width: 768px) and (max-width: 1023.9px) {
+                flex: 1 1 calc(100% / 4 - 8px);
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            @media (min-width: 465px) and (max-width: 767.9px) {
+                flex: 1 1 calc(50% - 16px);
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 8px;
+            }
             @media (max-width: 464.9px) {
-                flex: 1 1 calc(50% - 8px);
+                flex: 1 1 100%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 8px;
             }
         }
 

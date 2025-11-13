@@ -28,6 +28,88 @@
     }
     &__item {
         flex: 1 1 auto;
+        &:nth-child(1) {
+            & .tapbar__btn {
+                & .tapbar__icon {
+                    width: 20px;
+                    height: 20px;
+                    background: url(../img/icon/dashboard-menu.svg) no-repeat center / contain;
+                }
+                &:hover,
+                &:focus {
+                    & .tapbar__icon {
+                        background: url(../img/icon/dashboard-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+                &.active,
+                &[aria-pressed="true"],
+                &[aria-current="page"] {
+                    & .tapbar__icon {
+                        background: url(../img/icon/dashboard-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+            }
+        }
+        &:nth-of-type(2) {
+            & .tapbar__btn {
+                & .tapbar__icon {
+                    background: url(../img/icon/referral-menu.svg) no-repeat center / contain;
+                }
+                &:hover,
+                &:focus {
+                    & .tapbar__icon {
+                        background: url(../img/icon/referral-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+                &.active,
+                &[aria-pressed="true"],
+                &[aria-current="page"] {
+                    & .tapbar__icon {
+                        background: url(../img/icon/referral-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+            }
+        }
+        &:nth-of-type(3) {
+            & .tapbar__btn {
+                & .tapbar__icon {
+                    background: url(../img/icon/deposit-menu.svg) no-repeat center / contain;
+                }
+                &:hover,
+                &:focus {
+                    & .tapbar__icon {
+                        background: url(../img/icon/deposit-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+                &.active,
+                &[aria-pressed="true"],
+                &[aria-current="page"] {
+                    & .tapbar__icon {
+                        background: url(../img/icon/deposit-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+            }
+        }
+        &:nth-of-type(4) {
+            & .tapbar__btn {
+                & .tapbar__icon {
+                    background: url(../img/icon/credit-menu.svg) no-repeat center / contain;
+                }
+                &:hover,
+                &:focus {
+                    & .tapbar__icon {
+                        background: url(../img/icon/credit-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+                &.active,
+                &[aria-pressed="true"],
+                &[aria-current="page"] {
+                    & .tapbar__icon {
+                        background: url(../img/icon/credit-menu-active.svg) no-repeat center / contain;
+                    }
+                }
+            }
+        }
     }
     &__btn {
         width: 100%;

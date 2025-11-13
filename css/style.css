@@ -1647,6 +1647,44 @@ html {
     display: none;
   }
 }
+.topbar__item:nth-child(2) .topbar__btn .topbar__icon {
+  width: 20px;
+  height: 20px;
+  background: url(../img/icon/dashboard-menu.svg) no-repeat center/contain;
+}
+.topbar__item:nth-child(2) .topbar__btn:hover .topbar__icon, .topbar__item:nth-child(2) .topbar__btn:focus .topbar__icon {
+  background: url(../img/icon/dashboard-menu-active.svg) no-repeat center/contain;
+}
+.topbar__item:nth-child(2) .topbar__btn.active .topbar__icon, .topbar__item:nth-child(2) .topbar__btn[aria-pressed=true] .topbar__icon, .topbar__item:nth-child(2) .topbar__btn[aria-current=page] .topbar__icon {
+  background: url(../img/icon/dashboard-menu-active.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(3) .topbar__btn .topbar__icon {
+  background: url(../img/icon/referral-menu.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(3) .topbar__btn:hover .topbar__icon, .topbar__item:nth-of-type(3) .topbar__btn:focus .topbar__icon {
+  background: url(../img/icon/referral-menu-active.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(3) .topbar__btn.active .topbar__icon, .topbar__item:nth-of-type(3) .topbar__btn[aria-pressed=true] .topbar__icon, .topbar__item:nth-of-type(3) .topbar__btn[aria-current=page] .topbar__icon {
+  background: url(../img/icon/referral-menu-active.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(4) .topbar__btn .topbar__icon {
+  background: url(../img/icon/deposit-menu.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(4) .topbar__btn:hover .topbar__icon, .topbar__item:nth-of-type(4) .topbar__btn:focus .topbar__icon {
+  background: url(../img/icon/deposit-menu-active.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(4) .topbar__btn.active .topbar__icon, .topbar__item:nth-of-type(4) .topbar__btn[aria-pressed=true] .topbar__icon, .topbar__item:nth-of-type(4) .topbar__btn[aria-current=page] .topbar__icon {
+  background: url(../img/icon/deposit-menu-active.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(5) .topbar__btn .topbar__icon {
+  background: url(../img/icon/credit-menu.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(5) .topbar__btn:hover .topbar__icon, .topbar__item:nth-of-type(5) .topbar__btn:focus .topbar__icon {
+  background: url(../img/icon/credit-menu-active.svg) no-repeat center/contain;
+}
+.topbar__item:nth-of-type(5) .topbar__btn.active .topbar__icon, .topbar__item:nth-of-type(5) .topbar__btn[aria-pressed=true] .topbar__icon, .topbar__item:nth-of-type(5) .topbar__btn[aria-current=page] .topbar__icon {
+  background: url(../img/icon/credit-menu-active.svg) no-repeat center/contain;
+}
 .topbar__btn {
   width: 100%;
   display: flex;
@@ -1766,10 +1804,16 @@ html {
   backface-visibility: hidden;
   overscroll-behavior: none;
 }
-@media (max-width: 1023.9px) {
+@media (min-width: 768px) and (max-width: 1023.9px) {
   .content {
     width: 100%;
-    height: calc(100vh - 175px);
+  }
+}
+@media (max-width: 767.9px) {
+  .content {
+    width: 100%;
+    height: calc(100vh - 180px);
+    padding-bottom: 0;
   }
 }
 
@@ -1806,6 +1850,44 @@ html {
 }
 .tapbar__item {
   flex: 1 1 auto;
+}
+.tapbar__item:nth-child(1) .tapbar__btn .tapbar__icon {
+  width: 20px;
+  height: 20px;
+  background: url(../img/icon/dashboard-menu.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-child(1) .tapbar__btn:hover .tapbar__icon, .tapbar__item:nth-child(1) .tapbar__btn:focus .tapbar__icon {
+  background: url(../img/icon/dashboard-menu-active.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-child(1) .tapbar__btn.active .tapbar__icon, .tapbar__item:nth-child(1) .tapbar__btn[aria-pressed=true] .tapbar__icon, .tapbar__item:nth-child(1) .tapbar__btn[aria-current=page] .tapbar__icon {
+  background: url(../img/icon/dashboard-menu-active.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(2) .tapbar__btn .tapbar__icon {
+  background: url(../img/icon/referral-menu.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(2) .tapbar__btn:hover .tapbar__icon, .tapbar__item:nth-of-type(2) .tapbar__btn:focus .tapbar__icon {
+  background: url(../img/icon/referral-menu-active.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(2) .tapbar__btn.active .tapbar__icon, .tapbar__item:nth-of-type(2) .tapbar__btn[aria-pressed=true] .tapbar__icon, .tapbar__item:nth-of-type(2) .tapbar__btn[aria-current=page] .tapbar__icon {
+  background: url(../img/icon/referral-menu-active.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(3) .tapbar__btn .tapbar__icon {
+  background: url(../img/icon/deposit-menu.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(3) .tapbar__btn:hover .tapbar__icon, .tapbar__item:nth-of-type(3) .tapbar__btn:focus .tapbar__icon {
+  background: url(../img/icon/deposit-menu-active.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(3) .tapbar__btn.active .tapbar__icon, .tapbar__item:nth-of-type(3) .tapbar__btn[aria-pressed=true] .tapbar__icon, .tapbar__item:nth-of-type(3) .tapbar__btn[aria-current=page] .tapbar__icon {
+  background: url(../img/icon/deposit-menu-active.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(4) .tapbar__btn .tapbar__icon {
+  background: url(../img/icon/credit-menu.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(4) .tapbar__btn:hover .tapbar__icon, .tapbar__item:nth-of-type(4) .tapbar__btn:focus .tapbar__icon {
+  background: url(../img/icon/credit-menu-active.svg) no-repeat center/contain;
+}
+.tapbar__item:nth-of-type(4) .tapbar__btn.active .tapbar__icon, .tapbar__item:nth-of-type(4) .tapbar__btn[aria-pressed=true] .tapbar__icon, .tapbar__item:nth-of-type(4) .tapbar__btn[aria-current=page] .tapbar__icon {
+  background: url(../img/icon/credit-menu-active.svg) no-repeat center/contain;
 }
 .tapbar__btn {
   width: 100%;
@@ -2357,7 +2439,7 @@ html {
   position: relative;
   overflow: hidden;
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card {
     flex: 1 1 auto;
   }
@@ -2426,7 +2508,7 @@ html {
     flex-direction: column;
   }
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__header.statistic {
     flex-direction: column;
   }
@@ -2619,7 +2701,7 @@ html {
   border-radius: var(--border-radius-sm);
   background: var(--card-toggle-list-bg-color);
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__toggle-list {
     max-width: 100%;
   }
@@ -2627,7 +2709,7 @@ html {
 .card__toggle-item {
   flex: 1 1 auto;
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__toggle-item {
     flex: 1 1 100%;
   }
@@ -2682,7 +2764,7 @@ html {
   justify-content: space-between;
   gap: 20px;
 }
-@media (min-width: 768px) and (max-width: 1023.9px) {
+@media (min-width: 768px) and (max-width: 1439.9px) {
   .card__deposit-wrapper {
     width: 100%;
     display: flex;
@@ -2712,6 +2794,12 @@ html {
           backdrop-filter: blur(12px);
   border-radius: var(--border-radius-sm);
 }
+@media (min-width: 1024px) and (max-width: 1439.9px) {
+  .card__deposit-wrapper.details {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 @media (min-width: 768px) and (max-width: 1023.9px) {
   .card__deposit-wrapper.details {
     max-width: 230px;
@@ -2729,6 +2817,11 @@ html {
 }
 .card__deposit-wrapper.info {
   justify-content: space-between;
+}
+@media (min-width: 1024px) and (max-width: 1439.9px) {
+  .card__deposit-wrapper.info {
+    flex-direction: column;
+  }
 }
 .card__divider {
   width: 100%;
@@ -2778,6 +2871,11 @@ html {
 @media (max-width: 767.9px) {
   .card__deposit-info > .card__deposit-info-date {
     display: none !important;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1439.9px) {
+  .card__deposit-info:last-child {
+    align-items: flex-start;
   }
 }
 @media (min-width: 768px) and (max-width: 1023.9px) {
@@ -2868,7 +2966,7 @@ html {
   background: var(--card-deposit-tooltip-bg-color);
   z-index: 0;
 }
-@media (min-width: 768px) and (max-width: 1023.9px) {
+@media (min-width: 768px) and (max-width: 1439.9px) {
   .card__deposit-tooltip::before {
     top: auto;
     left: 50%;
@@ -2888,7 +2986,7 @@ html {
 .card__deposit-tooltip [hidden] {
   display: none !important;
 }
-@media (min-width: 768px) and (max-width: 1023.9px) {
+@media (min-width: 768px) and (max-width: 1439.9px) {
   .card__deposit-tooltip {
     top: -50px;
     left: auto;
@@ -2915,7 +3013,7 @@ html {
 .card__statistic-wrap[hidden] {
   display: none !important;
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__statistic-wrap {
     flex-direction: column;
   }
@@ -2933,7 +3031,7 @@ html {
   border: 1px solid var(--card-statistic-profit-border-color);
   border-radius: var(--border-radius-sm);
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__statistic-profit {
     width: 100%;
     flex-direction: row;
@@ -2951,7 +3049,7 @@ html {
   flex-direction: column;
   gap: 8px;
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__statistic-profit-wrap {
     width: 100%;
     flex-direction: row;
@@ -3009,7 +3107,7 @@ html {
   font-weight: 300;
   color: var(--card-statistic-btn-color);
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__statistic-profit-btn {
     max-width: 100px;
   }
@@ -3032,7 +3130,7 @@ html {
   flex-wrap: wrap;
   gap: 8px;
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .card__statistic-list {
     width: 100%;
   }
@@ -3064,7 +3162,7 @@ html {
   font-weight: 500;
   color: var(--card-statistic-item-title-color);
 }
-@media (max-width: 1079.9px) {
+@media (max-width: 1439.9px) {
   .card__statistic-item-title > span {
     display: none;
   }
@@ -3083,8 +3181,6 @@ html {
 
 .daily-list {
   width: 80vw;
-  height: 100%;
-  min-height: 150px;
   display: flex;
   align-items: stretch;
   gap: 8px;
@@ -3146,21 +3242,17 @@ html {
 @media (min-width: 660px) and (max-width: 1023.9px) {
   .daily-list {
     width: 100%;
-    height: 150px;
   }
 }
 @media (max-width: 659.9px) {
   .daily-list {
     width: 100%;
-    height: 150px;
   }
 }
 
 .chart__bars {
   width: 20vw;
   min-width: 200px;
-  height: 100%;
-  min-height: 150px;
   display: flex;
   align-items: stretch;
   gap: 8px;
@@ -3169,28 +3261,26 @@ html {
 }
 @media (min-width: 1024px) and (max-width: 1223.9px) {
   .chart__bars {
-    width: 100%;
-    min-width: auto;
+    width: 200px;
+    min-width: 200px;
   }
 }
 @media (min-width: 660px) and (max-width: 1023.9px) {
   .chart__bars {
     width: 20vw;
     min-width: 200px;
-    height: 150px;
   }
 }
 @media (max-width: 659.9px) {
   .chart__bars {
     width: 100%;
     min-width: auto;
-    height: 150px;
   }
 }
 .chart__bar {
   flex: 1 1 auto;
   width: 100%;
-  height: 100%;
+  height: 150px;
   border-radius: var(--border-radius-sm);
   display: flex;
   align-items: flex-end;
@@ -3249,7 +3339,7 @@ html {
   display: flex;
   gap: 20px;
 }
-@media (max-width: 1023.9px) {
+@media (max-width: 1439.9px) {
   .dashboard__card-wrap {
     flex-direction: column;
   }
@@ -3598,11 +3688,11 @@ html {
   flex-direction: column;
   gap: 8px;
 }
-.transactions-mobile .transaction-mobile:last-child .trade-mobile__list dd:last-of-type {
+.transactions-mobile .transaction-mobile:last-child .transaction-mobile__list dd:last-of-type {
   border: none;
   padding-bottom: 0;
 }
-.transactions-mobile .transaction-mobile:last-child .trade-mobile__list dt:last-of-type {
+.transactions-mobile .transaction-mobile:last-child .transaction-mobile__list dt:last-of-type {
   border: none;
   padding-bottom: 0;
 }
@@ -4249,6 +4339,13 @@ html {
     flex-direction: column;
   }
 }
+@media (max-width: 767.9px) {
+  .deposit {
+    height: auto;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+}
 .deposit__card-list {
   width: 100%;
   height: 100%;
@@ -4273,6 +4370,12 @@ html {
   .deposit__card-list {
     flex: 1 1 100%;
     max-height: 750px;
+  }
+}
+@media (max-width: 767.9px) {
+  .deposit__card-list {
+    height: auto;
+    max-height: 500px;
   }
 }
 .deposit__card-list .card__deposit-wrap {
@@ -4329,8 +4432,12 @@ html {
   border: 1px solid var(--deposit-card-border-color);
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
+}
+@media (max-width: 767.9px) {
+  .deposit__create-deposit {
+    height: -moz-max-content;
+    height: max-content;
+  }
 }
 .deposit__form {
   width: 100%;

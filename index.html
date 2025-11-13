@@ -24,32 +24,28 @@
                 <li class="topbar__item">
                     <button type="button" class="topbar__btn active" aria-pressed="true" aria-current="page"
                         data-name="dashboard" data-page="dashboard">
-                        <img src="img/icon/dashboard-menu-active.svg" width="20" height="20" alt="" class="topbar__icon"
-                            aria-hidden="true">
+                        <div class="topbar__icon"></div>
                         <span class="topbar__label">Dashboard</span>
                     </button>
                 </li>
                 <li class="topbar__item">
                     <button type="button" class="topbar__btn" aria-pressed="false" data-name="referral"
                         data-page="referral">
-                        <img src="img/icon/referral-menu.svg" width="20" height="20" alt="" class="topbar__icon"
-                            aria-hidden="true">
+                        <div class="topbar__icon"></div>
                         <span class="topbar__label">Referral <span>Program</span></span>
                     </button>
                 </li>
                 <li class="topbar__item">
                     <button type="button" class="topbar__btn" aria-pressed="false" data-name="deposit"
                         data-page="deposit">
-                        <img src="img/icon/deposit-menu.svg" width="20" height="20" alt="" class="topbar__icon"
-                            aria-hidden="true">
+                        <div class="topbar__icon"></div>
                         <span class="topbar__label">Deposit</span>
                     </button>
                 </li>
                 <li class="topbar__item">
                     <button type="button" class="topbar__btn" aria-pressed="false" data-name="credit"
                         data-page="credit">
-                        <img src="img/icon/credit-menu.svg" width="20" height="20" alt="" class="topbar__icon"
-                            aria-hidden="true">
+                        <div class="topbar__icon"></div>
                         <span class="topbar__label">Credit <span>Deposit</span></span>
                     </button>
                 </li>
@@ -261,30 +257,26 @@
             <li class="tapbar__item">
                 <button type="button" class="tapbar__btn active" aria-pressed="true" aria-current="page"
                     data-name="dashboard" data-page="dashboard">
-                    <img src="img/icon/dashboard-menu-active.svg" width="20" height="20" alt="" class="tapbar__icon"
-                        aria-hidden="true">
+                    <div class="tapbar__icon"></div>
                     <span class="tapbar__label">Dashboard</span>
                 </button>
             </li>
             <li class="tapbar__item">
                 <button type="button" class="tapbar__btn" aria-pressed="false" data-name="referral"
                     data-page="referral">
-                    <img src="img/icon/referral-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
-                        aria-hidden="true">
+                    <div class="tapbar__icon"></div>
                     <span class="tapbar__label">Referral</span>
                 </button>
             </li>
             <li class="tapbar__item">
                 <button type="button" class="tapbar__btn" aria-pressed="false" data-name="deposit" data-page="deposit">
-                    <img src="img/icon/deposit-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
-                        aria-hidden="true">
+                    <div class="tapbar__icon"></div>
                     <span class="tapbar__label">Deposit</span>
                 </button>
             </li>
             <li class="tapbar__item">
                 <button type="button" class="tapbar__btn" aria-pressed="false" data-name="credit" data-page="credit">
-                    <img src="img/icon/credit-menu.svg" width="20" height="20" alt="" class="tapbar__icon"
-                        aria-hidden="true">
+                    <div class="tapbar__icon"></div>
                     <span class="tapbar__label">Credit</span>
                 </button>
             </li>
@@ -348,45 +340,13 @@
     <!-- Навигация и hover на иконках -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const navButtons = document.querySelectorAll(
-                ".topbar__btn[data-name], .tapbar__btn[data-name]"
-            );
-
-            const getIconPaths = (src) => {
-                const clean = src.replace(/-active\.svg$/, ".svg");
-                return {
-                    base: clean,
-                    active: clean.replace(".svg", "-active.svg"),
-                };
-            };
-
-            navButtons.forEach((btn) => {
-                btn.classList.remove("active");
-                btn.removeAttribute("aria-current");
-                btn.setAttribute("aria-pressed", "false");
-
-                const img = btn.querySelector("img");
-                if (!img) return;
-                const { base, active } = getIconPaths(img.src);
-                img.dataset.base = base;
-                img.dataset.active = active;
-                img.src = base;
-
-                btn.addEventListener("mouseenter", () => {
-                    if (!btn.classList.contains("active")) img.src = active;
-                });
-                btn.addEventListener("mouseleave", () => {
-                    if (!btn.classList.contains("active")) img.src = base;
-                });
-            });
+            const navButtons = document.querySelectorAll(".topbar__btn[data-name], .tapbar__btn[data-name]");
 
             const resetAll = () => {
                 navButtons.forEach((btn) => {
                     btn.classList.remove("active");
                     btn.setAttribute("aria-pressed", "false");
                     btn.removeAttribute("aria-current");
-                    const img = btn.querySelector("img");
-                    if (img) img.src = img.dataset.base;
                 });
             };
 
@@ -397,35 +357,39 @@
                         btn.classList.add("active");
                         btn.setAttribute("aria-pressed", "true");
                         btn.setAttribute("aria-current", "page");
-                        const img = btn.querySelector("img");
-                        if (img) img.src = img.dataset.active;
                     }
                 });
+                localStorage.setItem("activePage", name);
             };
 
+            // Получаем текущую страницу
             const hash = location.hash.replace("#", "");
-            if (hash) {
-                activateByName(hash);
-            }
+            const stored = localStorage.getItem("activePage");
 
+            // Определяем, что активировать
+            let currentPage = hash || stored || "dashboard";
+
+            // Активируем текущую страницу
+            activateByName(currentPage);
+
+            // Клик по кнопке
             navButtons.forEach((btn) => {
                 const name = btn.dataset.name;
                 btn.addEventListener("click", () => {
-                    const isActive = btn.classList.contains("active");
-                    resetAll();
-                    if (!isActive) activateByName(name);
+                    if (!btn.classList.contains("active")) {
+                        activateByName(name);
+                        location.hash = name;
+                    }
                 });
             });
 
+            // Отслеживаем изменение хеша
             window.addEventListener("hashchange", () => {
                 const newHash = location.hash.replace("#", "");
-                if (newHash) {
-                    activateByName(newHash);
-                } else {
-                    resetAll();
-                }
+                if (newHash) activateByName(newHash);
             });
 
+            // Синхронизация с loadPage (если есть динамическая загрузка)
             const originalLoadPage = window.loadPage;
             if (typeof originalLoadPage === "function") {
                 window.loadPage = async (page) => {

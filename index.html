@@ -359,13 +359,27 @@
                         btn.setAttribute("aria-current", "page");
                     }
                 });
-                localStorage.setItem("activePage", name);
+                // сохраняем только если не dashboard, чтобы не залипало
+                if (name !== "dashboard") {
+                    localStorage.setItem("activePage", name);
+                } else {
+                    localStorage.removeItem("activePage");
+                }
             };
 
             const hash = location.hash.replace("#", "");
             const stored = localStorage.getItem("activePage");
 
-            let currentPage = hash || stored || "dashboard";
+            let currentPage;
+
+            // ✅ если есть хеш — используем его,
+            // ✅ если нет хеша и страница загружается впервые — dashboard,
+            // ✅ localStorage применяем только если есть hash или hash == stored.
+            if (hash) {
+                currentPage = hash;
+            } else {
+                currentPage = "dashboard";
+            }
 
             activateByName(currentPage);
 
@@ -382,6 +396,7 @@
             window.addEventListener("hashchange", () => {
                 const newHash = location.hash.replace("#", "");
                 if (newHash) activateByName(newHash);
+                else activateByName("dashboard");
             });
 
             const originalLoadPage = window.loadPage;

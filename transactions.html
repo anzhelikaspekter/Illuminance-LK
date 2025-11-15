@@ -545,16 +545,18 @@
     </section>
 
     <script>
-        document.querySelector('.card__back-btn').addEventListener('click', () => {
-            if (document.referrer && document.referrer !== window.location.href) {
-                window.history.back();
-            } else {
-                window.location.href = '/dashboard.html';
-            }
+        document.addEventListener("pageLoaded", () => {
+            document.querySelector('.card__back-btn').addEventListener('click', () => {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.loadPage('dashboard');
+                }
+            });
         });
     </script>
     <script>
-        (function () {
+        document.addEventListener("pageLoaded", () => {
             const select = document.querySelector('.transaction__form-wrap--select');
             if (!select) return;
 
@@ -588,27 +590,29 @@
                     button.setAttribute('aria-expanded', 'false');
                 }
             });
-        })();
+        });
     </script>
     <script>
-        const filterBtn = document.querySelector('[aria-controls="filter-menu"]');
-        const filterMenu = document.getElementById("filter-menu");
+        document.addEventListener("pageLoaded", () => {
+            const filterBtn = document.querySelector('[aria-controls="filter-menu"]');
+            const filterMenu = document.getElementById("filter-menu");
 
-        if (filterBtn && filterMenu) {
-            filterBtn.onclick = (e) => {
-                e.stopPropagation();
-                const expanded = filterBtn.getAttribute("aria-expanded") === "true";
-                filterBtn.setAttribute("aria-expanded", String(!expanded));
-                filterMenu.hidden = expanded;
-            };
+            if (filterBtn && filterMenu) {
+                filterBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    const expanded = filterBtn.getAttribute("aria-expanded") === "true";
+                    filterBtn.setAttribute("aria-expanded", String(!expanded));
+                    filterMenu.hidden = expanded;
+                };
 
-            document.addEventListener("click", (e) => {
-                if (!filterMenu.hidden && !filterMenu.contains(e.target) && e.target !== filterBtn) {
-                    filterMenu.hidden = true;
-                    filterBtn.setAttribute("aria-expanded", "false");
-                }
-            });
-        }
+                document.addEventListener("click", (e) => {
+                    if (!filterMenu.hidden && !filterMenu.contains(e.target) && e.target !== filterBtn) {
+                        filterMenu.hidden = true;
+                        filterBtn.setAttribute("aria-expanded", "false");
+                    }
+                });
+            }
+        });
     </script>
 </body>
 

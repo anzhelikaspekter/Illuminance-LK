@@ -460,117 +460,119 @@
     </section>
 
     <script>
-        /* --- Tooltip Details --- */
-        document.querySelectorAll(".card__deposit-info-btn").forEach((btn) => {
-            btn.onclick = () => {
-                const parent = btn.closest(".card__deposit-info");
-                const tooltip = parent?.querySelector(".card__deposit-tooltip");
-                if (!tooltip) return;
+        document.addEventListener("pageLoaded", () => {
+            /* --- Tooltip Details --- */
+            document.querySelectorAll(".card__deposit-info-btn").forEach((btn) => {
+                btn.onclick = () => {
+                    const parent = btn.closest(".card__deposit-info");
+                    const tooltip = parent?.querySelector(".card__deposit-tooltip");
+                    if (!tooltip) return;
 
-                const isVisible = !tooltip.hasAttribute("hidden");
-                tooltip.toggleAttribute("hidden", isVisible);
-                btn.setAttribute("aria-expanded", String(!isVisible));
-            };
-        });
-
-        /* --- Toggle Groups (Reinvest / Percent) --- */
-        const reinvestBtns = document.querySelectorAll(".deposit__switch-btn");
-        const percentBtns = document.querySelectorAll(".deposit__percent-btn");
-        const amountInput = document.querySelector("#amount");
-        const resultValue = document.querySelector(".deposit__result-value");
-
-        /* --- Reinvest switch --- */
-        reinvestBtns.forEach((btn) => {
-            btn.onclick = () => {
-                reinvestBtns.forEach((b) => {
-                    b.classList.remove("active");
-                    b.setAttribute("aria-pressed", "false");
-                });
-                btn.classList.add("active");
-                btn.setAttribute("aria-pressed", "true");
-            };
-        });
-
-        /* --- Percentage switch --- */
-        percentBtns.forEach((btn) => {
-            btn.onclick = () => {
-                percentBtns.forEach((b) => {
-                    b.classList.remove("active");
-                    b.setAttribute("aria-pressed", "false");
-                });
-                btn.classList.add("active");
-                btn.setAttribute("aria-pressed", "true");
-                updateResult();
-            };
-        });
-
-        /* --- Update result --- */
-        function updateResult() {
-            const amount = parseFloat(amountInput.value) || 0;
-            const percent = parseFloat(
-                document.querySelector(".deposit__percent-btn.active")?.dataset.percent || 0
-            );
-            const result = amount + amount * (percent / 100) * 30 * 0.45; // пример формулы
-            resultValue.textContent = result.toFixed(2);
-        }
-
-        amountInput.oninput = updateResult;
-
-        /* --- Max Button --- */
-        document.querySelector(".deposit__link")?.addEventListener("click", () => {
-            amountInput.value = 1000;
-            updateResult();
-        });
-
-        /* --- Custom dropdowns --- */
-        document.querySelectorAll(".deposit__select, .deposit__select-mini").forEach((select) => {
-            const trigger = select.querySelector(".deposit__select-field");
-            const dropdown = select.querySelector(".deposit__select-dropdown");
-            const options = select.querySelectorAll(".deposit__select-option");
-
-            if (!trigger || !dropdown) return;
-
-            trigger.onclick = (e) => {
-                e.stopPropagation();
-                const expanded = trigger.getAttribute("aria-expanded") === "true";
-                trigger.setAttribute("aria-expanded", String(!expanded));
-                dropdown.hidden = expanded;
-            };
-
-            options.forEach((option) => {
-                option.onclick = () => {
-                    options.forEach((o) => o.classList.remove("active"));
-                    option.classList.add("active");
-
-                    const icon = option.querySelector("img")?.cloneNode(true);
-                    const text = option.querySelector(".deposit__select-text")?.innerHTML || "";
-                    const currentIcon = trigger.querySelector(".deposit__select-icon");
-                    const currentText = trigger.querySelector(".deposit__select-text");
-
-                    if (currentIcon && icon) currentIcon.replaceWith(icon);
-                    if (currentText) currentText.innerHTML = text;
-
-                    trigger.setAttribute("aria-expanded", "false");
-                    dropdown.hidden = true;
+                    const isVisible = !tooltip.hasAttribute("hidden");
+                    tooltip.toggleAttribute("hidden", isVisible);
+                    btn.setAttribute("aria-expanded", String(!isVisible));
                 };
             });
-        });
 
-        // Click outside the drop-down lists to close all
-        document.addEventListener("click", (e) => {
+            /* --- Toggle Groups (Reinvest / Percent) --- */
+            const reinvestBtns = document.querySelectorAll(".deposit__switch-btn");
+            const percentBtns = document.querySelectorAll(".deposit__percent-btn");
+            const amountInput = document.querySelector("#amount");
+            const resultValue = document.querySelector(".deposit__result-value");
+
+            /* --- Reinvest switch --- */
+            reinvestBtns.forEach((btn) => {
+                btn.onclick = () => {
+                    reinvestBtns.forEach((b) => {
+                        b.classList.remove("active");
+                        b.setAttribute("aria-pressed", "false");
+                    });
+                    btn.classList.add("active");
+                    btn.setAttribute("aria-pressed", "true");
+                };
+            });
+
+            /* --- Percentage switch --- */
+            percentBtns.forEach((btn) => {
+                btn.onclick = () => {
+                    percentBtns.forEach((b) => {
+                        b.classList.remove("active");
+                        b.setAttribute("aria-pressed", "false");
+                    });
+                    btn.classList.add("active");
+                    btn.setAttribute("aria-pressed", "true");
+                    updateResult();
+                };
+            });
+
+            /* --- Update result --- */
+            function updateResult() {
+                const amount = parseFloat(amountInput.value) || 0;
+                const percent = parseFloat(
+                    document.querySelector(".deposit__percent-btn.active")?.dataset.percent || 0
+                );
+                const result = amount + amount * (percent / 100) * 30 * 0.45; // пример формулы
+                resultValue.textContent = result.toFixed(2);
+            }
+
+            amountInput.oninput = updateResult;
+
+            /* --- Max Button --- */
+            document.querySelector(".deposit__link")?.addEventListener("click", () => {
+                amountInput.value = 1000;
+                updateResult();
+            });
+
+            /* --- Custom dropdowns --- */
             document.querySelectorAll(".deposit__select, .deposit__select-mini").forEach((select) => {
                 const trigger = select.querySelector(".deposit__select-field");
                 const dropdown = select.querySelector(".deposit__select-dropdown");
+                const options = select.querySelectorAll(".deposit__select-option");
+
                 if (!trigger || !dropdown) return;
 
-                if (!select.contains(e.target)) {
-                    trigger.setAttribute("aria-expanded", "false");
-                    dropdown.hidden = true;
-                }
+                trigger.onclick = (e) => {
+                    e.stopPropagation();
+                    const expanded = trigger.getAttribute("aria-expanded") === "true";
+                    trigger.setAttribute("aria-expanded", String(!expanded));
+                    dropdown.hidden = expanded;
+                };
+
+                options.forEach((option) => {
+                    option.onclick = () => {
+                        options.forEach((o) => o.classList.remove("active"));
+                        option.classList.add("active");
+
+                        const icon = option.querySelector("img")?.cloneNode(true);
+                        const text = option.querySelector(".deposit__select-text")?.innerHTML || "";
+                        const currentIcon = trigger.querySelector(".deposit__select-icon");
+                        const currentText = trigger.querySelector(".deposit__select-text");
+
+                        if (currentIcon && icon) currentIcon.replaceWith(icon);
+                        if (currentText) currentText.innerHTML = text;
+
+                        trigger.setAttribute("aria-expanded", "false");
+                        dropdown.hidden = true;
+                    };
+                });
             });
+
+            // Click outside the drop-down lists to close all
+            document.addEventListener("click", (e) => {
+                document.querySelectorAll(".deposit__select, .deposit__select-mini").forEach((select) => {
+                    const trigger = select.querySelector(".deposit__select-field");
+                    const dropdown = select.querySelector(".deposit__select-dropdown");
+                    if (!trigger || !dropdown) return;
+
+                    if (!select.contains(e.target)) {
+                        trigger.setAttribute("aria-expanded", "false");
+                        dropdown.hidden = true;
+                    }
+                });
+            });
+
         });
     </script>
-
 </body>
 
 </html>

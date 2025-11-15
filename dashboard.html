@@ -1170,45 +1170,44 @@
         </article>
     </section>
 
-    <div id="modal-container" allowtransparency="true"></div>
-
     <script>
-        /* --- Tooltip Details --- */
-        document.querySelectorAll(".card__deposit-info-btn").forEach((btn) => {
-            btn.addEventListener("click", () => {
-                const tooltipId = btn.getAttribute("aria-controls");
-                const tooltip = document.getElementById(tooltipId);
-                if (!tooltip) return;
+        document.addEventListener("pageLoaded", () => {
+            /* --- Tooltip Details --- */
+            document.querySelectorAll(".card__deposit-info-btn").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const tooltipId = btn.getAttribute("aria-controls");
+                    const tooltip = document.getElementById(tooltipId);
+                    if (!tooltip) return;
 
-                const isVisible = !tooltip.hasAttribute("hidden");
-                tooltip.toggleAttribute("hidden", isVisible);
-                btn.setAttribute("aria-expanded", String(!isVisible));
-            });
-        });
-    </script>
-    <script>
-        const tabButtons = document.querySelectorAll('.card__toggle-btn');
-        const tabPanels = document.querySelectorAll('.card__statistic-wrap');
-
-        if (tabButtons.length && tabPanels.length) {
-            tabButtons.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const targetId = btn.getAttribute('aria-controls');
-
-                    tabButtons.forEach(b => {
-                        b.classList.remove('active');
-                        b.setAttribute('aria-selected', 'false');
-                    });
-                    tabPanels.forEach(panel => panel.hidden = true);
-
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-selected', 'true');
-                    document.getElementById(targetId).hidden = false;
+                    const isVisible = !tooltip.hasAttribute("hidden");
+                    tooltip.toggleAttribute("hidden", isVisible);
+                    btn.setAttribute("aria-expanded", String(!isVisible));
                 });
             });
-        }
-    </script>
 
+            /* --- Toggle buttons --- */
+            const tabButtons = document.querySelectorAll('.card__toggle-btn');
+            const tabPanels = document.querySelectorAll('.card__statistic-wrap');
+
+            if (tabButtons.length && tabPanels.length) {
+                tabButtons.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        const targetId = btn.getAttribute('aria-controls');
+
+                        tabButtons.forEach(b => {
+                            b.classList.remove('active');
+                            b.setAttribute('aria-selected', 'false');
+                        });
+                        tabPanels.forEach(panel => panel.hidden = true);
+
+                        btn.classList.add('active');
+                        btn.setAttribute('aria-selected', 'true');
+                        document.getElementById(targetId).hidden = false;
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

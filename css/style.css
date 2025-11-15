@@ -718,6 +718,8 @@ html {
 .modal__form-wrap-fill--link.withdraw, .modal__form-wrap-fill--link.deposit {
   right: 12px;
   transform: translateY(0%);
+  width: -moz-max-content;
+  width: max-content;
 }
 .modal__form-wrap-fill--select {
   position: relative;
@@ -4603,17 +4605,17 @@ html {
 }
 .deposit__input:focus, .deposit__input:active {
   color: var(--deposit-form-select-color) !important;
-  background: transparent !important;
+  background: var(--deposit-form-select-field-color) !important;
 }
 .deposit__input:focus, .deposit__input:focus-visible {
   color: var(--deposit-form-select-color) !important;
-  background: transparent !important;
+  background: var(--deposit-form-select-field-color) !important;
   border-color: transparent;
   box-shadow: none;
   outline: none;
 }
 .deposit__input:-webkit-autofill, .deposit__input:-webkit-autofill:focus, .deposit__input:-webkit-autofill:hover, .deposit__input:-webkit-autofill:active {
-  background: transparent !important;
+  background: var(--deposit-form-select-field-color) !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
   -webkit-text-fill-color: var(--deposit-form-select-color) !important;

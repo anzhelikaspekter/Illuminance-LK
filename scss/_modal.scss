@@ -561,6 +561,7 @@
             &.deposit {
                 right: 12px;
                 transform: translateY(0%);
+                width: max-content;
             }
         }
         &--select {

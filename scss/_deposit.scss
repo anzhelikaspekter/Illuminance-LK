@@ -268,12 +268,12 @@
         &:focus,
         &:active {
             color: var(--deposit-form-select-color) !important;
-            background: transparent !important;
+            background: var(--deposit-form-select-field-color) !important;
         }
         &:focus,
         &:focus-visible {
             color: var(--deposit-form-select-color) !important;
-            background: transparent !important;
+            background: var(--deposit-form-select-field-color) !important;
             border-color: transparent;
             box-shadow: none;
             outline: none;
@@ -282,7 +282,7 @@
         &:-webkit-autofill:focus,
         &:-webkit-autofill:hover,
         &:-webkit-autofill:active {
-            background: transparent !important;
+            background: var(--deposit-form-select-field-color) !important;
             box-shadow: none !important;
             -webkit-box-shadow: none !important;
             -webkit-text-fill-color: var(--deposit-form-select-color) !important;

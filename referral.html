@@ -1114,36 +1114,6 @@
 
     <script>
         document.addEventListener("click", (e) => {
-            const btn = e.target.closest(".referral__grid-card-user");
-            const tooltipOpened = document.querySelector(".referral__grid-user-tooltip:not([hidden])");
-
-            if (btn) {
-                const card = btn.closest(".referral__grid-card");
-                const tooltip = card.querySelector(".referral__grid-user-tooltip");
-
-                if (tooltipOpened === tooltip) {
-                    tooltip.hidden = true;
-                    card.style.zIndex = "";
-                    return;
-                }
-
-                document.querySelectorAll(".referral__grid-user-tooltip").forEach(t => t.hidden = true);
-                document.querySelectorAll(".referral__grid-card").forEach(c => c.style.zIndex = "");
-
-                tooltip.hidden = false;
-                card.style.zIndex = 1000;
-                return;
-            }
-
-            if (tooltipOpened && !e.target.closest(".referral__grid-user-tooltip")) {
-                tooltipOpened.hidden = true;
-                document.querySelectorAll(".referral__grid-card").forEach(c => c.style.zIndex = "");
-            }
-        });
-    </script>
-
-    <script>
-        document.addEventListener("click", (e) => {
             const copyBtn = e.target.closest(".referral__card-input-btn");
             if (!copyBtn) return;
 
@@ -1173,6 +1143,102 @@
                     textNode.textContent = ' Active';
                 }
             }
+        })();
+    </script>
+
+    <script>
+        (function () {
+
+            function waitForReferral(callback) {
+                const timer = setInterval(() => {
+                    const tooltips = document.querySelectorAll(".referral__grid-user-tooltip");
+                    const cards = document.querySelectorAll(".referral__grid-card");
+                    const canvas = document.querySelector(".referral__grid-canvas");
+
+                    if (tooltips.length && cards.length && canvas) {
+                        clearInterval(timer);
+                        callback(canvas);
+                    }
+                }, 40);
+            }
+
+            waitForReferral(initTooltip);
+
+            function initTooltip(canvas) {
+
+                let activeTooltip = null;
+                let originalParent = null;
+
+                document.addEventListener("click", function (e) {
+
+                    const btn = e.target.closest(".referral__grid-card-user");
+                    const opened = document.querySelector(".referral__grid-user-tooltip.__open");
+
+                    // закрыть по клику мимо
+                    if (!btn) {
+                        if (opened) closeTooltip(opened);
+                        return;
+                    }
+
+                    const card = btn.closest(".referral__grid-card");
+                    const tooltip = card.querySelector(".referral__grid-user-tooltip");
+
+                    if (!tooltip) return;
+
+                    // повторный клик
+                    if (tooltip === activeTooltip) {
+                        closeTooltip(tooltip);
+                        return;
+                    }
+
+                    // закрыть другие
+                    if (opened) closeTooltip(opened);
+
+                    openTooltip(tooltip, card, canvas);
+                });
+
+                function openTooltip(tooltip, card, canvas) {
+
+                    // снять hidden
+                    tooltip.hidden = false;
+
+                    // запомнить родителя
+                    originalParent = tooltip.parentElement;
+
+                    // вынести НАД ВСЕМ
+                    canvas.appendChild(tooltip);
+
+                    tooltip.classList.add("__open");
+
+                    tooltip.style.position = "absolute";
+                    tooltip.style.zIndex = "999999";
+
+                    // позиционируем по карточке
+                    const cardRect = card.getBoundingClientRect();
+                    const canvasRect = canvas.getBoundingClientRect();
+
+                    tooltip.style.left = (cardRect.left - canvasRect.left) + "px";
+                    tooltip.style.top = (cardRect.bottom - canvasRect.top + 8) + "px";
+
+                    activeTooltip = tooltip;
+                }
+
+                function closeTooltip(tooltip) {
+                    tooltip.classList.remove("__open");
+                    tooltip.hidden = true;
+
+                    // вернуть назад
+                    if (originalParent) originalParent.appendChild(tooltip);
+
+                    tooltip.style.position = "";
+                    tooltip.style.left = "";
+                    tooltip.style.top = "";
+                    tooltip.style.zIndex = "";
+
+                    activeTooltip = null;
+                }
+            }
+
         })();
     </script>
 
@@ -1340,6 +1406,8 @@
 
             // Обновляем gridTemplateColumns под maxCols
             newGrid.style.gridTemplateColumns = `repeat(${maxCols}, 1fr)`;
+
+            document.dispatchEvent(new Event("referralGridReady"));
         })();
     </script>
 
@@ -1452,9 +1520,15 @@
             draw();
 
             window.addEventListener("resize", draw);
-            wrap.addEventListener("wheel", draw);
+
+            const wrap = document.querySelector(".referral__grid-wrap");
+            if (wrap) {
+                wrap.addEventListener("wheel", draw, { passive: false });
+            }
+
             document.addEventListener("mousemove", draw);
-            document.addEventListener("touchmove", draw);
+            document.addEventListener("touchmove", draw, { passive: false });
+
 
         })();
     </script>
@@ -1483,34 +1557,50 @@
             const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
             function getBounds() {
-                const wrapW = wrap.clientWidth;
-                const wrapH = wrap.clientHeight;
+    const wrapW = wrap.clientWidth;
+    const wrapH = wrap.clientHeight;
 
-                const contentW = grid.scrollWidth;
-                const contentH = grid.scrollHeight;
+    const contentW = grid.scrollWidth;
+    let contentH = grid.scrollHeight;
 
-                let minX, maxX, minY, maxY;
+    // ищем открытый tooltip
+    const openedTooltip = document.querySelector(".referral__grid-user-tooltip.__open");
 
-                // Horizontal
-                if (contentW <= wrapW) {
-                    const centerX = (wrapW - contentW) / 2;
-                    minX = maxX = centerX;
-                } else {
-                    minX = wrapW - contentW;
-                    maxX = 0;
-                }
+    if (openedTooltip) {
+        const tooltipRect = openedTooltip.getBoundingClientRect();
+        const canvasRect = canvas.getBoundingClientRect();
 
-                // Vertical
-                if (contentH <= wrapH) {
-                    const centerY = (wrapH - contentH) / 2;
-                    minY = maxY = centerY;
-                } else {
-                    minY = wrapH - contentH;
-                    maxY = 0;
-                }
+        const tooltipBottom = tooltipRect.bottom - canvasRect.top;
 
-                return { minX, maxX, minY, maxY };
-            }
+        // если тултип ниже грида — увеличиваем контент
+        if (tooltipBottom > contentH) {
+            contentH = tooltipBottom + 40; // +40px запас
+        }
+    }
+
+    let minX, maxX, minY, maxY;
+
+    // Horizontal
+    if (contentW <= wrapW) {
+        const centerX = (wrapW - contentW) / 2;
+        minX = maxX = centerX;
+    } else {
+        minX = wrapW - contentW;
+        maxX = 0;
+    }
+
+    // Vertical (теперь учитывает тултипы)
+    if (contentH <= wrapH) {
+        const centerY = (wrapH - contentH) / 2;
+        minY = maxY = centerY;
+    } else {
+        minY = wrapH - contentH;
+        maxY = 0;
+    }
+
+    return { minX, maxX, minY, maxY };
+}
+
 
             function applyTransform() {
                 const { minX, maxX, minY, maxY } = getBounds();
@@ -1617,11 +1707,28 @@
     </script>
 
     <script>
-        initReferralPanorama(
-            ".referral__grid-wrap",
-            ".referral__grid-canvas",
-            ".referral__grid"
-        );
+        (function initReferralImmediate() {
+            // ждём пока referral подгрузится через loadPage
+            const interval = setInterval(() => {
+                const grid = document.querySelector('.referral__grid');
+                const wrap = document.querySelector('.referral__grid-wrap');
+                const canvas = document.querySelector('.referral__grid-canvas');
+
+                if (grid && wrap && canvas) {
+                    clearInterval(interval);
+                    try {
+                        if (typeof initReferralPanorama === "function") {
+                            initReferralPanorama(".referral__grid-wrap", ".referral__grid-canvas", ".referral__grid");
+                        }
+                        if (typeof drawReferralLines === "function") {
+                            drawReferralLines();
+                        }
+                    } catch (err) {
+                        console.error("Referral init error:", err);
+                    }
+                }
+            }, 50);
+        })();
     </script>
 </body>
 

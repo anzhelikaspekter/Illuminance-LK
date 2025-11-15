@@ -1557,49 +1557,49 @@
             const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
             function getBounds() {
-    const wrapW = wrap.clientWidth;
-    const wrapH = wrap.clientHeight;
+                const wrapW = wrap.clientWidth;
+                const wrapH = wrap.clientHeight;
 
-    const contentW = grid.scrollWidth;
-    let contentH = grid.scrollHeight;
+                const contentW = grid.scrollWidth;
+                let contentH = grid.scrollHeight;
 
-    // ищем открытый tooltip
-    const openedTooltip = document.querySelector(".referral__grid-user-tooltip.__open");
+                // ищем открытый tooltip
+                const openedTooltip = document.querySelector(".referral__grid-user-tooltip.__open");
 
-    if (openedTooltip) {
-        const tooltipRect = openedTooltip.getBoundingClientRect();
-        const canvasRect = canvas.getBoundingClientRect();
+                if (openedTooltip) {
+                    const tooltipRect = openedTooltip.getBoundingClientRect();
+                    const canvasRect = canvas.getBoundingClientRect();
 
-        const tooltipBottom = tooltipRect.bottom - canvasRect.top;
+                    const tooltipBottom = tooltipRect.bottom - canvasRect.top;
 
-        // если тултип ниже грида — увеличиваем контент
-        if (tooltipBottom > contentH) {
-            contentH = tooltipBottom + 40; // +40px запас
-        }
-    }
+                    // если тултип ниже грида — увеличиваем контент
+                    if (tooltipBottom > contentH) {
+                        contentH = tooltipBottom + 40; // +40px запас
+                    }
+                }
 
-    let minX, maxX, minY, maxY;
+                let minX, maxX, minY, maxY;
 
-    // Horizontal
-    if (contentW <= wrapW) {
-        const centerX = (wrapW - contentW) / 2;
-        minX = maxX = centerX;
-    } else {
-        minX = wrapW - contentW;
-        maxX = 0;
-    }
+                // Horizontal
+                if (contentW <= wrapW) {
+                    const centerX = (wrapW - contentW) / 2;
+                    minX = maxX = centerX;
+                } else {
+                    minX = wrapW - contentW;
+                    maxX = 0;
+                }
 
-    // Vertical (теперь учитывает тултипы)
-    if (contentH <= wrapH) {
-        const centerY = (wrapH - contentH) / 2;
-        minY = maxY = centerY;
-    } else {
-        minY = wrapH - contentH;
-        maxY = 0;
-    }
+                // Vertical (теперь учитывает тултипы)
+                if (contentH <= wrapH) {
+                    const centerY = (wrapH - contentH) / 2;
+                    minY = maxY = centerY;
+                } else {
+                    minY = wrapH - contentH;
+                    maxY = 0;
+                }
 
-    return { minX, maxX, minY, maxY };
-}
+                return { minX, maxX, minY, maxY };
+            }
 
 
             function applyTransform() {

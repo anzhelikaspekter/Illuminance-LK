@@ -17,7 +17,7 @@
         <div class="credit__wrap">
             <article class="credit__card">
                 <header class="credit__card-header">
-                    <h2 class="credit__card-title">Credit Deposit Guide</h2>
+                    <h1 class="credit__card-title">Credit Deposit Guide</h1>
                     <p class="credit__card-desc">Your credit deposit helps you earn daily income while inviting partners
                         to grow the fund. Watch the video to learn more.</p>
                 </header>
@@ -66,6 +66,42 @@
             </div>
         </article>
     </section>
+
+    <div id="modal-container" allowtransparency="true"></div>
+
+    <script>
+        document.querySelectorAll("[data-modal]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const modalPage = btn.getAttribute("data-modal");
+                const iframe = document.createElement("iframe");
+                iframe.src = `${modalPage}.html`;
+                iframe.className = "modal-iframe";
+                iframe.allowTransparency = true;
+                iframe.style.background = "transparent";
+
+                iframe.onload = () => iframe.classList.add("active");
+                document.body.appendChild(iframe);
+
+                window.addEventListener("message", (e) => {
+                    if (e.data.action === "closeModal") {
+                        iframe.classList.remove("active");
+                        setTimeout(() => iframe.remove(), 250);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("click", e => {
+            const btn = e.target.closest(".promo-video__play");
+            if (!btn) return;
+
+            const video = btn.parentElement.querySelector(".promo-video__player");
+            btn.style.display = "none";
+            video.play();
+        });
+    </script>
 </body>
 
 </html>

@@ -41,15 +41,59 @@
             <article class="credit__card">
                 <header class="credit__card-header">
                     <h2 class="credit__card-title">Active Deposit</h2>
-                    <p class="credit__card-desc">Active: <span class="count">0 Deposit</span></p>
+                    <p class="credit__card-desc">Active: <span class="count">8 Deposit</span></p>
                 </header>
                 <div class="credit__card-content">
-                    <img src="img/icon/not-deposit.svg" width="40" height="40" alt="" class="credit__card-content-icon">
-                    <h3 class="credit__card-content-title">No Active Deposits</h3>
-                    <p class="credit__card-content-desc">You don’t have any active credit deposits yet. Start now to
-                        earn daily income.</p>
-                    <button type="button" class="credit__card-content-btn" data-modal="deposit-modal">Create
-                        Deposit</button>
+                    <article class="credit__raised-card">
+                        <div class="credit__raised-card-wrap">
+                            <div class="credit__raised-card-wrapper info">
+                                <div class="credit__raised-card-info">
+                                    <p class="credit__raised-card-info-title">Raised</p>
+                                    <p class="credit__raised-card-info-sum">100<span class="fraction">/5000</span></p>
+                                </div>
+
+                                <div class="credit__raised-card-info">
+                                    <div class="progressbar">
+                                        <div class="progressbar__fill" style="width: 18%;">
+                                            <span class="progressbar__label">18%</span>
+                                        </div>
+                                    </div>
+
+                                    <p class="credit__raised-card-info-date">
+                                        Ends on: <time datetime="2025-09-15" class="date">15.09.2025</time>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="credit__raised-card-wrapper details">
+                                <div class="credit__raised-card-details">
+                                    <p class="credit__raised-card-details-label">Invested</p>
+                                    <p class="credit__raised-card-details-desc">$1000</p>
+                                </div>
+                                <div class="credit__raised-card-divider" aria-hidden="true"></div>
+                                <div class="credit__raised-card-details">
+                                    <p class="credit__raised-card-details-label">Daily %</p>
+                                    <p class="credit__raised-card-details-desc">0.5%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <div class="credit__deposit-card">
+                        <h3 class="credit__deposit-card-title">Deposit Details</h3>
+                        <dl>
+                            <dt>Next Payout</dt>
+                            <dd>$50 on 15 Sep</dd>
+
+                            <dt>Total Attracted</dt>
+                            <dd>$100</dd>
+
+                            <dt>Remaining Potential</dt>
+                            <dd>$4,900</dd>
+
+                            <dt>Earned So Far</dt>
+                            <dd>$250</dd>
+                        </dl>
+                    </div>
                 </div>
             </article>
         </div>
@@ -59,13 +103,219 @@
                 <p class="credit__card-desc">List of partner transactions contributing to your credit deposit.</p>
             </header>
             <div class="credit__card-content">
-                <img src="img/icon/not-transaction.svg" width="40" height="40" alt="" class="credit__card-content-icon">
-                <h3 class="credit__card-content-title">No referral transactions yet</h3>
-                <p class="credit__card-content-desc">List of partner transactions contributing to your credit deposit.
-                </p>
+                <!-- DESKTOP VERSION -->
+                <div class="credits-desktop">
+                    <table class="credits-desktop__table">
+                        <caption class="visually-hidden">
+                            Recent cryptocurrency credits-desktop overview
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="credits-desktop__header-title">
+                                    Partner
+                                    <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                        aria-hidden="true" class="credits-desktop__header-icon">
+                                </th>
+                                <th scope="col" class="credits-desktop__header-title">
+                                    Date
+                                    <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                        aria-hidden="true" class="credits-desktop__header-icon">
+                                </th>
+                                <th scope="col" class="credits-desktop__header-title">
+                                    Amount
+                                    <img src="img/icon/table-column-filter.svg" width="16" height="16" alt=""
+                                        aria-hidden="true" class="credits-desktop__header-icon">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Jenny Wilson</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2015-07-14">July 14, 2015</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="failed">-$4,200</span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Theresa Webb</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2014-03-13">March 13, 2014</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="success">+$8,500</span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Jane Cooper</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2019-12-19">December 19, 2013</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="failed">-$4,200</span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Leslie Alexander</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2016-11-16">November 16, 2014</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="success">+$6,300</span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Jenny Wilson</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2015-07-14">July 14, 2015</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="failed">-$4,200</span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Theresa Webb</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2014-03-13">March 13, 2014</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="success">+$8,500</span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Jane Cooper</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2019-12-19">December 19, 2013</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="failed">-$4,200</span></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc">Leslie Alexander</span>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <time class="credits-desktop__desc" datetime="2016-11-16">November 16, 2014</time>
+                                </td>
+                                <td class="credits-desktop__item">
+                                    <span class="credits-desktop__desc"><span class="success">+$6,300</span></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- MOBILE VERSION -->
+                <div class="credits-mobile">
+                    <article class="credit-mobile">
+                        <header class="credit-mobile__header">#1 referral</header>
+                        <dl class="credit-mobile__list">
+                            <dt>Partner</dt>
+                            <dd>
+                                <span class="credits-mobile__desc">Jenny Wilson</span>
+                            </dd>
+
+                            <dt>Date</dt>
+                            <dd>
+                                <time class="credits-mobile__desc" datetime="2015-07-14">July 14, 2015</time>
+                            </dd>
+
+                            <dt>Payout</dt>
+                            <dd>
+                                <span class="credits-mobile__desc"><span class="failed">-$4,200</span></span>
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <article class="credit-mobile">
+                        <header class="credit-mobile__header">#2 referral</header>
+                        <dl class="credit-mobile__list">
+                            <dt>Partner</dt>
+                            <dd>
+                                <span class="credits-mobile__desc">Theresa Webb</span>
+                            </dd>
+
+                            <dt>Date</dt>
+                            <dd>
+                                <time class="credits-mobile__desc" datetime="2014-03-13">March 13, 2014</time>
+                            </dd>
+
+                            <dt>Payout</dt>
+                            <dd>
+                                <span class="credits-mobile__desc"><span class="success">+$8,500</span></span>
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <article class="credit-mobile">
+                        <header class="credit-mobile__header">#3 referral</header>
+                        <dl class="credit-mobile__list">
+                            <dt>Partner</dt>
+                            <dd>
+                                <span class="credits-mobile__desc">Jane Cooper</span>
+                            </dd>
+
+                            <dt>Date</dt>
+                            <dd>
+                                <time class="credits-mobile__desc" datetime="2013-12-19">December 19, 2013</time>
+                            </dd>
+
+                            <dt>Payout</dt>
+                            <dd>
+                                <span class="credits-mobile__desc"><span class="failed">-$4,200</span></span>
+                            </dd>
+                        </dl>
+                    </article>
+
+                    <article class="credit-mobile">
+                        <header class="credit-mobile__header">#4 referral</header>
+                        <dl class="credit-mobile__list">
+                            <dt>Partner</dt>
+                            <dd>
+                                <span class="credits-mobile__desc">Leslie Alexander</span>
+                            </dd>
+
+                            <dt>Date</dt>
+                            <dd>
+                                <time class="credits-mobile__desc" datetime="2014-11-16">November 16, 2014</time>
+                            </dd>
+
+                            <dt>Payout</dt>
+                            <dd>
+                                <span class="credits-mobile__desc"><span class="success">+$6,300</span></span>
+                            </dd>
+                        </dl>
+                    </article>
+                </div>
             </div>
         </article>
     </section>
+
+    <script>
+        document.addEventListener("click", e => {
+            const btn = e.target.closest(".promo-video__play");
+            if (!btn) return;
+
+            const video = btn.parentElement.querySelector(".promo-video__player");
+            btn.style.display = "none";
+            video.play();
+        });
+    </script>
 </body>
 
 </html>

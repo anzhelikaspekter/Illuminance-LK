@@ -179,6 +179,9 @@
         overflow: hidden;
         overflow-y: scroll;
         scrollbar-width: none;
+        &[hidden] {
+            display: none !important;
+        }
     }
     &__assets-item {
         width: 100%;

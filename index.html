@@ -352,6 +352,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const navButtons = document.querySelectorAll(".topbar__btn[data-name], .tapbar__btn[data-name]");
+            const profileBtn = document.querySelector('.topbar__btn[data-page="profile"]');
 
             const resetAll = () => {
                 navButtons.forEach((btn) => {
@@ -359,18 +360,32 @@
                     btn.setAttribute("aria-pressed", "false");
                     btn.removeAttribute("aria-current");
                 });
+
+                if (profileBtn) {
+                    profileBtn.classList.remove("active");
+                    profileBtn.setAttribute("aria-pressed", "false");
+                    profileBtn.removeAttribute("aria-current");
+                }
             };
 
             const activateByName = (name) => {
                 resetAll();
-                navButtons.forEach((btn) => {
-                    if (btn.dataset.name === name) {
-                        btn.classList.add("active");
-                        btn.setAttribute("aria-pressed", "true");
-                        btn.setAttribute("aria-current", "page");
+                if (name === "profile") {
+                    if (profileBtn) {
+                        profileBtn.classList.add("active");
+                        profileBtn.setAttribute("aria-pressed", "true");
+                        profileBtn.setAttribute("aria-current", "page");
                     }
-                });
-                // сохраняем только если не dashboard, чтобы не залипало
+                } else {
+                    navButtons.forEach((btn) => {
+                        if (btn.dataset.name === name) {
+                            btn.classList.add("active");
+                            btn.setAttribute("aria-pressed", "true");
+                            btn.setAttribute("aria-current", "page");
+                        }
+                    });
+                }
+
                 if (name !== "dashboard") {
                     localStorage.setItem("activePage", name);
                 } else {
@@ -379,19 +394,7 @@
             };
 
             const hash = location.hash.replace("#", "");
-            const stored = localStorage.getItem("activePage");
-
-            let currentPage;
-
-            // ✅ если есть хеш — используем его,
-            // ✅ если нет хеша и страница загружается впервые — dashboard,
-            // ✅ localStorage применяем только если есть hash или hash == stored.
-            if (hash) {
-                currentPage = hash;
-            } else {
-                currentPage = "dashboard";
-            }
-
+            let currentPage = hash || "dashboard";
             activateByName(currentPage);
 
             navButtons.forEach((btn) => {
@@ -404,10 +407,17 @@
                 });
             });
 
+            if (profileBtn) {
+                profileBtn.addEventListener("click", () => {
+                    activateByName("profile");
+                    location.hash = "profile";
+                    window.loadPage("profile");
+                });
+            }
+
             window.addEventListener("hashchange", () => {
                 const newHash = location.hash.replace("#", "");
-                if (newHash) activateByName(newHash);
-                else activateByName("dashboard");
+                activateByName(newHash || "dashboard");
             });
 
             const originalLoadPage = window.loadPage;

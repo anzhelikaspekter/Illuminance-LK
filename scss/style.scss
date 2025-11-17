@@ -46,6 +46,11 @@
     box-sizing: border-box;
     font-family: var(--font-primary);
     line-height: 1.2;
+
+    overscroll-behavior: none;
+    will-change: transform;
+    backface-visibility: hidden;
+    overscroll-behavior: none;
     &:before,
     &:after {
         box-sizing: inherit;

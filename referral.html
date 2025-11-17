@@ -1622,29 +1622,47 @@
             }
 
             // ----------------------------------------------------
-            //   MOUSE DRAG (only horizontal)
+            //   MOUSE DRAG — behaves exactly like TOUCH DRAG
             // ----------------------------------------------------
             wrap.addEventListener("mousedown", e => {
                 isDown = true;
                 isTouch = false;
 
                 dragStartMouseX = e.pageX;
+                dragStartMouseY = e.pageY;
+
                 dragStartOffsetX = offsetX;
+                dragStartOffsetY = offsetY;
+
+                touchAxis = null;
             });
 
             document.addEventListener("mousemove", e => {
                 if (!isDown || isTouch) return;
 
-                const { minX, maxX } = getBounds();
                 const dx = e.pageX - dragStartMouseX;
+                const dy = e.pageY - dragStartMouseY;
 
-                offsetX = clamp(dragStartOffsetX + dx, minX, maxX);
+                if (!touchAxis) {
+                    touchAxis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+                }
+
+                const { minX, maxX, minY, maxY } = getBounds();
+
+                if (touchAxis === "x") {
+                    offsetX = clamp(dragStartOffsetX + dx, minX, maxX);
+                } else {
+                    offsetY = clamp(dragStartOffsetY + dy, minY, maxY);
+                }
+
                 canvas.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
             });
 
             document.addEventListener("mouseup", () => {
                 isDown = false;
+                touchAxis = null;
             });
+
 
             // ----------------------------------------------------
             //   TOUCH DRAG (axis locked)
@@ -1690,15 +1708,6 @@
                 isTouch = false;
                 touchAxis = null;
             });
-
-            // ----------------------------------------------------
-            //   WHEEL (vertical only)
-            // ----------------------------------------------------
-            wrap.addEventListener("wheel", e => {
-                offsetY -= e.deltaY;
-                applyTransform();
-                e.preventDefault();
-            }, { passive: false });
 
             // INIT
             center();

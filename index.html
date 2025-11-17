@@ -298,13 +298,17 @@
 
                 document.body.appendChild(iframe);
 
-                window.addEventListener("message", (e) => {
-                    if (e.data.action === "closeModal") {
+                const handleMessage = (e) => {
+                    if (e.data.action === "closeModal" || e.data.action === "clickOutside") {
                         iframe.remove();
+                        window.removeEventListener("message", handleMessage);
                     }
-                });
+                };
+
+                window.addEventListener("message", handleMessage);
             });
         });
+
     </script>
 
     <!-- Button Assets -->

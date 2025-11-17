@@ -83,13 +83,22 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const modal = document.querySelector(".modal");
+            const wrap = modal.querySelector(".modal__wrap");
             const closeBtn = modal.querySelector(".modal__close");
 
-            closeBtn.addEventListener("click", () => {
+            function closeModal() {
                 if (window.parent && window.parent !== window) {
                     window.parent.postMessage({ action: "closeModal" }, "*");
                 } else {
                     window.history.back();
+                }
+            }
+
+            closeBtn.addEventListener("click", closeModal);
+
+            modal.addEventListener("click", (e) => {
+                if (!wrap.contains(e.target)) {
+                    closeModal();
                 }
             });
         });

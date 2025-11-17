@@ -79,15 +79,16 @@
                 iframe.allowTransparency = true;
                 iframe.style.background = "transparent";
 
-                iframe.onload = () => iframe.classList.add("active");
                 document.body.appendChild(iframe);
 
-                window.addEventListener("message", (e) => {
-                    if (e.data.action === "closeModal") {
-                        iframe.classList.remove("active");
-                        setTimeout(() => iframe.remove(), 250);
+                const handleMessage = (e) => {
+                    if (e.data.action === "closeModal" || e.data.action === "clickOutside") {
+                        iframe.remove();
+                        window.removeEventListener("message", handleMessage);
                     }
-                });
+                };
+
+                window.addEventListener("message", handleMessage);
             });
         });
     </script>

@@ -50,6 +50,7 @@
             const modal = document.querySelector(".modal");
             if (!modal) return;
 
+            const wrap = modal.querySelector(".modal__wrap");
             const closeBtn = modal.querySelector(".modal__close");
             const cancelBtn = modal.querySelector('.modal__btn.secondary[aria-label="Cancel"]');
 
@@ -61,9 +62,21 @@
                 }
             };
 
-            if (closeBtn) closeBtn.addEventListener("click", closeModal);
-            if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+            if (closeBtn) {
+                closeBtn.addEventListener("click", closeModal);
+            }
+
+            if (cancelBtn) {
+                cancelBtn.addEventListener("click", closeModal);
+            }
+
+            modal.addEventListener("click", (e) => {
+                if (wrap && !wrap.contains(e.target)) {
+                    closeModal();
+                }
+            });
         });
+
     </script>
 
 </body>

@@ -350,14 +350,12 @@
             font-size: var(--desc-size-sm);
             color: var(--table-mobile-header-title-color);
         }
-
         &__list {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             gap: 0;
         }
-
         dt {
             width: 40%;
             font-size: var(--desc-size-md);
@@ -390,6 +388,40 @@
             width: 24px;
             height: 24px;
             object-fit: contain;
+        }
+        &__desc {
+            font-size: var(--desc-size-md);
+            font-weight: 400;
+            color: var(--table-desc-color);
+            & .network {
+                color: var(--table-network-color);
+            }
+            & .success {
+                display: flex;
+                align-items: baseline;
+                gap: 8px;
+                color: var(--table-success-color);
+                & .dot {
+                    display: block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 20px;
+                    background: var(--table-success-color);
+                }
+            }
+            & .failed {
+                display: flex;
+                align-items: baseline;
+                gap: 8px;
+                color: var(--table-failed-color);
+                & .dot {
+                    display: block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 20px;
+                    background: var(--table-failed-color);
+                }
+            }
         }
     }
 }

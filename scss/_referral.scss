@@ -91,7 +91,7 @@
         background: var(--referral-card-bg-color);
         border: 1px solid var(--referral-card-border-color);
         position: relative;
-        &#gridSystem {
+        &#ratingSystem {
             width: calc(100% - 320px);
             max-height: 560px;
             @media (max-width: 1347.9px) {
@@ -361,245 +361,11 @@
             flex: 1 1 100%;
         }
     }
-    &__grid {
-        width: max-content;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        padding: var(--padding-sm);
-        margin: 0 auto;
-        &-wrap {
-            width: 100%;
-            max-width: 100%;
-            height: 560px;
-            overflow: auto;
-            scrollbar-width: none;
-            position: relative;
-            touch-action: none;
-            overscroll-behavior: none;
-            will-change: transform;
-            transform: translateZ(0);
-            contain: layout paint;
-            backface-visibility: hidden;
-            overscroll-behavior: none;
-            &.dragging {
-                user-select: none;
-            }
-        }
-        &-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        &-canvas {
-            width: max-content;
-            min-width: 1040px;
-            position: relative;
-            z-index: 2;
-        }
-        &-item {
-            width: 100%;
-            min-width: 320px;
-            padding: var(--padding-xs);
-        }
-        &-card {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: var(--padding-xs) 4px 4px;
-            border-radius: var(--border-radius-sm);
-            background: var(--referral-grid-card-bg-color);
-            border: 1px solid var(--referral-grid-card-border-color);
-            box-shadow:
-                inset 1px 1px 1px rgba(255, 255, 255, 0.05),
-                inset -1px -1px 1px rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(12px);
-            position: relative;
-            isolation: isolate;
-            &-user {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 8px;
-                padding: var(--padding-xs);
-                border-radius: var(--border-radius-xs);
-                background: var(--referral-grid-card-bg-color);
-                box-shadow:
-                    inset 1px 1px 1px rgba(255, 255, 255, 0.05),
-                    inset -1px -1px 1px rgba(0, 0, 0, 0.25);
-                backdrop-filter: blur(12px);
-                &-img {
-                    width: 40px;
-                    height: 40px;
-                    object-fit: contain;
-                }
-                &-title {
-                    font-size: var(--desc-size-md);
-                    font-weight: 500;
-                    color: var(--referral-card-title-color);
-                    &-wrap {
-                        width: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        gap: 4px;
-                    }
-                }
-                &-desc {
-                    font-size: var(--desc-size-sm);
-                    font-weight: 400;
-                    color: var(--referral-card-desc-color);
-                    text-decoration: none;
-                }
-                &-sum {
-                    font-size: var(--title-md);
-                    font-weight: 500;
-                    color: var(--referral-card-desc-color);
-                    white-space: nowrap;
-                }
-            }
-            &.active {
-                background: var(--referral-grid-card-active-bg-color);
-                border: 1px solid var(--referral-grid-card-active-border-color);
-                & .referral__grid-status {
-                    color: var(--referral-grid-card-status-active-color);
-                    & .dot {
-                        background: var(--referral-grid-card-status-active-color);
-                    }
-                }
-                & .referral__grid-user-sum {
-                    color: var(--referral-grid-card-status-active-color);
-                }
-            }
-        }
-        &-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: var(--desc-size-sm);
-            font-weight: 400;
-            color: var(--referral-grid-card-status-color);
-            & .dot {
-                display: block;
-                width: 6px;
-                height: 6px;
-                border-radius: 10px;
-                background: var(--referral-grid-card-status-color);
-            }
-        }
-        &-user {
-            &-tooltip {
-                position: absolute;
-                top: 110%;
-                width: 100%;
-                max-width: 300px;
-                border-radius: var(--border-radius-sm);
-                background-color: #151616;
-                border: 1px solid rgba(255, 255, 255, 0.04);
-                z-index: 999;
-                &[hidden] {
-                    display: none !important;
-                }
-                &-wrapper {
-                    width: 100%;
-                    display: flex;
-                    align-items: stretch;
-                    gap: 8px;
-                    padding: 4px;
-                }
-                &-wrap {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 8px;
-                    padding: var(--padding-xs);
-                    background: var(--referral-card-user-tooltip-bg);
-                    border-radius: var(--border-radius-sm);
-                    border: 1px solid var(--referral-card-user-tooltip-border);
-                }
-                &-title {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-size: var(--desc-size-md);
-                    font-weight: 500;
-                    color: var(--referral-card-desc-color);
-                    &-wrap {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 8px;
-                    }
-                }
-                &-desc {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-size: var(--desc-size-lg);
-                    font-weight: 500;
-                    color: var(--referral-card-title-color);
-                    & .info {
-                        color: var(--referral-card-desc-color);
-                    }
-                }
-                &-icon {
-                    width: 20px;
-                    height: 20px;
-                    object-fit: contain;
-                }
-                & dl {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 16px;
-                    flex-wrap: wrap;
-                    padding: var(--padding-sm);
-                    & dd,
-                    & dt {
-                        display: flex;
-                        align-items: center;
-                        gap: 8px;
-                        white-space: nowrap;
-                    }
-                    & dd {
-                        width: calc(30% - 8px);
-                        justify-content: flex-start;
-                        font-size: var(--desc-size-md);
-                        font-weight: 400;
-                        color: rgba(255, 255, 255, 0.7);
-                    }
-                    & dt {
-                        width: calc(70% - 8px);
-                        justify-content: flex-end;
-                        font-size: var(--desc-size-md);
-                        font-weight: 400;
-                        color: rgba(255, 255, 255, 1);
-                        & .desc {
-                            color: rgba(255, 255, 255, 0.7);
-                        }
-                        & a {
-                            font-size: var(--desc-size-md);
-                            font-weight: 400;
-                            color: rgba(255, 255, 255, 1);
-                            text-decoration: none;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 .matrix {
-    overflow-x: auto;
+    overflow: auto;
+    scrollbar-width: thin;
 
     &__table {
         width: 100%;
@@ -617,6 +383,7 @@
         }
         th {
             &:first-child {
+                width: 160px;
                 border-right: 1px solid #1a1a1d;
                 & .matrix__title {
                     background: transparent;
@@ -661,7 +428,7 @@
         }
     }
     &__title {
-        padding: var(--padding-sm);
+        padding: var(--padding-xs);
         border-radius: var(--border-radius-sm);
         border: 1px solid rgba(255, 255, 255, 0.05);
         background: rgba(255, 255, 255, 0.05);
@@ -685,7 +452,7 @@
         }
     }
     &__desc {
-        padding: var(--padding-sm);
+        padding: var(--padding-xs);
         border-radius: var(--border-radius-sm);
         border: 1px solid rgba(255, 255, 255, 0.05);
         background: rgba(255, 255, 255, 0.05);
@@ -695,5 +462,159 @@
         font-size: var(--desc-size-md);
         font-weight: 400;
         color: #ffffff;
+    }
+}
+
+.bonus {
+    overflow: hidden;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    &__table {
+        width: 100%;
+        min-width: 1280px;
+        border-collapse: collapse;
+        table-layout: fixed;
+        gap: 4px;
+
+        th,
+        td {
+            border-top: 1px solid #1a1a1d;
+            border-bottom: 1px solid #1a1a1d;
+            white-space: nowrap;
+            &:first-child {
+                width: 250px;
+                white-space: nowrap;
+            }
+            &:not(:first-child) {
+                width: auto;
+                white-space: nowrap;
+            }
+        }
+        th {
+            padding: 8px;
+            &:first-child {
+                & .bonus__title {
+                    background: transparent;
+                    border: none;
+                }
+                & .bonus__desc {
+                    background: transparent;
+                    border: none;
+                }
+            }
+        }
+        td {
+            border-left: 1px solid #1a1a1d;
+        }
+
+        tr {
+            &:hover {
+                background: rgba(255, 255, 255, 0.03);
+            }
+        }
+        thead th {
+            font-weight: 400;
+            padding: 2px;
+            border: none;
+
+            & .bonus__title {
+                text-transform: uppercase;
+            }
+
+            span {
+                font-size: var(--desc-size-md);
+                font-weight: 400;
+                color: rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        tbody th {
+            vertical-align: middle;
+            padding-left: 12px;
+            font-weight: 600;
+            text-align: left;
+            padding-left: 12px;
+            min-width: max-content;
+
+            .sub {
+                display: block;
+                font-size: 11px;
+                color: #9a9a9a;
+            }
+        }
+
+        tbody td {
+            width: auto;
+            padding: 4px;
+            vertical-align: middle;
+            min-width: max-content;
+        }
+    }
+    &__wrap {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px;
+        min-width: max-content;
+    }
+    &__inner {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 4px;
+        min-width: max-content;
+    }
+    &__icon {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+    }
+    &__title {
+        padding: var(--padding-xs);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: var(--desc-size-lg);
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        &.column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 4px;
+            padding: 4px;
+        }
+        & .sub {
+            color: rgba(255, 255, 255, 0.4);
+            & .sum {
+                color: rgba(255, 255, 255, 1);
+            }
+        }
+    }
+    &__desc {
+        flex: 1;
+        padding: var(--padding-xs);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 4px;
+        font-weight: 400;
+        &.active {
+            border-radius: var(--border-radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        & .sub {
+            font-size: var(--desc-size-md);
+            color: rgba(255, 255, 255, 0.4);
+        }
+        & .sum {
+            font-size: var(--desc-size-lg);
+            color: rgba(255, 255, 255, 1);
+        }
     }
 }

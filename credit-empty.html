@@ -39,16 +39,21 @@
                 </div>
             </article>
             <article class="credit__card">
-                <header class="credit__card-header">
-                    <h2 class="credit__card-title">Active Deposit</h2>
-                    <p class="credit__card-desc">Active: <span class="count">0 Deposit</span></p>
+                <header class="credit__card-header-inner">
+                    <div class="credit__card-header">
+                        <h2 class="credit__card-title">Active Deposit</h2>
+                        <p class="credit__card-desc">Active: <span class="count">0 Deposit</span></p>
+                    </div>
+                    <button type="button" class="credit__card-content-btn" data-page="deposit" hidden>
+                        Other Deposits
+                    </button>
                 </header>
                 <div class="credit__card-content">
                     <img src="img/icon/not-deposit.svg" width="40" height="40" alt="" class="credit__card-content-icon">
                     <h3 class="credit__card-content-title">No Active Deposits</h3>
                     <p class="credit__card-content-desc">You don’t have any active credit deposits yet. Start now to
                         earn daily income.</p>
-                    <button type="button" class="credit__card-content-btn" data-modal="deposit-modal">Create
+                    <button type="button" class="credit__card-content-btn" data-modal="warning-modal">Create
                         Deposit</button>
                 </div>
             </article>
@@ -70,26 +75,33 @@
     <div id="modal-container" allowtransparency="true"></div>
 
     <script>
-        document.querySelectorAll("[data-modal]").forEach((btn) => {
-            btn.addEventListener("click", () => {
-                const modalPage = btn.getAttribute("data-modal");
-                const iframe = document.createElement("iframe");
-                iframe.src = `${modalPage}.html`;
-                iframe.className = "modal-iframe";
-                iframe.allowTransparency = true;
-                iframe.style.background = "transparent";
+        document.querySelectorAll("[data-modal]").forEach(btn => {
+            btn.addEventListener("click", () => openModal(btn.getAttribute("data-modal")));
+        });
 
-                document.body.appendChild(iframe);
+        function openModal(name) {
+            const container = document.getElementById("modal-container");
 
-                const handleMessage = (e) => {
-                    if (e.data.action === "closeModal" || e.data.action === "clickOutside") {
-                        iframe.remove();
-                        window.removeEventListener("message", handleMessage);
-                    }
-                };
+            container.innerHTML = "";
 
-                window.addEventListener("message", handleMessage);
-            });
+            const iframe = document.createElement("iframe");
+            iframe.src = `${name}.html`;
+            iframe.className = "modal-iframe";
+            iframe.allowTransparency = true;
+            iframe.style.background = "transparent";
+
+            container.appendChild(iframe);
+        }
+
+        window.addEventListener("message", (e) => {
+
+            if (e.data.action === "closeModal") {
+                document.getElementById("modal-container").innerHTML = "";
+            }
+
+            if (e.data.action === "openNextModal") {
+                openModal(e.data.modal);
+            }
         });
     </script>
 

@@ -427,6 +427,22 @@
                     activateByName(page);
                 };
             }
+
+            document.addEventListener("click", (e) => {
+                const pgBtn = e.target.closest("[data-page]");
+                if (!pgBtn) return;
+
+                const page = pgBtn.dataset.page;
+
+                if (typeof window.loadPage === "function") {
+                    window.loadPage(page);
+                }
+
+                activateByName(page);
+
+                location.hash = page;
+            });
+
         });
     </script>
 

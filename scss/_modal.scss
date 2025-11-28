@@ -722,4 +722,24 @@
             object-fit: contain;
         }
     }
+    &__list {
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+    }
+    &__item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 16px;
+        background: rgba(240, 50, 79, 0.12);
+        border-radius: var(--border-radius-sm);
+        & .modal__title {
+            color: rgba(255, 8, 46, 1);
+        }
+    }
 }
